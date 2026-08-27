@@ -1,5 +1,26 @@
 ---
+import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
+
+const posts = (await getCollection('blog')).sort(
+	(a, b) =>
+		b.data.date.getTime() -
+		a.data.date.getTime()
+);
+
+const latestPost = posts[0];
+
+const formatDate = (date: Date) =>
+	date
+		.toLocaleDateString('ja-JP', {
+			year: 'numeric',
+			month: '2-digit',
+			day: '2-digit',
+		})
+		.replace(/\//g, '.');
+
+const postHref = (slug: string) =>
+	`/${encodeURIComponent(slug)}/`;
 ---
 
 <Layout>
@@ -31,26 +52,40 @@ import Layout from '../layouts/Layout.astro';
 					<h2>新着情報</h2>
 				</div>
 
-				<article class="news-card">
-					<div class="news-card__meta">
-						<time datetime="2026-05-30">2026.05.30</time>
-					</div>
+				{
+					latestPost && (
+						<article class="news-card">
+							<div class="news-card__meta">
+								<time datetime={latestPost.data.date.toISOString()}>
+									{formatDate(latestPost.data.date)}
+								</time>
+							</div>
 
-					<div class="news-card__body">
-						<h3>
-							<a href="#">
-								「滝川こども大学」6月14日（日）開催：テーマは「建築と都道府県」
-							</a>
-						</h3>
+							<div class="news-card__body">
+								<h3>
+									<a href={postHref(latestPost.data.slug)}>
+										{latestPost.data.title}
+									</a>
+								</h3>
 
-						<p>
-							滝川こども大学が6月14日（日）に開催されます。
-							テーマは「建築と都道府県」です。
-						</p>
+								{
+									latestPost.data.excerpt && (
+										<p>
+											{latestPost.data.excerpt}
+										</p>
+									)
+								}
 
-						<a class="news-card__more" href="#">詳しくはこちら →</a>
-					</div>
-				</article>
+								<a
+									class="news-card__more"
+									href={postHref(latestPost.data.slug)}
+								>
+									詳しくはこちら →
+								</a>
+							</div>
+						</article>
+					)
+				}
 
 				<div class="news__footer">
 					<a class="button-link" href="/blog/">新着情報一覧を見る</a>
