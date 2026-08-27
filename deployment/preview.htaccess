@@ -1,0 +1,16 @@
+# --------------------------------------------------
+# Takikawa Gakku Preview protection
+# --------------------------------------------------
+
+AuthType Basic
+AuthName "Takikawa Gakku Preview"
+AuthUserFile /home/takikawagakku/.htpasswd-takikawagakku-preview
+Require valid-user
+
+# --------------------------------------------------
+# Search engine protection
+# --------------------------------------------------
+
+<IfModule mod_headers.c>
+    Header set X-Robots-Tag "noindex, nofollow, noarchive"
+</IfModule>
