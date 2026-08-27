@@ -1,0 +1,760 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+---
+
+<Layout>
+	<main>
+        <section
+            class="page-hero"
+            style="background-image: url('/images/child-club/dodgeball/hero.jpg');"
+        >
+            <div class="page-hero__overlay">
+                <h1>ドッジボール大会</h1>
+            </div>
+        </section>
+
+		<nav class="breadcrumbs" aria-label="パンくずリスト">
+			<div class="page-inner">
+				<a href="/">Home</a>
+				<span>/</span>
+				<a href="/child_club/">子ども会</a>
+				<span>/</span>
+				<span>ドッジボール大会</span>
+			</div>
+		</nav>
+
+        <section class="intro-section">
+            <div class="page-inner">
+                <h2>仲間と力を合わせることを学ぶ</h2>
+
+                <div class="intro-grid">
+                    <div class="intro-text">
+                        <p>
+                            ドッジボールを通じて、スポーツの楽しさ、仲間と力を合わせること、
+                            緊張の中で戦うことなどを学んでいます。
+                            毎年多くの子どもたちが楽しんで参加してくれています。
+                        </p>
+
+                        <p>
+                            滝川学区ドッジボール大会の優勝チームが、
+                            秋に開催される昭和区大会に滝川小学校の代表として出場します。
+                        </p>
+
+                        <p>
+                            <a
+                                class="text-link"
+                                href="/category/ドッジボール/"
+                            >
+                                ドッジボール大会のニュースはこちら
+                            </a>
+                        </p>
+
+                        <p>
+                            <strong>【主催】</strong>
+                            滝川学区子ども会育成連絡協議会
+                        </p>
+                    </div>
+
+                    <div class="intro-image">
+                        <img
+                            src="/images/child-club/dodgeball/main.jpg"
+                            alt="滝川学区ドッジボール大会"
+                            loading="lazy"
+                        />
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="result-section">
+            <div class="page-inner narrow">
+                <h2>2024年度大会結果</h2>
+
+                <div class="result-intro">
+                    <p>
+                        2024年度大会は低学年の部は見事昭和区大会優勝でした。
+                    </p>
+
+                    <p>
+                        他の学年も本当によく頑張りました。
+                    </p>
+                </div>
+
+                <div class="result-block">
+                    <h3>低学年</h3>
+
+                    <p>
+                        なんとすべての試合を2-0のストレートで快勝。
+                        見事に昭和区大会優勝でした！
+                    </p>
+                </div>
+
+                <div class="result-block">
+                    <h3>4・5年生</h3>
+
+                    <p>
+                        第一試合、御器所に1-2で惜敗、第二試合は広路に2-0で快勝。
+                        その後、敗者リーグを優勝した吹上にも1-2で惜敗してしまったけれど、
+                        思い切り戦い抜くことができました。
+                        4・5年生の試合に、滝川学区は今年は4年生だけで出場しました。
+                        よく健闘したと思います。
+                    </p>
+                </div>
+
+                <div class="result-block">
+                    <h3>5・6年生</h3>
+
+                    <p>
+                        第一試合、相手は御器所小。
+                        みんな緊張することなく、のびのびそして楽しく戦い、
+                        見事2-0で快勝。
+                    </p>
+
+                    <p>
+                        続く2試合目、村雲vs吹上の勝者である村雲と対戦。
+                        全て6年生の相手チームに1セット目を落とすものの、
+                        2セット目は見事取り直し1-1のイーブンに。
+                    </p>
+
+                    <p>
+                        運命の3セット目、拮抗した攻防の末、引き分けに。
+                        その後、合計のヒット数で惜敗。
+                        村雲学区はその後優勝したので、
+                        滝川は実質準優勝だったと思います！
+                    </p>
+                </div>
+            </div>
+        </section>
+		<div
+			class="lightbox"
+			data-lightbox
+			aria-hidden="true"
+		>
+			<button
+				class="lightbox__close"
+				type="button"
+				aria-label="閉じる"
+			>
+				×
+			</button>
+
+			<button
+				class="lightbox__nav lightbox__nav--prev"
+				type="button"
+				aria-label="前の画像"
+			>
+				‹
+			</button>
+
+			<div class="lightbox__content">
+				<img
+					class="lightbox__image"
+					src=""
+					alt=""
+				/>
+
+				<p class="lightbox__counter"></p>
+			</div>
+
+			<button
+				class="lightbox__nav lightbox__nav--next"
+				type="button"
+				aria-label="次の画像"
+			>
+				›
+			</button>
+		</div>
+	</main>
+</Layout>
+<style>
+	.page-inner {
+		width: min(1120px, calc(100% - 48px));
+		margin: 0 auto;
+	}
+
+	.narrow {
+		max-width: 900px;
+	}
+
+    .page-hero {
+        position: relative;
+        height: 420px;
+        overflow: hidden;
+
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+
+    .page-hero__overlay {
+        position: absolute;
+        inset: 0;
+        display: grid;
+        place-items: center;
+        padding: 24px;
+        background: rgb(0 0 0 / 20%);
+    }
+
+    .page-hero__overlay h1 {
+        margin: 0;
+        color: #fff;
+        font-size: clamp(38px, 4vw, 60px);
+        font-weight: 400;
+        line-height: 1.3;
+        text-align: center;
+    }
+
+	.page-hero__content {
+		position: absolute;
+		inset: 0;
+		display: grid;
+		place-items: center;
+		padding: 24px;
+	}
+
+	.page-hero h1 {
+		margin: 0;
+		color: #fff;
+		font-size: clamp(38px, 4vw, 60px);
+		font-weight: 400;
+		text-align: center;
+	}
+
+	.breadcrumbs {
+		padding: 32px 0;
+		background: #fff;
+	}
+
+	.breadcrumbs .page-inner {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 8px;
+		font-size: 14px;
+	}
+
+	.breadcrumbs a,
+	.text-link {
+		color: #00a6e9;
+		text-underline-offset: 0.2em;
+	}
+
+	.intro-section {
+		padding: 88px 0;
+		background: #f4f9fc;
+	}
+
+    .intro-section h2 {
+        margin: 0 0 56px;
+        text-align: center;
+        font-size: clamp(32px, 4vw, 46px);
+        font-weight: 400;
+        line-height: 1.4;
+    }
+
+	.intro-section-records {
+		padding: 88px 0;
+		background: #fff;
+	}
+
+    .intro-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: 64px;
+        align-items: start;
+    }
+
+    .intro-text {
+        font-size: 16px;
+        line-height: 2;
+    }
+
+    .intro-text p {
+        margin: 0 0 22px;
+    }
+
+    .intro-image img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
+	.prose {
+		font-size: 16px;
+		line-height: 2;
+	}
+
+	.prose p {
+		margin: 0 0 22px;
+	}
+
+	.prose--narrow {
+		max-width: 900px;
+		margin: 0 auto;
+	}
+
+	.rules ul {
+		margin: 0 0 28px;
+		padding-left: 1.5em;
+	}
+
+	.flyer-grid {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 32px;
+		max-width: 1000px;
+		margin: 48px auto 0;
+	}
+
+	.flyer {
+		display: block;
+		padding: 0;
+		border: 0;
+		background: transparent;
+		cursor: zoom-in;
+	}
+
+	.flyer img {
+		display: block;
+		width: 100%;
+		height: auto;
+	}
+
+    .result-section {
+        padding: 88px 0;
+        background: #f4f9fc;
+    }
+
+    .result-section h2 {
+        margin: 0 0 56px;
+        text-align: center;
+        font-size: clamp(32px, 4vw, 46px);
+        font-weight: 400;
+        line-height: 1.4;
+    }
+
+    .result-intro {
+        margin-bottom: 48px;
+        font-size: 17px;
+        line-height: 2;
+    }
+
+    .result-intro p {
+        margin: 0 0 18px;
+    }
+
+    .result-block {
+        padding: 32px 0;
+        border-top: 1px solid #d9e0e5;
+    }
+
+    .result-block:last-child {
+        border-bottom: 1px solid #d9e0e5;
+    }
+
+    .result-block h3 {
+        margin: 0 0 18px;
+        color: #ea7300;
+        font-size: 21px;
+        font-weight: 600;
+    }
+
+    .result-block p {
+        margin: 0 0 18px;
+        font-size: 16px;
+        line-height: 2;
+    }
+
+    .result-block p:last-child {
+        margin-bottom: 0;
+    }
+
+    @media (max-width: 768px) {
+        .result-section {
+            padding: 64px 0;
+        }
+
+        .result-intro {
+            margin-bottom: 36px;
+            font-size: 16px;
+        }
+
+        .result-block {
+            padding: 28px 0;
+        }
+
+        .result-block h3 {
+            font-size: 19px;
+        }
+
+        .result-block p {
+            font-size: 15px;
+            line-height: 1.9;
+        }
+    }
+
+    /* 年次記録 */
+
+    .record {
+        border-top: 1px solid #d9e0e5;
+    }
+
+    .record:last-child {
+        border-bottom: 1px solid #d9e0e5;
+    }
+
+    .record-toggle {
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        padding: 28px 0;
+        border: 0;
+        background: transparent;
+        color: #111827;
+        font-size: clamp(24px, 3vw, 34px);
+        font-weight: 500;
+        text-align: left;
+        cursor: pointer;
+    }
+
+    .record-toggle:hover {
+        color: #ea7300;
+    }
+
+    .record-toggle__icon {
+        flex: 0 0 auto;
+        font-size: 28px;
+        font-weight: 300;
+        transition: transform 0.2s ease;
+    }
+
+    .record-toggle[aria-expanded='true'] .record-toggle__icon {
+        transform: rotate(45deg);
+    }
+
+    .record-content {
+        display: none;
+        padding: 16px 0 72px;
+    }
+
+    .record-content.is-open {
+        display: block;
+    }
+
+    .record-section {
+        margin-top: 64px;
+    }
+
+    .record-summary-section {
+        max-width: 1100px;
+        margin: 24px auto 0;
+    }
+
+    .record-section h3 {
+        margin: 0 0 32px;
+        text-align: center;
+        font-size: 26px;
+        font-weight: 500;
+    }
+
+    .record-summary {
+        margin: 0;
+        font-size: 16px;
+        line-height: 2;
+        letter-spacing: 0.02em;
+    }
+
+    .record-details {
+        max-width: 1100px;
+        margin: 48px auto 0;
+    }
+
+    .record-details p {
+        display: grid;
+        grid-template-columns: max-content 1fr;
+        column-gap: 16px;
+        margin: 0 0 18px;
+        font-size: 16px;
+        line-height: 1.8;
+    }
+
+    .record-details strong {
+        white-space: nowrap;
+    }
+
+    .photo-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 20px;
+        margin-top: 32px;
+    }
+
+    .record-photo {
+        padding: 0;
+        border: 0;
+        background: transparent;
+        cursor: zoom-in;
+    }
+
+    .record-photo img {
+        display: block;
+        width: 100%;
+        aspect-ratio: 4 / 3;
+        object-fit: cover;
+    }
+
+    .flyer-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 32px;
+        max-width: 1000px;
+        margin: 32px auto 0;
+    }
+
+    .flyer {
+        display: block;
+        padding: 0;
+        border: 0;
+        background: transparent;
+        cursor: zoom-in;
+    }
+
+    .flyer img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
+	/* lightbox */
+
+	.lightbox {
+		position: fixed;
+		inset: 0;
+		z-index: 3000;
+		display: none;
+		align-items: center;
+		justify-content: center;
+		padding: 40px 90px;
+		background: rgb(0 0 0 / 88%);
+	}
+
+	.lightbox.is-open {
+		display: flex;
+	}
+
+	.lightbox__content {
+		position: relative;
+		display: flex;
+		max-width: 100%;
+		max-height: 100%;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		overflow: hidden;
+	}
+
+	.lightbox__image {
+		display: block;
+		max-width: 94%;
+		max-height: 86vh;
+		width: auto;
+		height: auto;
+		object-fit: contain;
+		cursor: zoom-in;
+		user-select: none;
+		-webkit-user-drag: none;
+		transform: translate(0, 0) scale(1);
+		transform-origin: center center;
+		transition: transform 0.2s ease;
+	}
+
+	.lightbox__image.is-zoomed {
+		cursor: grab;
+		transition: none;
+	}
+
+	.lightbox__image.is-dragging {
+		cursor: grabbing;
+	}
+
+	.lightbox__close {
+		position: absolute;
+		top: 20px;
+		right: 24px;
+		z-index: 2;
+		width: 48px;
+		height: 48px;
+		border: 0;
+		background: transparent;
+		color: #fff;
+		font-size: 40px;
+		cursor: pointer;
+	}
+
+	.lightbox__nav {
+		position: absolute;
+		top: 50%;
+		z-index: 2;
+		display: grid;
+		width: 56px;
+		height: 72px;
+		place-items: center;
+		border: 0;
+		background: rgb(0 0 0 / 25%);
+		color: #fff;
+		font-size: 56px;
+		cursor: pointer;
+		transform: translateY(-50%);
+	}
+
+	.lightbox__nav--prev {
+		left: 20px;
+	}
+
+	.lightbox__nav--next {
+		right: 20px;
+	}
+
+	.lightbox__counter {
+		margin: 12px 0 0;
+		color: #fff;
+		font-size: 13px;
+	}
+
+    .bread-guide ul {
+        margin: 24px 0 0;
+        padding-left: 1.5em;
+        list-style: disc outside;
+    }
+
+    .bread-guide li {
+        display: list-item;
+        margin-bottom: 8px;
+        font-size: 17px;
+        line-height: 1.7;
+    }
+
+    @media (max-width: 480px) {
+        .photo-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+	@media (max-width: 768px) {
+		.page-inner {
+			width: min(100% - 32px, 1120px);
+		}
+
+		.page-hero {
+			height: 300px;
+		}
+
+		.page-hero h1 {
+			font-size: 36px;
+		}
+
+        .bread-intro,
+        .bread-guide {
+            padding: 64px 0;
+        }
+
+        .voices-section {
+            padding: 64px 0;
+        }
+
+        .voice-toggle {
+            padding: 20px 0;
+            font-size: 16px;
+        }
+
+        .voice-content__inner {
+            padding: 4px 0 28px;
+            font-size: 15px;
+        }
+
+        .voice-item {
+            padding: 24px 0;
+        }
+
+        .voice-meta {
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .voice-item > p:not(.voice-meta) {
+            font-size: 15px;
+            line-height: 1.9;
+        }
+
+        .notice-box {
+            padding: 24px;
+        }
+
+		.intro-grid {
+			grid-template-columns: 1fr;
+			gap: 36px;
+		}
+
+		.flyer-grid {
+			grid-template-columns: 1fr;
+			gap: 24px;
+		}
+
+		.lightbox {
+			padding: 64px 50px 32px;
+		}
+
+		.lightbox__image {
+			max-width: 100%;
+			max-height: 78vh;
+		}
+
+		.lightbox__nav {
+			width: 44px;
+			height: 60px;
+			font-size: 44px;
+		}
+
+		.lightbox__nav--prev {
+			left: 4px;
+		}
+
+		.lightbox__nav--next {
+			right: 4px;
+		}
+
+        .record-toggle {
+            padding: 22px 0;
+            font-size: 22px;
+        }
+
+        .record-content {
+            padding-bottom: 56px;
+        }
+
+        .record-section {
+            margin-top: 48px;
+        }
+
+        .record-details {
+            margin-top: 36px;
+        }
+
+        .record-details p {
+            display: block;
+            margin-bottom: 16px;
+        }
+
+        .record-details strong {
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .photo-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px;
+        }
+	}
+</style>

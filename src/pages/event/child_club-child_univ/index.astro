@@ -1,0 +1,1211 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+---
+
+<Layout>
+	<main>
+		<section class="page-hero">
+			<img
+				src="/images/event/child-university/hero.jpeg"
+				alt=""
+				class="page-hero__image"
+			/>
+
+			<div class="page-hero__overlay"></div>
+
+			<div class="page-hero__content">
+				<h1>こども大学</h1>
+			</div>
+		</section>
+
+		<nav class="breadcrumbs" aria-label="パンくずリスト">
+			<div class="page-inner">
+				<a href="/">Home</a>
+				<span>/</span>
+				<a href="/event/">イベント</a>
+				<span>/</span>
+				<span>こども大学</span>
+			</div>
+		</nav>
+
+		<section class="child-university-intro">
+			<div class="page-inner">
+				<h2>
+					大学生と遊びながら学ぶ<br />
+					「こども大学」
+				</h2>
+
+				<div class="intro-grid">
+					<div class="intro-image">
+						<img
+							src="/images/event/child-university/main.png"
+							alt="こども大学"
+						/>
+					</div>
+
+					<div class="prose">
+						<p>
+							滝川学区自治協議会子ども育成部では、
+							名古屋大学・南山大学・中京大学の学生の協力を得て、
+							大学生と遊びながら学ぶ場「こども大学」を開いています。
+						</p>
+
+						<p>
+							イベントでは、名古屋大学と南山大学と中京大学の学生が、
+							大学での学びを伝えることで子どもたちの勉強に対する意欲を
+							向上させるほか、主体性を身に着けるための
+							グループ活動を行います。
+						</p>
+
+						<p>
+							※八事小学校・伊勝小学校など、
+							滝川小学校以外のお子さんもご参加いただけます。
+						</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="schedule-section">
+			<div class="page-inner narrow">
+				<h2>2026年度の開催スケジュール</h2>
+
+				<button
+					class="schedule-image"
+					type="button"
+					data-lightbox-image="/images/event/child-university/schedule.png"
+					data-lightbox-group="child-university-schedule"
+					data-lightbox-index="0"
+					aria-label="2026年度こども大学開催スケジュールを拡大表示"
+				>
+					<img
+						src="/images/event/child-university/schedule.png"
+						alt="2026年度こども大学開催スケジュール"
+						loading="lazy"
+					/>
+				</button>
+			</div>
+		</section>
+
+        <section class="child-university-info">
+            <div class="page-inner narrow">
+                <div class="child-university-info__details">
+                    <div>
+                        <p><strong>【開催日】</strong></p>
+                        <p>
+                            6月14日／8月23日／9月20日<br />
+                            11月15日／12月13日<br />
+                            2027年2月21日／3月21日<br />
+                            いずれも日曜日
+                        </p>
+                    </div>
+
+                    <p>
+                        <strong>【時間】</strong>
+                        各回10:00〜12:00
+                    </p>
+
+                    <p>
+                        <strong>【場所】</strong>
+                        滝川コミセン
+                    </p>
+
+                    <p>
+                        <strong>【対象】</strong>
+                        小学3〜6年生
+                    </p>
+
+                    <p>
+                        <strong>【参加費】</strong>
+                        無料
+                    </p>
+                </div>
+
+                <div class="child-university-info__contact">
+                    <h2>お申し込み・お問い合わせ</h2>
+
+                    <div class="contact-grid">
+                        <div class="contact-copy">
+                            <p>QRコードより</p>
+                            <p>LINEオープンチャットへ参加いただき、</p>
+                            <p>参加申込してください。</p>
+                        </div>
+
+                        <img
+                            src="/images/event/child-university/line-qr.png"
+                            alt="こども大学 LINEオープンチャット参加用QRコード"
+                            class="contact-qr"
+                        />
+                    </div>
+                </div>
+            </div>
+        </section>
+
+		<section class="organizer-section">
+			<div class="page-inner narrow">
+				<p>
+					<strong>【主催】</strong>
+					滝川学区自治協議会
+				</p>
+
+				<p>
+					<strong>【共催】</strong>
+					南山大学ボランティアサークル、中京大学ボランティアサークルCUVE、
+					名大祭実行委員会
+				</p>
+
+				<p>
+					<strong>【後援】</strong>
+					滝川学区子ども会育成連絡協議会、NPO法人なごやSOVIVA
+				</p>
+			</div>
+		</section>
+
+		<div
+			class="lightbox"
+			data-lightbox
+			aria-hidden="true"
+		>
+			<button
+				class="lightbox__close"
+				type="button"
+				aria-label="閉じる"
+			>
+				×
+			</button>
+
+			<button
+				class="lightbox__nav lightbox__nav--prev"
+				type="button"
+				aria-label="前の画像"
+			>
+				‹
+			</button>
+
+			<div class="lightbox__content">
+				<img
+					class="lightbox__image"
+					src=""
+					alt=""
+				/>
+
+				<p class="lightbox__counter"></p>
+			</div>
+
+			<button
+				class="lightbox__nav lightbox__nav--next"
+				type="button"
+				aria-label="次の画像"
+			>
+				›
+			</button>
+		</div>
+
+	</main>
+</Layout>
+<style>
+	.page-inner {
+		width: min(1120px, calc(100% - 48px));
+		margin: 0 auto;
+	}
+
+	.narrow {
+		max-width: 900px;
+	}
+
+	.page-hero {
+		position: relative;
+		height: 420px;
+		overflow: hidden;
+	}
+
+	.page-hero__image {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: center;
+	}
+
+	.page-hero__overlay {
+		position: absolute;
+		inset: 0;
+		background: rgb(0 0 0 / 20%);
+	}
+
+	.page-hero__content {
+		position: absolute;
+		inset: 0;
+		display: grid;
+		place-items: center;
+		padding: 24px;
+	}
+
+	.page-hero h1 {
+		margin: 0;
+		color: #fff;
+		font-size: clamp(38px, 4vw, 60px);
+		font-weight: 400;
+		text-align: center;
+	}
+
+	.breadcrumbs {
+		padding: 32px 0;
+		background: #fff;
+	}
+
+	.breadcrumbs .page-inner {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 8px;
+		font-size: 14px;
+	}
+
+	.breadcrumbs a,
+	.text-link {
+		color: #00a6e9;
+		text-underline-offset: 0.2em;
+	}
+
+	.comicen-intro {
+		padding: 88px 0;
+		background: #f4f9fc;
+	}
+
+	.comicen-intro h2 {
+		margin: 0 0 56px;
+		text-align: center;
+		font-size: clamp(32px, 4vw, 46px);
+		font-weight: 400;
+		line-height: 1.4;
+	}
+
+	.comicen-records {
+		padding: 88px 0;
+		background: #fff;
+	}
+
+	.intro-grid {
+		display: grid;
+		grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+		gap: 64px;
+		align-items: start;
+	}
+
+	.intro-image img {
+		display: block;
+		width: 100%;
+		height: auto;
+	}
+
+	.prose {
+		font-size: 16px;
+		line-height: 2;
+	}
+
+	.prose p {
+		margin: 0 0 22px;
+	}
+
+	.prose--narrow {
+		max-width: 900px;
+		margin: 0 auto;
+	}
+
+	.rules ul {
+		margin: 0 0 28px;
+		padding-left: 1.5em;
+	}
+
+	.flyer-grid {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 32px;
+		max-width: 1000px;
+		margin: 48px auto 0;
+	}
+
+	.flyer {
+		display: block;
+		padding: 0;
+		border: 0;
+		background: transparent;
+		cursor: zoom-in;
+	}
+
+	.flyer img {
+		display: block;
+		width: 100%;
+		height: auto;
+	}
+    
+    /* 年次記録 */
+
+    .record {
+        border-top: 1px solid #d9e0e5;
+    }
+
+    .record:last-child {
+        border-bottom: 1px solid #d9e0e5;
+    }
+
+    .record-toggle {
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        padding: 28px 0;
+        border: 0;
+        background: transparent;
+        color: #111827;
+        font-size: clamp(24px, 3vw, 34px);
+        font-weight: 500;
+        text-align: left;
+        cursor: pointer;
+    }
+
+    .record-toggle:hover {
+        color: #ea7300;
+    }
+
+    .record-toggle__icon {
+        flex: 0 0 auto;
+        font-size: 28px;
+        font-weight: 300;
+        transition: transform 0.2s ease;
+    }
+
+    .record-toggle[aria-expanded='true'] .record-toggle__icon {
+        transform: rotate(45deg);
+    }
+
+    .record-content {
+        display: none;
+        padding: 16px 0 72px;
+    }
+
+    .record-content.is-open {
+        display: block;
+    }
+
+    .record-section {
+        margin-top: 64px;
+    }
+
+    .record-summary-section {
+        max-width: 1100px;
+        margin: 24px auto 0;
+    }
+
+    .record-section h3 {
+        margin: 0 0 32px;
+        text-align: center;
+        font-size: 26px;
+        font-weight: 500;
+    }
+
+    .record-summary {
+        margin: 0;
+        font-size: 16px;
+        line-height: 2;
+        letter-spacing: 0.02em;
+    }
+
+    .record-details {
+        max-width: 1100px;
+        margin: 48px auto 0;
+    }
+
+    .record-details p {
+        display: grid;
+        grid-template-columns: max-content 1fr;
+        column-gap: 16px;
+        margin: 0 0 18px;
+        font-size: 16px;
+        line-height: 1.8;
+    }
+
+    .record-details strong {
+        white-space: nowrap;
+    }
+
+    .photo-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 20px;
+        margin-top: 32px;
+    }
+
+    .record-photo {
+        padding: 0;
+        border: 0;
+        background: transparent;
+        cursor: zoom-in;
+    }
+
+    .record-photo img {
+        display: block;
+        width: 100%;
+        aspect-ratio: 4 / 3;
+        object-fit: cover;
+    }
+
+    .flyer-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 32px;
+        max-width: 1000px;
+        margin: 32px auto 0;
+    }
+
+    .flyer {
+        display: block;
+        padding: 0;
+        border: 0;
+        background: transparent;
+        cursor: zoom-in;
+    }
+
+    .flyer img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
+	/* lightbox */
+
+	.lightbox {
+		position: fixed;
+		inset: 0;
+		z-index: 3000;
+		display: none;
+		align-items: center;
+		justify-content: center;
+		padding: 40px 90px;
+		background: rgb(0 0 0 / 88%);
+	}
+
+	.lightbox.is-open {
+		display: flex;
+	}
+
+	.lightbox__content {
+		position: relative;
+		display: flex;
+		max-width: 100%;
+		max-height: 100%;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		overflow: hidden;
+	}
+
+	.lightbox__image {
+		display: block;
+		max-width: 94%;
+		max-height: 86vh;
+		width: auto;
+		height: auto;
+		object-fit: contain;
+		cursor: zoom-in;
+		user-select: none;
+		-webkit-user-drag: none;
+		transform: translate(0, 0) scale(1);
+		transform-origin: center center;
+		transition: transform 0.2s ease;
+	}
+
+	.lightbox__image.is-zoomed {
+		cursor: grab;
+		transition: none;
+	}
+
+	.lightbox__image.is-dragging {
+		cursor: grabbing;
+	}
+
+	.lightbox__close {
+		position: absolute;
+		top: 20px;
+		right: 24px;
+		z-index: 2;
+		width: 48px;
+		height: 48px;
+		border: 0;
+		background: transparent;
+		color: #fff;
+		font-size: 40px;
+		cursor: pointer;
+	}
+
+	.lightbox__nav {
+		position: absolute;
+		top: 50%;
+		z-index: 2;
+		display: grid;
+		width: 56px;
+		height: 72px;
+		place-items: center;
+		border: 0;
+		background: rgb(0 0 0 / 25%);
+		color: #fff;
+		font-size: 56px;
+		cursor: pointer;
+		transform: translateY(-50%);
+	}
+
+	.lightbox__nav--prev {
+		left: 20px;
+	}
+
+	.lightbox__nav--next {
+		right: 20px;
+	}
+
+	.lightbox__counter {
+		margin: 12px 0 0;
+		color: #fff;
+		font-size: 13px;
+	}
+
+    @media (max-width: 480px) {
+        .photo-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+	@media (max-width: 768px) {
+		.page-inner {
+			width: min(100% - 32px, 1120px);
+		}
+
+		.page-hero {
+			height: 300px;
+		}
+
+		.page-hero h1 {
+			font-size: 36px;
+		}
+
+		.comicen-intro,
+		.comicen-records {
+			padding: 64px 0;
+		}
+
+		.intro-grid {
+			grid-template-columns: 1fr;
+			gap: 36px;
+		}
+
+		.flyer-grid {
+			grid-template-columns: 1fr;
+			gap: 24px;
+		}
+
+		.lightbox {
+			padding: 64px 50px 32px;
+		}
+
+		.lightbox__image {
+			max-width: 100%;
+			max-height: 78vh;
+		}
+
+		.lightbox__nav {
+			width: 44px;
+			height: 60px;
+			font-size: 44px;
+		}
+
+		.lightbox__nav--prev {
+			left: 4px;
+		}
+
+		.lightbox__nav--next {
+			right: 4px;
+		}
+
+        .record-toggle {
+            padding: 22px 0;
+            font-size: 22px;
+        }
+
+        .record-content {
+            padding-bottom: 56px;
+        }
+
+        .record-section {
+            margin-top: 48px;
+        }
+
+        .record-details {
+            margin-top: 36px;
+        }
+
+        .record-details p {
+            display: block;
+            margin-bottom: 16px;
+        }
+
+        .record-details strong {
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .photo-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px;
+        }
+	}
+
+.child-university-intro {
+	padding: 88px 0;
+	background: #f4f9fc;
+}
+
+.child-university-intro h2,
+.schedule-section h2 {
+	margin: 0 0 56px;
+	text-align: center;
+	font-size: clamp(32px, 4vw, 46px);
+	font-weight: 400;
+	line-height: 1.4;
+}
+
+.intro-grid {
+	display: grid;
+	grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+	gap: 64px;
+	align-items: start;
+}
+
+.intro-image img {
+	display: block;
+	width: 100%;
+	height: auto;
+}
+
+.prose {
+	font-size: 16px;
+	line-height: 2;
+}
+
+.prose p {
+	margin: 0 0 22px;
+}
+
+.schedule-section {
+	padding: 88px 0;
+	background: #fff;
+}
+
+.schedule-image {
+	display: block;
+	width: min(620px, 100%);
+	margin: 0 auto;
+	padding: 0;
+	border: 0;
+	background: transparent;
+	cursor: zoom-in;
+}
+
+.schedule-image img {
+	display: block;
+	width: 100%;
+	height: auto;
+}
+
+.organizer-section {
+	padding: 72px 0 88px;
+	background: #f4f9fc;
+}
+
+.organizer-section p {
+	display: grid;
+	grid-template-columns: max-content 1fr;
+	gap: 16px;
+	margin: 0 0 18px;
+	font-size: 16px;
+	line-height: 1.8;
+}
+
+	/* lightbox */
+
+	.lightbox {
+		position: fixed;
+		inset: 0;
+		z-index: 3000;
+		display: none;
+		align-items: center;
+		justify-content: center;
+		padding: 40px 90px;
+		background: rgb(0 0 0 / 88%);
+	}
+
+	.lightbox.is-open {
+		display: flex;
+	}
+
+	.lightbox__content {
+		position: relative;
+		display: flex;
+		max-width: 100%;
+		max-height: 100%;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		overflow: hidden;
+	}
+
+	.lightbox__image {
+		display: block;
+		max-width: 94%;
+		max-height: 86vh;
+		width: auto;
+		height: auto;
+		object-fit: contain;
+		cursor: zoom-in;
+		user-select: none;
+		-webkit-user-drag: none;
+		transform: translate(0, 0) scale(1);
+		transform-origin: center center;
+		transition: transform 0.2s ease;
+	}
+
+	.lightbox__image.is-zoomed {
+		cursor: grab;
+		transition: none;
+	}
+
+	.lightbox__image.is-dragging {
+		cursor: grabbing;
+	}
+
+	.lightbox__close {
+		position: absolute;
+		top: 20px;
+		right: 24px;
+		z-index: 2;
+		width: 48px;
+		height: 48px;
+		border: 0;
+		background: transparent;
+		color: #fff;
+		font-size: 40px;
+		cursor: pointer;
+	}
+
+	.lightbox__nav {
+		position: absolute;
+		top: 50%;
+		z-index: 2;
+		display: grid;
+		width: 56px;
+		height: 72px;
+		place-items: center;
+		border: 0;
+		background: rgb(0 0 0 / 25%);
+		color: #fff;
+		font-size: 56px;
+		cursor: pointer;
+		transform: translateY(-50%);
+	}
+
+	.lightbox__nav--prev {
+		left: 20px;
+	}
+
+	.lightbox__nav--next {
+		right: 20px;
+	}
+
+	.lightbox__counter {
+		margin: 12px 0 0;
+		color: #fff;
+		font-size: 13px;
+	}
+
+.child-university-info {
+	padding: 72px 0 88px;
+	background: #fff;
+}
+
+.child-university-info__details {
+	max-width: 900px;
+	margin: 0 auto;
+	font-size: 16px;
+	line-height: 2;
+}
+
+.child-university-info__details p {
+	margin: 0 0 24px;
+}
+
+.child-university-info__contact {
+	max-width: 900px;
+	margin: 72px auto 0;
+}
+
+.child-university-info__contact h2 {
+	margin: 0 0 36px;
+	text-align: center;
+	font-size: 26px;
+	font-weight: 400;
+}
+
+.contact-grid {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) 180px;
+	gap: 56px;
+	align-items: center;
+}
+
+.contact-copy {
+	font-size: 16px;
+	line-height: 2;
+}
+
+.contact-copy p {
+	margin: 0 0 12px;
+}
+
+.contact-qr-placeholder {
+	display: block;
+	width: 180px;
+	height: auto;
+}
+
+.contact-qr {
+	display: block;
+	width: 180px;
+	height: auto;
+}
+
+
+@media (max-width: 768px) {
+	.child-university-intro,
+	.schedule-section,
+	.organizer-section {
+		padding: 64px 0;
+	}
+
+	.child-university-info__contact {
+		margin-top: 56px;
+	}
+
+	.contact-grid {
+		grid-template-columns: 1fr;
+		gap: 32px;
+	}
+
+	.contact-qr-placeholder {
+		width: 160px;
+		margin: 0 auto;
+	}
+
+	.intro-grid {
+		grid-template-columns: 1fr;
+		gap: 36px;
+	}
+
+	.organizer-section p {
+		display: block;
+	}
+
+	.organizer-section strong {
+		display: block;
+		margin-bottom: 4px;
+	}
+
+    .contact-qr {
+		width: 160px;
+		margin: 0 auto;
+	}
+		.lightbox {
+			padding: 64px 50px 32px;
+		}
+
+		.lightbox__image {
+			max-width: 100%;
+			max-height: 78vh;
+		}
+
+		.lightbox__nav {
+			width: 44px;
+			height: 60px;
+			font-size: 44px;
+		}
+
+		.lightbox__nav--prev {
+			left: 4px;
+		}
+
+		.lightbox__nav--next {
+			right: 4px;
+		}
+}
+</style>
+<script>
+	const lightbox = document.querySelector('[data-lightbox]');
+	const lightboxImage = lightbox?.querySelector('.lightbox__image');
+	const closeButton = lightbox?.querySelector('.lightbox__close');
+	const prevButton = lightbox?.querySelector('.lightbox__nav--prev');
+	const nextButton = lightbox?.querySelector('.lightbox__nav--next');
+	const counter = lightbox?.querySelector('.lightbox__counter');
+
+	let currentImages = [];
+	let currentIndex = 0;
+
+	let isZoomed = false;
+    let didDrag = false;
+
+    const DRAG_THRESHOLD = 5;
+
+	let isDragging = false;
+
+	let translateX = 0;
+	let translateY = 0;
+
+	let dragStartX = 0;
+	let dragStartY = 0;
+	let dragOriginX = 0;
+	let dragOriginY = 0;
+
+	const ZOOM_SCALE = 2;
+
+	const updateTransform = () => {
+		if (!lightboxImage) return;
+
+		const scale = isZoomed ? ZOOM_SCALE : 1;
+
+		lightboxImage.style.transform =
+			`translate(${translateX}px, ${translateY}px) scale(${scale})`;
+	};
+
+	const resetZoom = () => {
+		if (!lightboxImage) return;
+
+		isZoomed = false;
+		isDragging = false;
+
+		translateX = 0;
+		translateY = 0;
+
+		lightboxImage.classList.remove('is-zoomed', 'is-dragging');
+
+		updateTransform();
+	};
+
+	const renderImage = () => {
+		if (!lightboxImage || currentImages.length === 0) return;
+
+		resetZoom();
+
+		const current = currentImages[currentIndex];
+
+		lightboxImage.setAttribute(
+			'src',
+			current.getAttribute('data-lightbox-image') || ''
+		);
+
+		const thumbnail = current.querySelector('img');
+
+		lightboxImage.setAttribute(
+			'alt',
+			thumbnail?.getAttribute('alt') || ''
+		);
+
+		if (counter) {
+			counter.textContent =
+				currentImages.length > 1
+					? `${currentIndex + 1} / ${currentImages.length}`
+					: '';
+		}
+
+		const hasMultiple = currentImages.length > 1;
+
+		if (prevButton) {
+			prevButton.hidden = !hasMultiple;
+		}
+
+		if (nextButton) {
+			nextButton.hidden = !hasMultiple;
+		}
+	};
+
+	const showPrevious = () => {
+		if (currentImages.length < 2) return;
+
+		currentIndex =
+			(currentIndex - 1 + currentImages.length) %
+			currentImages.length;
+
+		renderImage();
+	};
+
+	const showNext = () => {
+		if (currentImages.length < 2) return;
+
+		currentIndex =
+			(currentIndex + 1) %
+			currentImages.length;
+
+		renderImage();
+	};
+
+	const closeLightbox = () => {
+		if (!lightbox || !lightboxImage) return;
+
+		resetZoom();
+
+		lightbox.classList.remove('is-open');
+		lightbox.setAttribute('aria-hidden', 'true');
+
+		lightboxImage.setAttribute('src', '');
+
+		currentImages = [];
+		currentIndex = 0;
+
+		document.body.style.overflow = '';
+	};
+
+	document.querySelectorAll('[data-lightbox-image]').forEach((button) => {
+		button.addEventListener('click', () => {
+			if (!lightbox || !lightboxImage) return;
+
+			const group = button.getAttribute('data-lightbox-group');
+
+			currentImages = Array.from(
+				document.querySelectorAll(
+					`[data-lightbox-group="${group}"]`
+				)
+			);
+
+			currentIndex = currentImages.indexOf(button);
+
+			renderImage();
+
+			lightbox.classList.add('is-open');
+			lightbox.setAttribute('aria-hidden', 'false');
+
+			document.body.style.overflow = 'hidden';
+		});
+	});
+
+    lightboxImage?.addEventListener('click', () => {
+        if (didDrag) {
+            didDrag = false;
+            return;
+        }
+
+        if (isZoomed) {
+            resetZoom();
+            return;
+        }
+
+        isZoomed = true;
+        translateX = 0;
+        translateY = 0;
+
+        lightboxImage.classList.add('is-zoomed');
+
+        updateTransform();
+    });
+
+	lightboxImage?.addEventListener('pointerdown', (event) => {
+        if (!isZoomed) return;
+
+        isDragging = true;
+        didDrag = false;
+
+        dragStartX = event.clientX;
+        dragStartY = event.clientY;
+
+        dragOriginX = translateX;
+        dragOriginY = translateY;
+
+        lightboxImage.classList.add('is-dragging');
+        lightboxImage.setPointerCapture(event.pointerId);
+
+        event.preventDefault();
+	});
+
+	lightboxImage?.addEventListener('pointermove', (event) => {
+        if (!isZoomed || !isDragging) return;
+
+        const deltaX = event.clientX - dragStartX;
+        const deltaY = event.clientY - dragStartY;
+
+        if (
+            Math.abs(deltaX) > DRAG_THRESHOLD ||
+            Math.abs(deltaY) > DRAG_THRESHOLD
+        ) {
+            didDrag = true;
+        }
+
+        translateX = dragOriginX + deltaX;
+        translateY = dragOriginY + deltaY;
+
+        updateTransform();
+	});
+
+	const stopDragging = (event) => {
+		if (!isDragging || !lightboxImage) return;
+
+		isDragging = false;
+		lightboxImage.classList.remove('is-dragging');
+
+		if (
+			event?.pointerId !== undefined &&
+			lightboxImage.hasPointerCapture(event.pointerId)
+		) {
+			lightboxImage.releasePointerCapture(event.pointerId);
+		}
+	};
+
+	lightboxImage?.addEventListener('pointerup', stopDragging);
+	lightboxImage?.addEventListener('pointercancel', stopDragging);
+
+	prevButton?.addEventListener('click', showPrevious);
+	nextButton?.addEventListener('click', showNext);
+	closeButton?.addEventListener('click', closeLightbox);
+
+	lightbox?.addEventListener('click', (event) => {
+		if (event.target === lightbox) {
+			closeLightbox();
+		}
+	});
+
+	document.addEventListener('keydown', (event) => {
+		if (!lightbox?.classList.contains('is-open')) return;
+
+		if (event.key === 'Escape') {
+			closeLightbox();
+		}
+
+		if (event.key === 'ArrowLeft') {
+			showPrevious();
+		}
+
+		if (event.key === 'ArrowRight') {
+			showNext();
+		}
+        });
+
+        document.querySelectorAll('.record-toggle').forEach((toggle) => {
+            toggle.addEventListener('click', () => {
+                const record = toggle.closest('.record');
+                const content = record?.querySelector('.record-content');
+
+                if (!content) return;
+
+                const isOpen = content.classList.toggle('is-open');
+
+                toggle.setAttribute(
+                    'aria-expanded',
+                    String(isOpen)
+                );
+            });
+        });
+</script>

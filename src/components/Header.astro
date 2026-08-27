@@ -1,0 +1,992 @@
+---
+import { navigationItems } from '../data/navigation';
+
+const pathname = decodeURIComponent(Astro.url.pathname);
+
+/*
+ * secondary nav scroll behavior
+ *
+ * 'hide' : スクロール開始でセカンドナビを隠す
+ * 'keep' : スクロールしてもセカンドナビを残す
+ */
+const secondaryNavScrollMode = 'hide';
+
+const activeItem = navigationItems.find((item) =>
+	pathname === item.href ||
+	(item.href !== '/' && pathname.startsWith(item.href))
+);
+---
+
+<header
+	class="site-header"
+	data-secondary-nav-scroll={secondaryNavScrollMode}
+>
+	<div class="site-header__inner">
+        <div class="site-header__primary">
+            <a class="site-logo" href="/" aria-label="滝川学区自治協議会 トップページ">
+                <img
+                    src="/images/takikawa-logo.svg"
+                    alt="滝川学区自治協議会"
+                    class="site-logo__image"
+                />
+            </a>
+
+            <button
+                class="menu-toggle"
+                type="button"
+                aria-label="メニューを開く"
+                aria-expanded="false"
+                aria-controls="mobile-menu"
+            >
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <nav class="global-nav" aria-label="メインナビゲーション">
+                <ul class="global-nav__list">
+                    {
+                        navigationItems.map((item) => (
+                            <li
+                                class="global-nav__item"
+                                data-nav-href={item.href}
+                            >
+                                <a
+                                    class={`global-nav__link ${
+                                        activeItem?.href === item.href ? 'is-active' : ''
+                                    }`}
+                                    href={item.href}
+                                >
+                                    <span>{item.label}</span>
+
+                                    {item.children && item.children.length > 0 && (
+                                        <span class="global-nav__chevron" aria-hidden="true">
+                                            ⌄
+                                        </span>
+                                    )}
+                                </a>
+                            </li>
+                        ))
+                    }
+                </ul>
+            </nav>
+        </div>
+
+        <div class="secondary-nav-shell" data-secondary-shell>
+            {
+                navigationItems
+                    .filter((item) => item.children.length > 0)
+                    .map((item) => (
+                    <nav
+                        class={`secondary-nav ${
+                            activeItem?.href === item.href &&
+                            pathname !== item.href
+                                ? 'is-visible'
+                                : ''
+                            } ${
+                                item.href === '/event/'
+                                    ? 'secondary-nav--event'
+                                    : ''
+                            } ${
+                                item.href === '/takikawa_community_icenter/'
+                                    ? 'secondary-nav--community-center'
+                                    : ''
+                            }`}
+                            data-secondary-for={item.href}
+                            aria-label={`${item.label} サブナビゲーション`}
+                        >
+                            <div class="secondary-nav__inner">
+                                <a class="secondary-nav__title" href={item.href}>
+                                    {item.label}
+                                </a>
+
+                                {
+                                    item.href === '/takikawa_community_icenter/' ? (
+                                        <div class="secondary-nav__community-center-menu">
+
+                                            {/* 1行目 */}
+                                            <ul class="secondary-nav__community-row secondary-nav__community-row--primary">
+                                                {
+                                                    item.children.slice(0, 4).map((child) => (
+                                                        <li class="secondary-nav__item">
+                                                            <a
+                                                                href={child.href}
+                                                                target={child.target}
+                                                                rel={child.target === '_blank' ? 'noopener noreferrer' : undefined}
+                                                                class:list={[
+                                                                    'secondary-nav__link',
+                                                                    (
+                                                                        pathname === child.href ||
+                                                                        pathname.startsWith(child.href)
+                                                                    ) && 'is-active',
+                                                                ]}
+                                                            >
+                                                                {child.label}
+                                                            </a>
+                                                        </li>
+                                                    ))
+                                                }
+                                            </ul>
+
+                                            {/* 2行目：文化教養講座の第3階層 */}
+                                            {
+                                                item.children
+                                                    .find(
+                                                        (child) =>
+                                                            child.href ===
+                                                            '/takikawa_community_icenter/takikawa_commicenter-regular_courses/'
+                                                    )
+                                                    ?.children?.length > 0 && (
+                                                    <ul class="secondary-nav__community-row secondary-nav__community-row--third-level">
+                                                        <li class="secondary-nav__third-level-group">
+
+                                                            <span
+                                                                class="secondary-nav__third-level-arrow"
+                                                                aria-hidden="true"
+                                                            >
+                                                                ↳
+                                                            </span>
+
+                                                            {
+                                                                item.children
+                                                                    .find(
+                                                                        (child) =>
+                                                                            child.href ===
+                                                                            '/takikawa_community_icenter/takikawa_commicenter-regular_courses/'
+                                                                    )
+                                                                    ?.children.map((grandchild) => (
+                                                                        <a
+                                                                            href={grandchild.href}
+                                                                            class:list={[
+                                                                                'secondary-nav__third-level-link',
+                                                                                (
+                                                                                    pathname === grandchild.href ||
+                                                                                    pathname.startsWith(grandchild.href)
+                                                                                ) && 'is-active',
+                                                                            ]}
+                                                                        >
+                                                                            {grandchild.label}
+                                                                        </a>
+                                                                    ))
+                                                            }
+
+                                                        </li>
+                                                    </ul>
+                                                )
+                                            }
+
+                                            {/* 3行目 */}
+                                            <ul class="secondary-nav__community-row secondary-nav__community-row--secondary">
+                                                {
+                                                    item.children.slice(4).map((child) => (
+                                                        <li class="secondary-nav__item">
+                                                            <a
+                                                                href={child.href}
+                                                                class:list={[
+                                                                    'secondary-nav__link',
+                                                                    (
+                                                                        pathname === child.href ||
+                                                                        pathname.startsWith(child.href)
+                                                                    ) && 'is-active',
+                                                                ]}
+                                                            >
+                                                                {child.label}
+                                                            </a>
+                                                        </li>
+                                                    ))
+                                                }
+                                            </ul>
+
+                                        </div>
+                                    ) : (
+                                        <ul class="secondary-nav__list">
+                                            {
+                                                item.children.map((child) => (
+                                                    <li class="secondary-nav__item">
+                                                        <a
+                                                            href={child.href}
+                                                            class:list={[
+                                                                'secondary-nav__link',
+                                                                (
+                                                                    pathname === child.href ||
+                                                                    pathname.startsWith(child.href)
+                                                                ) && 'is-active',
+                                                            ]}
+                                                        >
+                                                            {child.label}
+                                                        </a>
+                                                    </li>
+                                                ))
+                                            }
+                                        </ul>
+                                    )
+                                }
+                            </div>
+                        </nav>
+                    ))
+            }
+        </div>
+
+        <nav
+            id="mobile-menu"
+            class="mobile-nav"
+            aria-label="スマートフォン用メニュー"
+        >
+            <ul class="mobile-nav__list">
+                {
+                    navigationItems.map((item) => (
+                        <li class="mobile-nav__item">
+                            <div class="mobile-nav__row">
+                                <a
+                                    class={`mobile-nav__link ${
+                                        activeItem?.href === item.href ? 'is-active' : ''
+                                    }`}
+                                    href={item.href}
+                                >
+                                    {item.label}
+                                </a>
+
+                                {item.children && item.children.length > 0 && (
+                                    <button
+                                        class="mobile-nav__toggle"
+                                        type="button"
+                                        aria-label={`${item.label} のサブメニューを開く`}
+                                        aria-expanded="false"
+                                    >
+                                        <span aria-hidden="true">＋</span>
+                                    </button>
+                                )}
+                            </div>
+
+                            {item.children && item.children.length > 0 && (
+                                <ul class="mobile-subnav">
+                                    {item.children.map((child) => (
+                                        <li>
+                                            <a
+                                                class={`mobile-subnav__link ${
+                                                    pathname === child.href ? 'is-active' : ''
+                                                }`}
+                                                href={child.href}
+                                            >
+                                                {child.label}
+                                            </a>
+                                        </li>
+                                    ))}
+                                </ul>
+                            )}
+                        </li>
+                    ))
+                }
+            </ul>
+        </nav>
+	</div>
+</header>
+
+<script>
+	const header = document.querySelector('.site-header');
+
+	if (header instanceof HTMLElement) {
+		const mainItems =
+			header.querySelectorAll('.global-nav__item');
+
+		const secondaryNavs =
+			header.querySelectorAll('.secondary-nav');
+
+		/*
+		 * 'hide':
+		 *   コミセンの3行セカンドナビだけ
+		 *   スクロール時に非表示
+		 *
+		 * 'keep':
+		 *   コミセンもスクロール時に残す
+		 */
+		const secondaryNavScrollMode =
+			header.dataset.secondaryNavScroll ?? 'hide';
+
+		/*
+		 * Astro側で現在ページ用として
+		 * 初期表示されているセカンドナビ
+		 */
+		const currentSecondary =
+			Array.from(secondaryNavs).find((nav) =>
+				nav.classList.contains('is-visible')
+			) ?? null;
+
+
+		/* =====================================================
+		   Secondary navigation helpers
+		===================================================== */
+
+		const hideAllSecondary = () => {
+			secondaryNavs.forEach((nav) => {
+				nav.classList.remove('is-visible');
+			});
+		};
+
+
+		const showSecondary = (href) => {
+			secondaryNavs.forEach((nav) => {
+				nav.classList.toggle(
+					'is-visible',
+					nav.getAttribute('data-secondary-for') === href
+				);
+			});
+		};
+
+
+		const restoreCurrentSecondary = () => {
+			secondaryNavs.forEach((nav) => {
+				nav.classList.toggle(
+					'is-visible',
+					nav === currentSecondary
+				);
+			});
+		};
+
+
+		/*
+		 * 現在ページが
+		 * 「滝川コミセンの3行ナビ」かどうか
+		 */
+		const isCommunityCenterSecondary = () => {
+			return (
+				currentSecondary instanceof HTMLElement &&
+				currentSecondary.classList.contains(
+					'secondary-nav--community-center'
+				)
+			);
+		};
+
+
+		/*
+		 * スクロール時に
+		 * 現在地ナビをどうするか
+		 */
+		const restoreSecondaryAfterScroll = () => {
+			/*
+			 * コミセン3行ナビだけ
+			 * hide設定なら消す
+			 */
+			if (
+				secondaryNavScrollMode === 'hide' &&
+				isCommunityCenterSecondary()
+			) {
+				hideAllSecondary();
+				return;
+			}
+
+			/*
+			 * イベント等の2行ナビは残す
+			 */
+			restoreCurrentSecondary();
+		};
+
+
+		/* =====================================================
+		   PC：第1階層 hover
+		===================================================== */
+
+		mainItems.forEach((item) => {
+			item.addEventListener('mouseenter', () => {
+				const href =
+					item.getAttribute('data-nav-href');
+
+				if (!href) return;
+
+				const hasSecondary =
+					Array.from(secondaryNavs).some(
+						(nav) =>
+							nav.getAttribute(
+								'data-secondary-for'
+							) === href
+					);
+
+				if (hasSecondary) {
+					/*
+					 * スクロール中でもhoverすれば
+					 * 対象セカンドナビを表示
+					 */
+					showSecondary(href);
+				} else {
+					/*
+					 * コミュニティ等、
+					 * 第2階層を持たないメニュー
+					 */
+					hideAllSecondary();
+				}
+			});
+		});
+
+
+		/*
+		 * Headerからマウスを外したら、
+		 * 現在ページの状態へ戻す
+		 */
+		header.addEventListener('mouseleave', () => {
+			if (
+				window.innerWidth > 960 &&
+				window.scrollY > 1
+			) {
+				restoreSecondaryAfterScroll();
+				return;
+			}
+
+			restoreCurrentSecondary();
+		});
+
+
+		/* =====================================================
+		   PC：スクロール時のHeader制御
+		===================================================== */
+
+		const updateHeaderState = () => {
+			/*
+			 * スマホではPC用制御を行わない
+			 */
+			if (window.innerWidth <= 960) {
+				header.classList.remove(
+					'is-primary-hidden'
+				);
+
+				return;
+			}
+
+
+			/*
+			 * ページ最上部
+			 */
+			if (window.scrollY <= 1) {
+				header.classList.remove(
+					'is-primary-hidden'
+				);
+
+				/*
+				 * コミセンを含め
+				 * 現在ページのセカンドナビを復元
+				 */
+				restoreCurrentSecondary();
+
+				return;
+			}
+
+
+			/*
+			 * スクロール開始
+			 *
+			 * グローバルナビは今まで通り消す
+			 */
+			header.classList.add(
+				'is-primary-hidden'
+			);
+
+
+			/*
+			 * イベント等の2行ナビ → 残す
+			 * コミセン3行ナビ → hideなら消す
+			 */
+			restoreSecondaryAfterScroll();
+		};
+
+
+		window.addEventListener(
+			'scroll',
+			updateHeaderState,
+			{
+				passive: true,
+			}
+		);
+
+
+		window.addEventListener(
+			'resize',
+			updateHeaderState
+		);
+
+
+		/*
+		 * 初期状態
+		 */
+		updateHeaderState();
+	}
+
+
+	/* =========================================================
+	   Mobile：ハンバーガーメニュー
+	========================================================= */
+
+	const menuToggle =
+		document.querySelector('.menu-toggle');
+
+	const mobileNav =
+		document.querySelector('.mobile-nav');
+
+
+	if (
+		menuToggle instanceof HTMLElement &&
+		mobileNav instanceof HTMLElement
+	) {
+		menuToggle.addEventListener('click', () => {
+			const isOpen =
+				mobileNav.classList.toggle('is-open');
+
+			menuToggle.classList.toggle(
+				'is-open',
+				isOpen
+			);
+
+			menuToggle.setAttribute(
+				'aria-expanded',
+				String(isOpen)
+			);
+
+			menuToggle.setAttribute(
+				'aria-label',
+				isOpen
+					? 'メニューを閉じる'
+					: 'メニューを開く'
+			);
+		});
+	}
+
+
+	/* =========================================================
+	   Mobile：2階層目アコーディオン
+	========================================================= */
+
+	document
+		.querySelectorAll('.mobile-nav__toggle')
+		.forEach((toggle) => {
+			toggle.addEventListener('click', () => {
+				const item =
+					toggle.closest('.mobile-nav__item');
+
+				const subnav =
+					item?.querySelector('.mobile-subnav');
+
+				if (!(subnav instanceof HTMLElement)) {
+					return;
+				}
+
+				const isOpen =
+					subnav.classList.toggle('is-open');
+
+				toggle.classList.toggle(
+					'is-open',
+					isOpen
+				);
+
+				toggle.setAttribute(
+					'aria-expanded',
+					String(isOpen)
+				);
+			});
+		});
+</script>
+
+<style>
+    .menu-toggle,
+    .mobile-nav {
+        display: none;
+    }
+
+    .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        background: #fff;
+        border-bottom: 1px solid #e5e7eb;
+    }
+
+    .site-header__primary {
+        max-height: 150px;
+        padding-top: 24px;
+        overflow: hidden;
+        opacity: 1;
+        transition:
+            max-height 0.28s ease,
+            opacity 0.2s ease,
+            transform 0.28s ease;
+    }
+
+    .site-header.is-primary-hidden .site-header__primary {
+        max-height: 0;
+        opacity: 0;
+        transform: translateY(-16px);
+        pointer-events: none;
+    }
+
+    .site-header__inner {
+        width: calc(100% - 96px);
+        max-width: 1600px;
+        margin: 0 auto;
+    }
+
+
+	.site-logo {
+		display: inline-flex;
+		align-items: center;
+		color: #ea7300;
+		text-decoration: none;
+	}
+
+	.site-logo__image {
+		display: block;
+		width: auto;
+		height: 40px;
+	}
+
+	/* 1段目 */
+
+	.global-nav {
+		margin-top: 18px;
+	}
+
+	.global-nav__list {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 64px;
+		margin: 0;
+		padding: 0 0 18px;
+		list-style: none;
+	}
+
+	.global-nav__item {
+		margin: 0;
+		padding: 0;
+	}
+
+	.global-nav__link {
+		position: relative;
+		display: inline-flex;
+		align-items: center;
+		gap: 5px;
+		padding: 4px 0;
+		color: #111827;
+		font-size: 13px;
+		font-weight: 500;
+		line-height: 1.4;
+		text-decoration: none;
+		white-space: nowrap;
+	}
+
+	.global-nav__link:hover {
+		color: #ea7300;
+	}
+
+	.global-nav__link.is-active {
+		color: #ea7300;
+		font-weight: 700;
+	}
+
+	.global-nav__link.is-active::after {
+		content: '';
+		position: absolute;
+		left: 0;
+		right: 0;
+		bottom: -18px;
+		height: 2px;
+		background: #ea7300;
+	}
+
+	.global-nav__chevron {
+		font-size: 12px;
+		line-height: 1;
+	}
+
+	/* 2段目 */
+
+    .secondary-nav-shell {
+        border-top: 1px solid #e5e7eb;
+    }
+
+    .secondary-nav {
+        display: none;
+    }
+
+    .secondary-nav.is-visible {
+        display: block;
+    }
+
+    .secondary-nav__inner {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 72px;
+        min-height: 56px;
+    }
+
+    .secondary-nav__title {
+        font-size: 20px;
+        font-weight: 600;
+    }
+
+    .secondary-nav__link {
+        font-size: 13px;
+        font-weight: 500;
+    }
+
+    .secondary-nav__list {
+        display: flex;
+        align-items: stretch;
+        gap: 36px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .secondary-nav__link:hover,
+    .secondary-nav__link.is-active {
+        color: #ea7300;
+    }
+
+    .secondary-nav__link.is-active {
+        font-weight: 700;
+    }
+
+    .secondary-nav__link.is-active::after {
+        content: '';
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        height: 2px;
+        background: #ea7300;
+    }
+
+    /* イベント・滝川コミセンの2段ナビ */
+
+    .secondary-nav--event .secondary-nav__inner,
+    .secondary-nav--community-center .secondary-nav__inner {
+        align-items: flex-start;
+        padding: 16px 0;
+    }
+
+    .secondary-nav--event .secondary-nav__list {
+        display: grid;
+        grid-template-columns: repeat(4, max-content);
+        gap: 12px 36px;
+    }
+
+    .secondary-nav--event .secondary-nav__link,
+    .secondary-nav--community-center .secondary-nav__link {
+        min-height: auto;
+        padding: 4px 0;
+    }
+
+ /* =========================================================
+   滝川コミュニティセンター 3行ナビ
+========================================================= */
+
+.secondary-nav--community-center .secondary-nav__inner {
+	grid-template-columns: 340px minmax(0, 1fr);
+	align-items: start;
+}
+
+.secondary-nav--community-center .secondary-nav__title {
+	white-space: nowrap;
+	font-size: 20px;
+	line-height: 1.2;
+}
+
+.secondary-nav__community-center-menu {
+	display: grid;
+	width: 100%;
+	gap: 4px;
+	padding: 8px 0 9px;
+}
+
+.secondary-nav__community-row {
+	display: grid;
+	grid-template-columns:
+		190px
+		170px
+		190px
+		minmax(0, 1fr);
+	align-items: center;
+	margin: 0;
+	padding: 0;
+	column-gap: 28px;
+	list-style: none;
+}
+
+.secondary-nav__community-row--third-level {
+	min-height: 20px;
+}
+
+.secondary-nav__third-level-group {
+	grid-column: 3 / 5;
+	display: flex;
+	align-items: center;
+	gap: 18px;
+	margin: 0;
+	padding: 0;
+}
+
+.secondary-nav--community-center .secondary-nav__link {
+	min-height: auto;
+	padding: 2px 0;
+	font-size: 12px;
+	line-height: 1.2;
+}
+
+.secondary-nav__third-level-link {
+	color: #4b5563;
+	font-size: 12px;
+	font-weight: 400;
+	line-height: 1.2;
+	text-decoration: none;
+	white-space: nowrap;
+}
+
+.secondary-nav__third-level-link:hover,
+.secondary-nav__third-level-link.is-active {
+	color: #f97300;
+}
+
+.secondary-nav__third-level-arrow {
+	flex: 0 0 auto;
+	color: #6b7280;
+	font-size: 11px;
+	line-height: 1;
+}
+
+	/* スマホのハンバーガー*/
+
+    @media (max-width: 960px) {
+        .site-header__inner {
+            position: relative;
+            width: calc(100% - 32px);
+            padding: 14px 0;
+        }
+
+        .site-logo__image {
+            height: 34px;
+        }
+
+        .global-nav,
+        .secondary-nav-shell {
+            display: none;
+        }
+
+        .menu-toggle {
+            position: absolute;
+            top: 50%;
+            right: 0;
+            display: flex;
+            width: 44px;
+            height: 44px;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            padding: 0;
+            border: 0;
+            background: transparent;
+            cursor: pointer;
+            transform: translateY(-50%);
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: #111827;
+            transition:
+                transform 0.2s ease,
+                opacity 0.2s ease;
+        }
+
+        .menu-toggle.is-open span:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+        }
+
+        .menu-toggle.is-open span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.is-open span:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
+        }
+
+        .mobile-nav {
+            display: none;
+            margin-top: 14px;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .mobile-nav.is-open {
+            display: block;
+        }
+
+        .mobile-nav__list,
+        .mobile-subnav {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .mobile-nav__item {
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .mobile-nav__row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 52px;
+        }
+
+        .mobile-nav__link {
+            flex: 1;
+            padding: 14px 0;
+            color: #111827;
+            font-size: 16px;
+            font-weight: 500;
+            text-decoration: none;
+        }
+
+        .mobile-nav__link.is-active {
+            color: #ea7300;
+            font-weight: 700;
+        }
+
+        .mobile-nav__toggle {
+            display: grid;
+            width: 44px;
+            height: 44px;
+            place-items: center;
+            border: 0;
+            background: transparent;
+            color: #111827;
+            font-size: 22px;
+            cursor: pointer;
+        }
+
+        .mobile-nav__toggle.is-open span {
+            transform: rotate(45deg);
+        }
+
+        .mobile-subnav {
+            display: none;
+            padding: 0 0 12px 16px;
+        }
+
+        .mobile-subnav.is-open {
+            display: block;
+        }
+
+        .mobile-subnav__link {
+            display: block;
+            padding: 10px 0;
+            color: #4b5563;
+            font-size: 14px;
+            text-decoration: none;
+        }
+
+        .mobile-subnav__link.is-active {
+            color: #ea7300;
+            font-weight: 700;
+        }
+    }
+</style>

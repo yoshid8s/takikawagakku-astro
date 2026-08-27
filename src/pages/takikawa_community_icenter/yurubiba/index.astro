@@ -1,0 +1,277 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+
+const pageTitle = 'フリースクール「ゆるびば」';
+---
+
+<Layout title={pageTitle}>
+	<main class="yurubiba-page">
+
+		<!-- =====================================================
+		     Hero
+		===================================================== -->
+
+		<section class="yurubiba-hero">
+			<img
+				src="/images/community-center/yurubiba/hero.png"
+				alt="フリースクール「ゆるびば」"
+			/>
+
+			<div class="yurubiba-hero__overlay">
+				<h1>フリースクール<br class="yurubiba-hero__break" />「ゆるびば」</h1>
+			</div>
+		</section>
+
+
+		<!-- =====================================================
+		     Breadcrumbs
+		===================================================== -->
+
+		<nav
+			class="yurubiba-breadcrumbs"
+			aria-label="パンくずリスト"
+		>
+			<a href="/">Home</a>
+			<span>/</span>
+
+			<a href="/takikawa_community_icenter/">
+				滝川コミュニティセンター
+			</a>
+			<span>/</span>
+
+			<span>フリースクール「ゆるびば」</span>
+		</nav>
+
+
+		<!-- =====================================================
+		     Content
+		===================================================== -->
+
+		<section class="yurubiba-content">
+			<div class="yurubiba-content__inner">
+
+				<div class="yurubiba-content__text">
+					<p>
+						学校でも、家庭でもない、もう一つの居場所ちょっとだけ休みたい日。
+					</p>
+
+					<p>
+						学校にいけない日。一人でいるのがつらいとき。
+					</p>
+
+					<p>
+						ここに来れば、誰かがいて、何となくほっと・・・安心。
+					</p>
+
+					<p>
+						それが、「ゆるびば」です。
+					</p>
+
+					<p>
+						子どもを一人家に置いておくのが心配な方も安心できる居場所作りをしています。
+					</p>
+
+					<p>
+						子どもは地域・社会の宝です。地域の皆様とともにみんなで育てていきましょう！
+					</p>
+				</div>
+
+
+				<!-- =============================================
+				     案内画像
+				============================================= -->
+
+				<div class="yurubiba-guide">
+					<img
+						src="/images/community-center/yurubiba/guide.png"
+						alt="フリースクール「ゆるびば」のご案内"
+						loading="lazy"
+					/>
+				</div>
+
+			</div>
+		</section>
+
+	</main>
+</Layout>
+
+
+<style>
+	/* =========================================================
+	   Page
+	========================================================= */
+
+	.yurubiba-page {
+		width: 100%;
+		margin: 0;
+		padding: 0;
+		background: #fff;
+		color: #111827;
+	}
+
+
+	/* =========================================================
+	   Hero
+	========================================================= */
+
+	.yurubiba-hero {
+		position: relative;
+		width: 100%;
+		height: clamp(300px, 38vw, 520px);
+		overflow: hidden;
+		background: #111827;
+	}
+
+	.yurubiba-hero img {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: center;
+	}
+
+	.yurubiba-hero__overlay {
+		position: absolute;
+		inset: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 32px;
+		background: rgb(0 0 0 / 22%);
+	}
+
+	.yurubiba-hero h1 {
+		margin: 0;
+		color: #fff;
+		font-size: clamp(40px, 5vw, 64px);
+		font-weight: 400;
+		line-height: 1.3;
+		text-align: center;
+		text-shadow: 0 2px 12px rgb(0 0 0 / 40%);
+	}
+
+
+	/* =========================================================
+	   Breadcrumbs
+	========================================================= */
+
+	.yurubiba-breadcrumbs {
+		display: flex;
+		align-items: center;
+		flex-wrap: wrap;
+		width: min(calc(100% - 48px), 1280px);
+		margin: 0 auto;
+		padding: 30px 0;
+		gap: 10px;
+		font-size: 14px;
+		line-height: 1.6;
+	}
+
+	.yurubiba-breadcrumbs a {
+		color: #009fe8;
+		text-decoration: none;
+	}
+
+	.yurubiba-breadcrumbs a:hover {
+		text-decoration: underline;
+		text-underline-offset: 0.2em;
+	}
+
+
+	/* =========================================================
+	   Content
+	========================================================= */
+
+	.yurubiba-content {
+		padding: 64px 0 96px;
+		background: #f4f9fc;
+	}
+
+	.yurubiba-content__inner {
+		width: min(calc(100% - 64px), 1080px);
+		margin: 0 auto;
+	}
+
+	.yurubiba-content__text {
+		width: 100%;
+	}
+
+	.yurubiba-content__text p {
+		margin: 0 0 20px;
+		font-size: 17px;
+		line-height: 1.9;
+	}
+
+	.yurubiba-content__text p:last-child {
+		margin-bottom: 0;
+	}
+
+
+	/* =========================================================
+	   Guide image
+	========================================================= */
+
+	.yurubiba-guide {
+		width: min(100%, 720px);
+		margin: 72px auto 0;
+	}
+
+	.yurubiba-guide img {
+		display: block;
+		width: 100%;
+		height: auto;
+		margin: 0 auto;
+	}
+
+
+	/* =========================================================
+	   Tablet
+	========================================================= */
+
+	@media (max-width: 900px) {
+		.yurubiba-content__inner {
+			width: min(calc(100% - 40px), 760px);
+		}
+
+		.yurubiba-guide {
+			max-width: 620px;
+		}
+	}
+
+
+	/* =========================================================
+	   Mobile
+	========================================================= */
+
+	@media (max-width: 600px) {
+		.yurubiba-hero {
+			height: 300px;
+		}
+
+		.yurubiba-hero h1 {
+			font-size: 34px;
+		}
+
+		.yurubiba-breadcrumbs {
+			width: calc(100% - 32px);
+			padding: 22px 0;
+			font-size: 13px;
+		}
+
+		.yurubiba-content {
+			padding: 46px 0 68px;
+		}
+
+		.yurubiba-content__inner {
+			width: calc(100% - 32px);
+		}
+
+		.yurubiba-content__text p {
+			font-size: 15px;
+		}
+
+		.yurubiba-guide {
+			margin-top: 52px;
+		}
+	}
+</style>

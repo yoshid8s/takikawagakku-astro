@@ -1,0 +1,481 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+
+const pageTitle = '文化教養講座';
+
+const courses = [
+	{
+		title: '子ども将棋講座',
+		image: '/images/community-center/regular-courses/shogi.png',
+		imageAlt: '子ども将棋講座',
+		content: `
+			<p>
+				日本の伝統文化である将棋を継承、子どもたちの健全育成の場として開催しています。
+			</p>
+
+			<p>
+				これから将棋を始めようとする子や駒の動かし方やルールが分からない子にも指導員が丁寧に指導します。
+			</p>
+
+			<p>
+				講座終了時に棋力に応じた「級位認定証」も授与しております。
+			</p>
+
+			<ul>
+				<li>対象：小学生</li>
+				<li>開催区分：前期 4月〜／後期 10月〜</li>
+				<li>開催日時：第1・3土曜日 10:00〜12:00</li>
+				<li>定員：50名</li>
+				<li>講師：日本将棋連盟将棋指導員等</li>
+				<li>受講料：7,000円／期</li>
+				<li>受講生募集：前期 2月〜3月頃、後期 8月〜9月頃</li>
+			</ul>
+		`,
+		link: '/takikawa_community_icenter/takikawa_commicenter-regular_courses/child_shogi_lecture/',
+		linkLabel: '子ども将棋講座の詳細はこちら',
+	},
+	{
+		title: '囲碁クラブ',
+		image: '/images/community-center/regular-courses/igo.png',
+		imageAlt: '囲碁クラブ',
+		content: `
+			<p>
+				これから囲碁を始めようと思われる方・ルールがわからない方も講師が丁寧に指導しますので安心して楽しんで頂けます。
+			</p>
+
+			<p>
+				会員皆様に自主運営して頂いております。
+			</p>
+
+			<h3>囲碁クラブ 新規会員募集</h3>
+
+			<ul>
+				<li>募集期間：2月16日（金）〜先着順にて受付</li>
+				<li>定員：8名</li>
+				<li>どなたでも参加できます</li>
+			</ul>
+		`,
+		link: '/takikawa_community_icenter/takikawa_commicenter-regular_courses/igo_club/',
+		linkLabel: '囲碁クラブの詳細はこちら',
+	},
+	{
+		title: 'ワイン倶楽部',
+		image: '/images/community-center/regular-courses/wine.png',
+		imageAlt: 'ワイン倶楽部',
+		content: `
+			<p>
+				ワインについてより深く親しみ、交流を深める場として平成30年4月に創設しました。
+			</p>
+
+			<p>
+				日曜日の午後、美味しいワインと講師の楽しいお話で過ごしませんか？
+			</p>
+
+			<h3>募集案内</h3>
+
+			<ul>
+				<li>前期募集：2月中旬</li>
+				<li>後期追加募集：8月下旬</li>
+			</ul>
+		`,
+		link: '/takikawa_community_icenter/takikawa_commicenter-regular_courses/wine_club/',
+		linkLabel: 'ワイン倶楽部の詳細はこちら',
+	},
+	{
+		title: 'フルーツ講座',
+		image: '/images/community-center/regular-courses/fruit.png',
+		imageAlt: 'フルーツ講座',
+		content: `
+			<p>
+				皇室献上フルーツ取扱店トップフルーツ「八百文」代表取締役の鈴木和子氏を講師に迎えたフルーツ講座です。
+			</p>
+
+			<p>
+				美味しい旬のフルーツのご紹介とその機能性について学ぶことができます。
+			</p>
+
+			<ul>
+				<li>開催日：2月23日（日）</li>
+				<li>時間：13:00〜14:30</li>
+				<li>場所：滝川コミュニティセンター 1階会議室</li>
+			</ul>
+
+			<p>
+				簡単なフルーツサンドイッチとパフェをつくることができます。鈴木名人の高級イチゴお土産付きです。
+			</p>
+
+			<ul>
+				<li>持ち物：エプロン、三角巾、マスク</li>
+				<li>受講料：1人 1,000円（小学生以下500円）</li>
+				<li>小学3年生以下は保護者同伴、幼児は不可</li>
+				<li>定員：40名。受講定員に達するまで先着順</li>
+				<li>主催：滝川学区自治協議会 文化スポーツ部</li>
+			</ul>
+		`,
+	},
+];
+---
+
+<Layout title={pageTitle}>
+	<main class="regular-courses-page">
+
+		<nav class="regular-courses-breadcrumbs" aria-label="パンくずリスト">
+			<a href="/">Home</a>
+			<span aria-hidden="true">/</span>
+
+			<a href="/takikawa_community_icenter/">
+				滝川コミュニティセンター
+			</a>
+
+			<span aria-hidden="true">/</span>
+			<span>文化教養講座</span>
+		</nav>
+
+		<section class="regular-courses-intro">
+			<div class="regular-courses-intro__inner">
+				<h1>文化教養講座</h1>
+
+				<p>
+					滝川学区自治協議会および滝川コミセンでは、文化教養講座を開催しています。
+					是非参加してみませんか?!
+				</p>
+			</div>
+		</section>
+
+		<section class="regular-courses-list">
+			<div class="regular-courses-list__inner">
+				<h2>開催中の講座概要</h2>
+
+				<div class="regular-courses-accordions">
+					{
+						courses.map((course) => (
+							<details class="regular-course" open>
+								<summary>
+									<span>{course.title}</span>
+
+									<span
+										class="regular-course__icon"
+										aria-hidden="true"
+									>
+										＋
+									</span>
+								</summary>
+
+								<div class="regular-course__body">
+									<div class="regular-course__content">
+										<div class="regular-course__image">
+											<img
+												src={course.image}
+												alt={course.imageAlt}
+												loading="lazy"
+											/>
+										</div>
+
+										<div class="regular-course__text">
+											<div set:html={course.content} />
+
+											{
+												course.link && (
+													<p class="regular-course__link">
+														<a href={course.link}>
+															{course.linkLabel}
+														</a>
+													</p>
+												)
+											}
+										</div>
+									</div>
+								</div>
+							</details>
+						))
+					}
+				</div>
+			</div>
+		</section>
+
+	</main>
+</Layout>
+
+<style>
+	.regular-courses-page {
+		background: #f4f9fc;
+		color: #111827;
+	}
+
+	/* ==============================
+	   Breadcrumbs
+	============================== */
+
+	.regular-courses-breadcrumbs {
+		display: flex;
+		align-items: center;
+		flex-wrap: wrap;
+		width: min(calc(100% - 48px), 1280px);
+		margin: 0 auto;
+		padding: 32px 0;
+		gap: 10px;
+		font-size: 14px;
+		line-height: 1.6;
+	}
+
+	.regular-courses-breadcrumbs a {
+		color: #009fe8;
+		text-decoration: none;
+	}
+
+	.regular-courses-breadcrumbs a:hover {
+		text-decoration: underline;
+		text-underline-offset: 0.2em;
+	}
+
+	/* ==============================
+	   Intro
+	============================== */
+
+	.regular-courses-intro {
+		padding: 72px 0 64px;
+	}
+
+	.regular-courses-intro__inner {
+		width: min(calc(100% - 64px), 1100px);
+		margin: 0 auto;
+		text-align: center;
+	}
+
+	.regular-courses-intro h1 {
+		margin: 0 0 36px;
+		font-size: clamp(40px, 4.5vw, 60px);
+		font-weight: 400;
+		line-height: 1.3;
+	}
+
+	.regular-courses-intro p {
+		max-width: 900px;
+		margin: 0 auto;
+		font-size: 17px;
+		line-height: 1.9;
+	}
+
+	/* ==============================
+	   Course list
+	============================== */
+
+	.regular-courses-list {
+		padding: 0 0 96px;
+	}
+
+	.regular-courses-list__inner {
+		width: min(calc(100% - 64px), 1200px);
+		margin: 0 auto;
+	}
+
+	.regular-courses-list h2 {
+		margin: 0 0 40px;
+		font-size: clamp(30px, 3.5vw, 46px);
+		font-weight: 400;
+		text-align: center;
+	}
+
+	.regular-courses-accordions {
+		display: grid;
+		gap: 20px;
+	}
+
+	/* ==============================
+	   Accordion
+	============================== */
+
+	.regular-course {
+		overflow: hidden;
+		border-radius: 8px;
+		background: #fff;
+	}
+
+	.regular-course > summary {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 20px 28px;
+		background: #0da5df;
+		color: #fff;
+		cursor: pointer;
+		font-size: 19px;
+		font-weight: 600;
+		line-height: 1.5;
+		list-style: none;
+	}
+
+	.regular-course > summary::-webkit-details-marker {
+		display: none;
+	}
+
+	.regular-course__icon {
+		flex: 0 0 auto;
+		margin-left: 20px;
+		font-size: 26px;
+		font-weight: 300;
+		line-height: 1;
+		transition: transform 0.2s ease;
+	}
+
+	.regular-course[open] .regular-course__icon {
+		transform: rotate(45deg);
+	}
+
+	.regular-course__body {
+		padding: 48px 44px 52px;
+	}
+
+	.regular-course__content {
+		display: grid;
+		grid-template-columns: minmax(280px, 380px) minmax(0, 1fr);
+		align-items: start;
+		gap: 56px;
+	}
+
+	.regular-course__image {
+		width: 100%;
+		max-width: 380px;
+		margin: 0 auto;
+	}
+
+	.regular-course__image img {
+		display: block;
+		width: 100%;
+		height: auto;
+	}
+
+	.regular-course__text {
+		min-width: 0;
+	}
+
+	.regular-course__text :global(p) {
+		margin: 0 0 20px;
+		font-size: 16px;
+		line-height: 1.9;
+	}
+
+	.regular-course__text :global(h3) {
+		margin: 28px 0 14px;
+		font-size: 20px;
+		font-weight: 600;
+		line-height: 1.5;
+	}
+
+	.regular-course__text :global(ul) {
+		margin: 20px 0 0;
+		padding-left: 1.5em;
+		list-style: disc outside;
+	}
+
+	.regular-course__text :global(li) {
+		display: list-item;
+		margin-bottom: 9px;
+		font-size: 16px;
+		line-height: 1.8;
+	}
+
+	.regular-course__link {
+		margin-top: 30px !important;
+	}
+
+	.regular-course__link a {
+		display: inline-flex;
+		align-items: center;
+		min-height: 46px;
+		padding: 0 22px;
+		border: 1px solid #009fe8;
+		border-radius: 6px;
+		color: #009fe8;
+		font-weight: 600;
+		text-decoration: none;
+	}
+
+	.regular-course__link a:hover {
+		background: #009fe8;
+		color: #fff;
+	}
+
+	/* ==============================
+	   Tablet
+	============================== */
+
+	@media (max-width: 900px) {
+		.regular-courses-breadcrumbs {
+			width: min(calc(100% - 40px), 1280px);
+		}
+
+		.regular-courses-intro__inner,
+		.regular-courses-list__inner {
+			width: min(calc(100% - 40px), 900px);
+		}
+
+		.regular-course__body {
+			padding: 36px 28px 42px;
+		}
+
+		.regular-course__content {
+			grid-template-columns: 1fr;
+			gap: 32px;
+		}
+
+		.regular-course__image {
+			max-width: 420px;
+		}
+	}
+
+	/* ==============================
+	   Mobile
+	============================== */
+
+	@media (max-width: 600px) {
+		.regular-courses-breadcrumbs {
+			width: calc(100% - 32px);
+			padding: 24px 0;
+			font-size: 13px;
+		}
+
+		.regular-courses-intro {
+			padding: 48px 0 44px;
+		}
+
+		.regular-courses-intro__inner,
+		.regular-courses-list__inner {
+			width: calc(100% - 32px);
+		}
+
+		.regular-courses-intro h1 {
+			margin-bottom: 28px;
+		}
+
+		.regular-courses-intro p {
+			font-size: 15px;
+		}
+
+		.regular-courses-list {
+			padding-bottom: 72px;
+		}
+
+		.regular-courses-list h2 {
+			margin-bottom: 30px;
+		}
+
+		.regular-course > summary {
+			padding: 17px 20px;
+			font-size: 16px;
+		}
+
+		.regular-course__body {
+			padding: 28px 20px 34px;
+		}
+
+		.regular-course__image {
+			max-width: 320px;
+		}
+
+		.regular-course__text :global(p),
+		.regular-course__text :global(li) {
+			font-size: 15px;
+		}
+	}
+</style>

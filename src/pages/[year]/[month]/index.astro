@@ -1,0 +1,320 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+	const posts = await getCollection('blog');
+
+	const monthMap = new Map();
+
+	for (const post of posts) {
+		const year =
+			post.data.date.getFullYear();
+
+		const month =
+			post.data.date.getMonth() + 1;
+
+		const key =
+			`${year}-${String(month).padStart(2, '0')}`;
+
+		if (!monthMap.has(key)) {
+			monthMap.set(key, {
+				year,
+				month,
+			});
+		}
+	}
+
+	return Array.from(monthMap.values()).map((archive) => ({
+		params: {
+			year: String(archive.year),
+			month: String(archive.month).padStart(2, '0'),
+		},
+		props: {
+			archive,
+		},
+	}));
+}
+
+const { archive } = Astro.props;
+
+const posts = (await getCollection('blog'))
+	.filter((post) => {
+		return (
+			post.data.date.getFullYear() === archive.year &&
+			post.data.date.getMonth() + 1 === archive.month
+		);
+	})
+	.sort(
+		(a, b) =>
+			b.data.date.getTime() -
+			a.data.date.getTime()
+	);
+
+const formatDate = (date) =>
+	date.toLocaleDateString('ja-JP', {
+		year: 'numeric',
+		month: 'long',
+		day: 'numeric',
+	});
+
+const postHref = (slug) =>
+	`/${encodeURIComponent(slug)}/`;
+---
+
+<Layout title={`${archive.year}年${archive.month}月 - 新着情報`}>
+	<main class="archive-page">
+
+		<section class="archive-header">
+			<div class="archive-header__inner">
+
+				<p class="archive-header__label">
+					月別アーカイブ
+				</p>
+
+				<h1>
+					{archive.year}年{archive.month}月
+				</h1>
+
+			</div>
+		</section>
+
+
+		<nav
+			class="archive-breadcrumbs"
+			aria-label="パンくずリスト"
+		>
+			<a href="/">Home</a>
+			<span>/</span>
+
+			<a href="/blog/">
+				新着情報
+			</a>
+			<span>/</span>
+
+			<span>
+				{archive.year}年{archive.month}月
+			</span>
+		</nav>
+
+
+		<section class="archive-list">
+			<div class="archive-list__inner">
+
+				<div class="archive-grid">
+
+					{
+						posts.map((post) => (
+							<article class="archive-card">
+
+								<a
+									href={postHref(post.data.slug)}
+									class="archive-card__link"
+								>
+									<div class="archive-card__body">
+
+										<time
+											datetime={post.data.date.toISOString()}
+										>
+											{formatDate(post.data.date)}
+										</time>
+
+										<h2>
+											{post.data.title}
+										</h2>
+
+										{
+											post.data.excerpt && (
+												<p class="archive-card__excerpt">
+													{post.data.excerpt}
+												</p>
+											)
+										}
+
+										{
+											post.data.categories.length > 0 && (
+												<div class="archive-card__categories">
+													{
+														post.data.categories.map(
+															(category) => (
+																<span>
+																	{category.name}
+																</span>
+															)
+														)
+													}
+												</div>
+											)
+										}
+
+									</div>
+								</a>
+
+							</article>
+						))
+					}
+
+				</div>
+
+
+				<div class="archive-back">
+					<a href="/blog/">
+						← 新着情報一覧に戻る
+					</a>
+				</div>
+
+			</div>
+		</section>
+
+	</main>
+</Layout>
+
+<style>
+	.archive-page {
+		width: 100%;
+		background: #fff;
+		color: #111827;
+	}
+
+	.archive-header {
+		padding: 72px 0 64px;
+		background: #f4f9fc;
+	}
+
+	.archive-header__inner {
+		width: min(calc(100% - 64px), 960px);
+		margin: 0 auto;
+		text-align: center;
+	}
+
+	.archive-header__label {
+		margin: 0 0 12px;
+		color: #6b7280;
+		font-size: 14px;
+	}
+
+	.archive-header h1 {
+		margin: 0;
+		font-size: clamp(38px, 5vw, 56px);
+		font-weight: 400;
+	}
+
+	.archive-breadcrumbs {
+		display: flex;
+		flex-wrap: wrap;
+		width: min(calc(100% - 48px), 1280px);
+		margin: 0 auto;
+		padding: 28px 0;
+		gap: 10px;
+		font-size: 14px;
+	}
+
+	.archive-breadcrumbs a {
+		color: #009fe8;
+		text-decoration: none;
+	}
+
+	.archive-list {
+		padding: 64px 0 96px;
+		background: #f4f9fc;
+	}
+
+	.archive-list__inner {
+		width: min(calc(100% - 64px), 1180px);
+		margin: 0 auto;
+	}
+
+	.archive-grid {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 24px;
+	}
+
+	.archive-card {
+		background: #fff;
+		border-radius: 6px;
+		box-shadow: 0 8px 28px rgb(15 23 42 / 5%);
+	}
+
+	.archive-card__link {
+		display: block;
+		height: 100%;
+		color: inherit;
+		text-decoration: none;
+	}
+
+	.archive-card__body {
+		display: flex;
+		flex-direction: column;
+		height: 100%;
+		padding: 28px 30px;
+	}
+
+	.archive-card time {
+		margin-bottom: 12px;
+		color: #6b7280;
+		font-size: 13px;
+	}
+
+	.archive-card h2 {
+		margin: 0 0 14px;
+		font-size: 20px;
+		font-weight: 500;
+		line-height: 1.65;
+	}
+
+	.archive-card__link:hover h2 {
+		color: #009fe8;
+	}
+
+	.archive-card__excerpt {
+		display: -webkit-box;
+		margin: 0 0 22px;
+		overflow: hidden;
+		color: #4b5563;
+		font-size: 14px;
+		line-height: 1.8;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 3;
+	}
+
+	.archive-card__categories {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 6px;
+		margin-top: auto;
+	}
+
+	.archive-card__categories span {
+		padding: 4px 9px;
+		border-radius: 999px;
+		background: #f4f9fc;
+		color: #4b5563;
+		font-size: 12px;
+	}
+
+	.archive-back {
+		margin-top: 48px;
+		text-align: center;
+	}
+
+	.archive-back a {
+		color: #009fe8;
+		text-decoration: none;
+	}
+
+	@media (max-width: 700px) {
+		.archive-header__inner,
+		.archive-list__inner {
+			width: calc(100% - 32px);
+		}
+
+		.archive-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.archive-card__body {
+			padding: 22px;
+		}
+	}
+</style>

@@ -1,0 +1,360 @@
+---
+import { getCollection, render } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+	const posts = await getCollection('blog');
+
+	return posts.map((post) => ({
+		params: {
+			slug: post.data.slug,
+		},
+		props: {
+			post,
+		},
+	}));
+}
+
+const { post } = Astro.props;
+
+const { Content } = await render(post);
+
+const publishedDate = post.data.date.toLocaleDateString('ja-JP', {
+	year: 'numeric',
+	month: 'long',
+	day: 'numeric',
+});
+---
+
+<Layout title={post.data.title}>
+	<main class="blog-post-page">
+
+		<!-- =====================================================
+		     Breadcrumbs
+		===================================================== -->
+
+		<nav
+			class="blog-post-breadcrumbs"
+			aria-label="パンくずリスト"
+		>
+			<a href="/">Home</a>
+			<span>/</span>
+
+			<a href="/blog/">
+				新着情報
+			</a>
+			<span>/</span>
+
+			<span>
+				{post.data.title}
+			</span>
+		</nav>
+
+
+		<!-- =====================================================
+		     Article
+		===================================================== -->
+
+		<article class="blog-post">
+
+			<header class="blog-post__header">
+
+				<div class="blog-post__meta">
+					<time datetime={post.data.date.toISOString()}>
+						{publishedDate}
+					</time>
+
+					{
+						post.data.categories.length > 0 && (
+							<div class="blog-post__categories">
+								{post.data.categories.map((category) => (
+									<a
+										href={`/category/${encodeURIComponent(category.slug)}/`}
+										class="blog-post__category"
+									>
+										{category.name}
+									</a>
+								))}
+							</div>
+						)
+					}
+				</div>
+
+				<h1>
+					{post.data.title}
+				</h1>
+
+			</header>
+
+
+			<!-- =================================================
+			     WordPress content
+			================================================= -->
+
+			<div class="blog-post__content">
+				<Content />
+			</div>
+
+
+			<!-- =================================================
+			     Back
+			================================================= -->
+
+			<footer class="blog-post__footer">
+				<a href="/blog/">
+					← 新着情報一覧に戻る
+				</a>
+			</footer>
+
+		</article>
+
+	</main>
+</Layout>
+
+
+<style>
+	/* =========================================================
+	   Page
+	========================================================= */
+
+	.blog-post-page {
+		width: 100%;
+		margin: 0;
+		padding: 0;
+		background: #fff;
+		color: #111827;
+	}
+
+
+	/* =========================================================
+	   Breadcrumbs
+	========================================================= */
+
+	.blog-post-breadcrumbs {
+		display: flex;
+		align-items: center;
+		flex-wrap: wrap;
+		width: min(calc(100% - 48px), 1280px);
+		margin: 0 auto;
+		padding: 30px 0;
+		gap: 10px;
+		font-size: 14px;
+		line-height: 1.6;
+	}
+
+	.blog-post-breadcrumbs a {
+		color: #009fe8;
+		text-decoration: none;
+	}
+
+	.blog-post-breadcrumbs a:hover {
+		text-decoration: underline;
+		text-underline-offset: 0.2em;
+	}
+
+
+	/* =========================================================
+	   Article
+	========================================================= */
+
+	.blog-post {
+		width: min(calc(100% - 64px), 900px);
+		margin: 0 auto;
+		padding: 64px 0 112px;
+	}
+
+
+	/* =========================================================
+	   Header
+	========================================================= */
+
+	.blog-post__header {
+		margin-bottom: 56px;
+	}
+
+	.blog-post__meta {
+		display: flex;
+		align-items: center;
+		flex-wrap: wrap;
+		gap: 16px 24px;
+		margin-bottom: 22px;
+	}
+
+	.blog-post__meta time {
+		color: #6b7280;
+		font-size: 14px;
+	}
+
+	.blog-post__categories {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 8px;
+	}
+
+	.blog-post__category {
+		display: inline-flex;
+		align-items: center;
+		padding: 5px 12px;
+		border: 1px solid #d7e0e7;
+		border-radius: 999px;
+		color: #374151;
+		font-size: 13px;
+		line-height: 1.4;
+		text-decoration: none;
+	}
+
+	.blog-post__category:hover {
+		border-color: #009fe8;
+		color: #009fe8;
+	}
+
+	.blog-post h1 {
+		margin: 0;
+		font-size: clamp(32px, 4vw, 48px);
+		font-weight: 400;
+		line-height: 1.5;
+	}
+
+
+	/* =========================================================
+	   WordPress content
+	========================================================= */
+
+	.blog-post__content {
+		font-size: 17px;
+		line-height: 1.9;
+	}
+
+	.blog-post__content :global(p) {
+		margin: 0 0 22px;
+	}
+
+	.blog-post__content :global(h2) {
+		margin: 56px 0 24px;
+		font-size: 30px;
+		font-weight: 500;
+		line-height: 1.5;
+	}
+
+	.blog-post__content :global(h3) {
+		margin: 44px 0 20px;
+		font-size: 24px;
+		font-weight: 500;
+		line-height: 1.5;
+	}
+
+	.blog-post__content :global(ul),
+	.blog-post__content :global(ol) {
+		margin: 24px 0;
+		padding-left: 1.8em;
+	}
+
+	.blog-post__content :global(li) {
+		margin-bottom: 8px;
+	}
+
+	.blog-post__content :global(a) {
+		color: #009fe8;
+		text-decoration: underline;
+		text-underline-offset: 0.2em;
+	}
+
+	.blog-post__content :global(img) {
+		display: block;
+		width: auto;
+		max-width: 100%;
+		height: auto;
+		margin: 40px auto;
+	}
+
+	.blog-post__content :global(figure) {
+		margin: 40px 0;
+	}
+
+	.blog-post__content :global(figure img) {
+		margin: 0 auto;
+	}
+
+	.blog-post__content :global(figcaption) {
+		margin-top: 10px;
+		color: #6b7280;
+		font-size: 14px;
+		line-height: 1.6;
+		text-align: center;
+	}
+
+
+	/* =========================================================
+	   Footer
+	========================================================= */
+
+	.blog-post__footer {
+		margin-top: 72px;
+		padding-top: 32px;
+		border-top: 1px solid #d9dee4;
+	}
+
+	.blog-post__footer a {
+		color: #009fe8;
+		font-size: 16px;
+		text-decoration: none;
+	}
+
+	.blog-post__footer a:hover {
+		text-decoration: underline;
+		text-underline-offset: 0.2em;
+	}
+
+
+	/* =========================================================
+	   Mobile
+	========================================================= */
+
+	@media (max-width: 600px) {
+		.blog-post-breadcrumbs {
+			width: calc(100% - 32px);
+			padding: 22px 0;
+			font-size: 13px;
+		}
+
+		.blog-post {
+			width: calc(100% - 32px);
+			padding: 44px 0 72px;
+		}
+
+		.blog-post__header {
+			margin-bottom: 40px;
+		}
+
+		.blog-post__meta {
+			gap: 12px;
+			margin-bottom: 18px;
+		}
+
+		.blog-post h1 {
+			font-size: 30px;
+		}
+
+		.blog-post__content {
+			font-size: 15px;
+		}
+
+		.blog-post__content :global(h2) {
+			margin-top: 44px;
+			font-size: 25px;
+		}
+
+		.blog-post__content :global(h3) {
+			margin-top: 36px;
+			font-size: 21px;
+		}
+
+		.blog-post__content :global(img) {
+			margin: 32px auto;
+		}
+
+		.blog-post__footer {
+			margin-top: 52px;
+		}
+	}
+</style>

@@ -1,0 +1,1078 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const communities = [
+    {
+        title: '子育てコミュニティ「滝川スマイルサロン」',
+        heading: '滝川スマイルサロン',
+        image: '/images/community/smile-salon/main.png',
+        imageAlt: '滝川スマイルサロン',
+
+        content: `
+            <p>
+                「滝川スマイルサロン」は、2歳未満のお子様を持つママが、
+                おしゃべりしたり、くつろいだりできる、
+                みんなが笑顔になれる場所です。
+            </p>
+
+            <p>
+                ぜひお友達を作りに遊びに来てください。
+                予約は必要ありません。直接滝川コミセンにお越しください。
+            </p>
+
+            <p>
+                なお、大雨警報など、何らかの警報が発令された場合は、
+                スマイルサロンはお休みします。
+            </p>
+
+            <div class="community-detail-section">
+                <p><strong>【主催】</strong> 滝川学区社会福祉協議会</p>
+                <p><strong>【協力】</strong> 昭和区社会福祉協議会</p>
+                <p><strong>【場所】</strong> 滝川コミュニティセンター（昭和区川名山町46-4）</p>
+            </div>
+
+            <div class="community-detail-section">
+                <h4>【日時】</h4>
+                <ul>
+                    <li>原則第3火曜日</li>
+                    <li>午前10時〜11時30分</li>
+                    <li>
+                        月によって変更される場合がありますので、
+                        詳しくは下記のスケジュールをご確認ください。
+                    </li>
+                </ul>
+            </div>
+
+            <div class="community-detail-section">
+                <p>
+                    <strong>【対象】</strong>
+                    滝川学区にお住まいの2歳未満のお子さんと保護者
+                    （兄弟・姉妹も参加できます）
+                </p>
+
+                <p>
+                    <strong>【費用】</strong>
+                    お子さん1名につき100円
+                    （1年分の保険料、名札作成費を含みます）
+                </p>
+            </div>
+
+            <div class="community-detail-section">
+                <h4>【問い合わせ】</h4>
+                <ul>
+                    <li>滝川コミュニティセンター</li>
+                    <li>受付 9:00〜16:00</li>
+                    <li>毎週月曜日休館</li>
+                    <li>電話 052-710-8621</li>
+                </ul>
+            </div>
+
+            <div class="community-detail-section">
+                <h4>【その他】</h4>
+                <ul>
+                    <li>
+                        飲み物やおむつなど、お子様に必要なものは各自ご持参ください。
+                    </li>
+                    <li>
+                        ボランティアが見守りを行いますが、
+                        責任は負いかねますので自己責任でお願いします。
+                    </li>
+                </ul>
+            </div>
+
+            <div class="community-detail-section">
+                <h4>【令和7年度のスケジュール】</h4>
+                <ul>
+                    <li>2月17日</li>
+                    <li>3月17日</li>
+                </ul>
+            </div>
+
+            <div class="community-detail-section">
+                <h4>【令和8年度のスケジュール】</h4>
+                <ul>
+                    <li>4月21日</li>
+                    <li>5月19日</li>
+                    <li>★6月16日</li>
+                    <li>7月21日</li>
+                    <li>9月15日</li>
+                    <li>◎10月20日</li>
+                    <li>11月17日</li>
+                    <li>☆12月15日</li>
+                    <li>1月19日</li>
+                    <li>2月16日</li>
+                    <li>3月16日</li>
+                </ul>
+
+                <p>日付の前のマークは次の意味です。</p>
+
+                <ul>
+                    <li>☆ 管理栄養士さんが参加（10:30〜11:00の30分程度）</li>
+                    <li>◎ 歯科衛生士さんが参加（10:30〜11:00の30分程度）</li>
+                    <li>★ 保健師さんによる個別指導（10:30〜11:00の30分程度）</li>
+                </ul>
+            </div>
+
+            <div class="community-detail-section">
+                <h4>【ボランティアさん大募集！】</h4>
+
+                <p>
+                    「滝川スマイルクラブ」を手伝ってくださる
+                    ボランティアさんを募集中です。
+                    お子さんが好きな方であれば、特に資格は不要です。
+                </p>
+
+                <ul>
+                    <li>滝川コミュニティセンター</li>
+                    <li>受付 9:00〜16:00</li>
+                    <li>毎週月曜日休館</li>
+                    <li>電話 052-710-8621</li>
+                </ul>
+            </div>
+        `,
+
+        flyer: {
+            src: '/images/community/smile-salon/flyer-2026.png',
+            alt: '滝川スマイルサロン 2026年度案内',
+        },
+    },
+	{
+		title: '民生委員コミュニティ「滝川あおぞら会」',
+		heading: '滝川あおぞら会',
+		image: '/images/community/aozora/main.jpg',
+		imageAlt: '民生委員コミュニティ「滝川あおぞら会」',
+		content: `
+			<p>滝川あおぞら会は、民生委員を中心とした女性が集まる会です。民生委員は普段はまわりに気を遣う大変な仕事ですが、滝川あおぞら会の時間だけは各自が「自分のための時間」を過ごします。気の置けない仲間とのおしゃべりや、手先を動かした活動など、季節に合わせた活動をしています。</p>
+			<p>〖日時〗毎月第二火曜日13：00〜</p>
+			<p>〖場所〗滝川コミュニティセンター</p>
+			<p>滝川あおぞら会に参加されているみなさんは、細かい作業に真剣です。毎年季節に合わせた飾り物を製作しています。</p>
+		`,
+		gallery: [
+			'/images/community/aozora/work-01.jpg',
+			'/images/community/aozora/work-02.jpg',
+			'/images/community/aozora/work-03.jpg',
+		],
+	},
+	{
+		title: 'ご近所コミュニティ',
+		heading: '川名山サロン',
+		image: '/images/community/kawanayama/main.jpg',
+		imageAlt: 'ご近所コミュニティ「川名山サロン」',
+		content: `
+			<p>「家の中に閉じ籠らず、ご近所同士おしゃべりして交流できる所があるといいね。」といった声が上がり、場所は香積院様のご厚意で観音堂2階奥和室をこころよくお貸しいただけることができました。名を「川名山サロン」として元気体操とミニゲームを合わせスタート。毎回20名前後の町内の皆様にお集まり頂いております。</p>
+			<p>元気体操の先生の掛け声と共に凝った首、肩を緊張と緩和でほぐし、全身の血行を促し、転倒予防で足、足首回しバランスと筋力を付け、脳トレで脳を活性化させ、目標「寝込まない」「転ばない」「惚けない」と小一時間の体操を終えます。その後ちょっとしたミニゲーム（輪投げ、ダーツ、ビンゴ等）をワイワイと行い、一等、二等、・・・最下位の方まで景品をいただき終了となります。こんなゆるやかで笑い声の絶えない楽しいおしゃべりサロンです。</p>
+			<p>〖日時〗毎月第四火曜日 13:00〜</p>
+			<p>〖場所〗香積院2階奥和室</p>
+			<p>〖参加費〗200円</p>
+		`,
+		gallery: [
+			'/images/community/kawanayama/activity-01.jpg',
+			'/images/community/kawanayama/activity-02.jpg',
+		],
+	},
+	{
+		title: '高年コミュニティ',
+		heading: 'サンハイツ倶楽部',
+		image: '/images/community/sun-heights/main.png',
+		imageAlt: 'サンハイツ倶楽部',
+		content: `
+			<p>サンハイツ八事ふじみは八事霊園の北側に立地する178戸の集合住宅ですが、完成後33年を迎え、完成時に入居した多くの住居者が高齢になりました。令和2年頃から有志で高年クラブの立ち上げを呼び掛けたところ32人の方に参加をいただき、サンハイツ倶楽部として令和3年に正式に発足しました。いろんな方のアドバイスやご協力を得てサンハイツ倶楽部のサロン活動として、「インストラクターによる健康ヨガ体操」を女性部中心にスタートすることができました。現在は月に2回のペースで定着しています。</p>
+			<p>ヨガ体操では、豊満なおなかや固くなった身体と格闘したり、簡単な頭を使う体操では適度なストレスを感じつつも、頭と身体の動きが一致しなかったりと、笑いあり涙ありのビタミン注入タイムをインストラクターの絶妙な叱咤やユーモアあふれるアドバイスの元、和気あいあいと過ごす90分は参加者の皆さんのアッという間の至福の時間となっています。</p>
+		`,
+	},
+];
+---
+
+<Layout title="コミュニティ">
+	<main class="community-page">
+		<section
+			class="community-hero"
+			style={`background-image: linear-gradient(rgba(0,0,0,.28), rgba(0,0,0,.28)), url('/images/community/hero.jpeg');`}
+		>
+			<h1>コミュニティ</h1>
+		</section>
+
+		<nav class="breadcrumbs" aria-label="パンくずリスト">
+			<a href="/">Home</a>
+			<span>/</span>
+			<span>コミュニティ</span>
+		</nav>
+
+		<section class="community-intro">
+			<h2>滝川学区コミュニティのご紹介</h2>
+
+			<p>
+				滝川学区では、地域のつながりを深め、誰もが気軽に参加できる交流の場として、さまざまなコミュニティーがあります。高齢者の方が集い、おしゃべりや健康体操を楽しむものや、子育て中の保護者同士が情報交換をしたり、ほっとひと息つけるもの、趣味を通じて仲間と出会えるものなど、その内容も多彩です。どれも、地域のボランティアや自治会の協力によって温かく運営されており、「初めての方でも参加しやすい雰囲気」が魅力です。年齢や立場を超えて、互いに支え合い、つながりあうこの地域ならではの取り組みは、日々の暮らしにやさしさと安心をもたらしてくれます。あなたも“誰かとつながる時間”を過ごしてみませんか？
+			</p>
+		</section>
+
+		<section class="community-list">
+			{
+				communities.map((community, index) => (
+					<details class="community-accordion">
+						<summary>
+							<span>{community.title}</span>
+							<span class="community-accordion__icon" aria-hidden="true">
+								＋
+							</span>
+						</summary>
+
+						<div class="community-accordion__body">
+							<div class="community-accordion__content">
+								<div class="community-accordion__text">
+									<h3>{community.heading}</h3>
+									<div set:html={community.content} />
+								</div>
+
+								<div class="community-accordion__main-image">
+									<img
+										src={community.image}
+										alt={community.imageAlt}
+										loading="lazy"
+									/>
+								</div>
+							</div>
+
+							{community.flyer && (
+								<section class="community-flyer">
+									<h3>チラシ</h3>
+
+									<button
+										type="button"
+										class="community-flyer__button"
+										data-community-lightbox-image={community.flyer.src}
+										data-community-lightbox-alt={community.flyer.alt}
+										aria-label={`${community.flyer.alt}を拡大表示`}
+									>
+										<img
+											src={community.flyer.src}
+											alt={community.flyer.alt}
+											loading="lazy"
+										/>
+									</button>
+								</section>
+							)}
+
+							{community.gallery && (
+								<div class="community-gallery">
+									{community.gallery.map((image, imageIndex) => (
+										<img
+											src={image}
+											alt={`${community.heading}の活動の様子 ${imageIndex + 1}`}
+											loading="lazy"
+										/>
+									))}
+								</div>
+							)}
+						</div>
+					</details>
+				))
+			}
+		</section>
+		<div
+			id="community-lightbox"
+			class="community-lightbox"
+			aria-hidden="true"
+		>
+			<button
+				type="button"
+				class="community-lightbox__close"
+				aria-label="拡大画像を閉じる"
+			>
+				×
+			</button>
+
+			<div class="community-lightbox__stage">
+				<img
+					class="community-lightbox__image"
+					src=""
+					alt=""
+				/>
+			</div>
+		</div>
+	</main>
+
+</Layout>
+
+<script>
+	const communityLightbox =
+		document.querySelector('#community-lightbox');
+
+	const communityLightboxImage =
+		communityLightbox?.querySelector(
+			'.community-lightbox__image'
+		);
+
+	const communityLightboxClose =
+		communityLightbox?.querySelector(
+			'.community-lightbox__close'
+		);
+
+	let isZoomed = false;
+	let isDragging = false;
+
+	let startX = 0;
+	let startY = 0;
+
+	let translateX = 0;
+	let translateY = 0;
+
+	let dragStartTranslateX = 0;
+	let dragStartTranslateY = 0;
+
+	let pointerMoved = false;
+
+
+	/* =========================================================
+	   Transform
+	========================================================= */
+
+	const updateCommunityTransform = () => {
+		if (
+			!(
+				communityLightboxImage instanceof
+				HTMLImageElement
+			)
+		) {
+			return;
+		}
+
+		const scale =
+			isZoomed ? 1.2 : 1;
+
+		communityLightboxImage.style.transform =
+			`translate(${translateX}px, ${translateY}px) scale(${scale})`;
+	};
+
+
+	/* =========================================================
+	   Reset zoom / position
+	========================================================= */
+
+	const resetCommunityZoom = () => {
+		if (
+			!(
+				communityLightboxImage instanceof
+				HTMLImageElement
+			)
+		) {
+			return;
+		}
+
+		isZoomed = false;
+		isDragging = false;
+		pointerMoved = false;
+
+		translateX = 0;
+		translateY = 0;
+
+		communityLightboxImage.classList.remove(
+			'is-zoomed',
+			'is-dragging'
+		);
+
+		updateCommunityTransform();
+	};
+
+
+	/* =========================================================
+	   Toggle zoom
+	========================================================= */
+
+	const toggleCommunityZoom = () => {
+		if (
+			!(
+				communityLightboxImage instanceof
+				HTMLImageElement
+			)
+		) {
+			return;
+		}
+
+		isZoomed = !isZoomed;
+
+		if (isZoomed) {
+			communityLightboxImage.classList.add(
+				'is-zoomed'
+			);
+		} else {
+			translateX = 0;
+			translateY = 0;
+
+			communityLightboxImage.classList.remove(
+				'is-zoomed'
+			);
+		}
+
+		updateCommunityTransform();
+	};
+
+
+	/* =========================================================
+	   Open
+	========================================================= */
+
+	const openCommunityLightbox = (
+		button
+	) => {
+		if (
+			!communityLightbox ||
+			!(button instanceof HTMLElement) ||
+			!(
+				communityLightboxImage instanceof
+				HTMLImageElement
+			)
+		) {
+			return;
+		}
+
+		const src =
+			button.dataset.communityLightboxImage;
+
+		const alt =
+			button.dataset.communityLightboxAlt ?? '';
+
+		if (!src) return;
+
+		resetCommunityZoom();
+
+		communityLightboxImage.src = src;
+		communityLightboxImage.alt = alt;
+
+		communityLightbox.classList.add(
+			'is-open'
+		);
+
+		communityLightbox.setAttribute(
+			'aria-hidden',
+			'false'
+		);
+
+		document.body.style.overflow =
+			'hidden';
+	};
+
+
+	/* =========================================================
+	   Close
+	========================================================= */
+
+	const closeCommunityLightbox = () => {
+		if (!communityLightbox) return;
+
+		resetCommunityZoom();
+
+		communityLightbox.classList.remove(
+			'is-open'
+		);
+
+		communityLightbox.setAttribute(
+			'aria-hidden',
+			'true'
+		);
+
+		if (
+			communityLightboxImage instanceof
+			HTMLImageElement
+		) {
+			communityLightboxImage.src = '';
+		}
+
+		document.body.style.overflow = '';
+	};
+
+
+	/* =========================================================
+	   Trigger
+	========================================================= */
+
+	document.addEventListener(
+		'click',
+		(event) => {
+			if (
+				!(event.target instanceof Element)
+			) {
+				return;
+			}
+
+			const button =
+				event.target.closest(
+					'[data-community-lightbox-image]'
+				);
+
+			if (
+				!(button instanceof HTMLElement)
+			) {
+				return;
+			}
+
+			openCommunityLightbox(button);
+		}
+	);
+
+
+	/* =========================================================
+	   Image click / zoom
+	========================================================= */
+
+	communityLightboxImage?.addEventListener(
+		'click',
+		(event) => {
+			event.stopPropagation();
+
+			/*
+			 * ドラッグ後のpointerupで
+			 * clickが発生して縮小されるのを防ぐ
+			 */
+			if (pointerMoved) {
+				pointerMoved = false;
+				return;
+			}
+
+			toggleCommunityZoom();
+		}
+	);
+
+
+	/* =========================================================
+	   Drag start
+	========================================================= */
+
+	communityLightboxImage?.addEventListener(
+		'pointerdown',
+		(event) => {
+			if (
+				!isZoomed ||
+				!(
+					communityLightboxImage instanceof
+					HTMLImageElement
+				)
+			) {
+				return;
+			}
+
+			event.preventDefault();
+
+			isDragging = true;
+			pointerMoved = false;
+
+			startX = event.clientX;
+			startY = event.clientY;
+
+			dragStartTranslateX =
+				translateX;
+
+			dragStartTranslateY =
+				translateY;
+
+			communityLightboxImage.classList.add(
+				'is-dragging'
+			);
+
+			communityLightboxImage.setPointerCapture(
+				event.pointerId
+			);
+		}
+	);
+
+
+	/* =========================================================
+	   Drag move
+	========================================================= */
+
+	communityLightboxImage?.addEventListener(
+		'pointermove',
+		(event) => {
+			if (!isDragging) return;
+
+			const deltaX =
+				event.clientX - startX;
+
+			const deltaY =
+				event.clientY - startY;
+
+			if (
+				Math.abs(deltaX) > 3 ||
+				Math.abs(deltaY) > 3
+			) {
+				pointerMoved = true;
+			}
+
+			translateX =
+				dragStartTranslateX +
+				deltaX;
+
+			translateY =
+				dragStartTranslateY +
+				deltaY;
+
+			updateCommunityTransform();
+		}
+	);
+
+
+	/* =========================================================
+	   Drag end
+	========================================================= */
+
+	const endCommunityDrag = (
+		event
+	) => {
+		if (!isDragging) return;
+
+		isDragging = false;
+
+		if (
+			communityLightboxImage instanceof
+			HTMLImageElement
+		) {
+			communityLightboxImage.classList.remove(
+				'is-dragging'
+			);
+
+			if (
+				event &&
+				'pointerId' in event &&
+				communityLightboxImage.hasPointerCapture(
+					event.pointerId
+				)
+			) {
+				communityLightboxImage.releasePointerCapture(
+					event.pointerId
+				);
+			}
+		}
+	};
+
+
+	communityLightboxImage?.addEventListener(
+		'pointerup',
+		endCommunityDrag
+	);
+
+	communityLightboxImage?.addEventListener(
+		'pointercancel',
+		endCommunityDrag
+	);
+
+
+	/* =========================================================
+	   Close button
+	========================================================= */
+
+	communityLightboxClose?.addEventListener(
+		'click',
+		(event) => {
+			event.stopPropagation();
+			closeCommunityLightbox();
+		}
+	);
+
+
+	/* =========================================================
+	   Background click
+	========================================================= */
+
+	communityLightbox?.addEventListener(
+		'click',
+		(event) => {
+			if (
+				event.target ===
+				communityLightbox
+			) {
+				closeCommunityLightbox();
+			}
+		}
+	);
+
+
+	/* =========================================================
+	   Keyboard
+	========================================================= */
+
+	document.addEventListener(
+		'keydown',
+		(event) => {
+			if (
+				!communityLightbox?.classList.contains(
+					'is-open'
+				)
+			) {
+				return;
+			}
+
+			if (event.key === 'Escape') {
+				closeCommunityLightbox();
+			}
+		}
+	);
+</script>
+
+<style>
+	.community-page {
+		background: #f4f9fc;
+		color: #111827;
+	}
+
+	.community-hero {
+		display: grid;
+		min-height: 480px;
+		place-items: center;
+		background-position: center;
+		background-size: cover;
+	}
+
+	.community-hero h1 {
+		margin: 0;
+		color: #fff;
+		font-size: clamp(42px, 5vw, 72px);
+		font-weight: 400;
+		text-shadow: 0 2px 12px rgb(0 0 0 / 30%);
+	}
+
+	.breadcrumbs {
+		display: flex;
+		width: min(100% - 48px, 1280px);
+		margin: 0 auto;
+		padding: 32px 0;
+		gap: 12px;
+		background: transparent;
+		font-size: 14px;
+	}
+
+	.breadcrumbs a {
+		color: #009fe8;
+		text-decoration: none;
+	}
+
+	.community-intro,
+	.community-list {
+		width: min(100% - 64px, 1440px);
+		margin: 0 auto;
+	}
+
+	.community-intro {
+		padding: 72px 0 64px;
+	}
+
+	.community-intro h2 {
+		margin: 0 0 36px;
+		text-align: center;
+		font-size: clamp(32px, 4vw, 52px);
+		font-weight: 400;
+	}
+
+	.community-intro p {
+		max-width: 1100px;
+		margin: 0 auto;
+		font-size: 17px;
+		line-height: 2;
+	}
+
+	.community-list {
+		padding-bottom: 96px;
+	}
+
+	.community-accordion {
+		margin-bottom: 24px;
+	}
+
+	.community-accordion summary {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 22px 32px;
+		border-radius: 8px;
+		background: #0da5df;
+		color: #fff;
+		cursor: pointer;
+		font-size: 20px;
+		font-weight: 600;
+		list-style: none;
+	}
+
+	.community-accordion summary::-webkit-details-marker {
+		display: none;
+	}
+
+	.community-accordion__icon {
+		font-size: 26px;
+		font-weight: 300;
+		line-height: 1;
+	}
+
+	.community-accordion[open] .community-accordion__icon {
+		transform: rotate(45deg);
+	}
+
+	.community-accordion__body {
+		padding: 64px 64px 72px;
+	}
+
+	.community-accordion__content {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) minmax(420px, 0.9fr);
+		align-items: start;
+		gap: 72px;
+	}
+
+	.community-accordion__text h3 {
+		margin: 0 0 28px;
+		font-size: 30px;
+		font-weight: 500;
+	}
+
+	.community-accordion__text :global(p) {
+		margin: 0 0 22px;
+		font-size: 17px;
+		line-height: 1.9;
+	}
+
+	.community-accordion__text :global(a) {
+		color: #009fe8;
+		text-underline-offset: 0.15em;
+	}
+
+	.community-accordion__main-image img {
+		display: block;
+		width: 100%;
+		height: auto;
+	}
+
+	.community-gallery {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 24px;
+		margin-top: 48px;
+	}
+
+	.community-gallery img {
+		display: block;
+		width: 100%;
+		aspect-ratio: 1;
+		object-fit: cover;
+	}
+
+    .community-accordion__text :global(h4) {
+        margin: 32px 0 14px;
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 1.6;
+    }
+
+    .community-accordion__text :global(ul) {
+        margin: 0 0 24px;
+        padding-left: 1.5em;
+        list-style: disc outside;
+    }
+
+    .community-accordion__text :global(li) {
+        display: list-item;
+        margin-bottom: 8px;
+        font-size: 17px;
+        line-height: 1.8;
+    }
+
+    .community-detail-section {
+        margin-top: 32px;
+    }
+
+    .community-flyer {
+        margin-top: 56px;
+        text-align: center;
+    }
+
+    .community-flyer h3 {
+        margin: 0 0 32px;
+        font-size: 26px;
+        font-weight: 500;
+    }
+
+	.community-flyer__button {
+		display: inline-block;
+		width: min(100%, 700px);
+		margin: 0;
+		padding: 0;
+		border: 0;
+		background: transparent;
+		cursor: zoom-in;
+	}
+
+	.community-flyer__button img {
+		display: block;
+		width: 100%;
+		height: auto;
+	}
+
+    .community-flyer img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
+	/* =========================================================
+	Lightbox
+	========================================================= */
+
+	.community-lightbox {
+		position: fixed;
+		inset: 0;
+		z-index: 9999;
+
+		display: none;
+		align-items: center;
+		justify-content: center;
+
+		padding: 48px;
+
+		background: rgb(0 0 0 / 88%);
+	}
+
+	.community-lightbox.is-open {
+		display: flex;
+	}
+
+	.community-lightbox__stage {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		width: 100%;
+		height: 100%;
+		overflow: auto;
+	}
+
+	.community-lightbox__image {
+		display: block;
+		max-width: 95%;
+		max-height: 90vh;
+		width: auto;
+		height: auto;
+
+		cursor: zoom-in;
+
+		transform: translate(0, 0) scale(1);
+		transform-origin: center center;
+
+		user-select: none;
+		-webkit-user-drag: none;
+
+		touch-action: none;
+
+		transition: transform 0.2s ease;
+	}
+
+	.community-lightbox__image.is-zoomed {
+		max-width: none;
+		max-height: none;
+
+		cursor: grab;
+
+		transition: none;
+	}
+
+	.community-lightbox__image.is-dragging {
+		cursor: grabbing;
+	}
+
+	.community-lightbox__close {
+		position: absolute;
+		top: 20px;
+		right: 28px;
+		z-index: 2;
+
+		padding: 8px 12px;
+		border: 0;
+		background: transparent;
+
+		color: #fff;
+		font-size: 40px;
+		line-height: 1;
+
+		cursor: pointer;
+	}
+
+
+	@media (max-width: 900px) {
+		.community-hero {
+			min-height: 360px;
+		}
+
+		.community-intro,
+		.community-list {
+			width: min(100% - 40px, 1440px);
+		}
+
+		.community-accordion__body {
+			padding: 40px 20px 52px;
+		}
+
+		.community-accordion__content {
+			grid-template-columns: 1fr;
+			gap: 32px;
+		}
+
+		.community-accordion__main-image {
+			order: -1;
+		}
+
+		.community-gallery {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+	}
+
+	@media (max-width: 600px) {
+		.community-hero {
+			min-height: 300px;
+		}
+
+		.breadcrumbs {
+			width: calc(100% - 32px);
+			padding: 24px 0;
+		}
+
+		.community-intro,
+		.community-list {
+			width: calc(100% - 32px);
+		}
+
+		.community-intro {
+			padding: 48px 0;
+		}
+
+		.community-intro p,
+		.community-accordion__text :global(p) {
+			font-size: 15px;
+		}
+
+		.community-accordion summary {
+			padding: 18px 20px;
+			font-size: 16px;
+		}
+
+		.community-gallery {
+			grid-template-columns: 1fr;
+			gap: 16px;
+		}
+        .community-accordion__text :global(li) {
+            font-size: 15px;
+        }
+
+        .community-flyer {
+            margin-top: 40px;
+        }
+
+        .community-flyer h3 {
+            font-size: 22px;
+        }
+		.community-lightbox {
+			padding: 48px 16px 24px;
+		}
+
+		.community-lightbox__close {
+			top: 10px;
+			right: 12px;
+			font-size: 34px;
+		}
+	}
+</style>

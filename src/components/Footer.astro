@@ -1,0 +1,343 @@
+---
+import { navigationItems } from '../data/navigation';
+
+const findNavItem = (label: string) =>
+	navigationItems.find((item) => item.label === label);
+
+const footerColumns = [
+	[
+		findNavItem('新着情報'),
+	],
+	[
+		findNavItem('滝川学区の紹介'),
+	],
+	[
+		findNavItem('イベント'),
+	],
+	[
+		findNavItem('子ども会'),
+	],
+	[
+		findNavItem('コミュニティ'),
+		findNavItem('防犯・防火・防災'),
+		findNavItem('滝川コミュニティセンター'),
+	],
+];
+---
+
+<footer class="site-footer">
+	<div class="site-footer__inner">
+		<div class="site-footer__brand">
+			<a
+				class="site-footer__logo"
+				href="/"
+				aria-label="滝川学区自治協議会 トップページ"
+			>
+				<img
+					src="/images/takikawa-logo.svg"
+					alt="滝川学区自治協議会"
+				/>
+			</a>
+		</div>
+
+		<div class="site-footer__navigation">
+			{
+				footerColumns.map((column) => (
+					<div class="site-footer__column">
+						{
+							column.map((item) =>
+								item ? (
+									<nav
+										class="site-footer__nav-group"
+										aria-label={item.label}
+									>
+										<div class="site-footer__nav-heading">
+											<a
+												class="site-footer__heading-link"
+												href={item.href}
+											>
+												{item.label}
+											</a>
+
+											{item.children.length > 0 && (
+												<button
+													class="site-footer__toggle"
+													type="button"
+													aria-expanded="false"
+													aria-label={`${item.label}のメニューを開く`}
+												>
+													<span aria-hidden="true">⌄</span>
+												</button>
+											)}
+										</div>
+
+										{item.children.length > 0 && (
+											<ul class="site-footer__links">
+												{item.children.map((child) => (
+													<li>
+														<a href={child.href}>
+															{child.label}
+														</a>
+													</li>
+												))}
+											</ul>
+										)}
+									</nav>
+								) : null
+							)
+						}
+					</div>
+				))
+			}
+		</div>
+
+		<div class="site-footer__bottom">
+			<p>© 滝川学区自治協議会</p>
+		</div>
+	</div>
+</footer>
+
+<style>
+	.site-footer {
+		background: #f5f5f7;
+		border-top: 1px solid #d2d2d7;
+		color: #1d1d1f;
+	}
+
+	.site-footer__inner {
+		width: calc(100% - 96px);
+		max-width: 1600px;
+		margin: 0 auto;
+		padding: 56px 0 28px;
+	}
+
+	.site-footer__brand {
+		margin-bottom: 44px;
+	}
+
+	.site-footer__logo {
+		display: inline-block;
+	}
+
+	.site-footer__logo img {
+		display: block;
+		width: auto;
+		height: 40px;
+	}
+
+	/* =========================
+	   PC：5列
+	========================= */
+
+	.site-footer__navigation {
+		display: grid;
+		grid-template-columns: repeat(5, minmax(0, 1fr));
+		gap: 48px;
+		align-items: start;
+	}
+
+	.site-footer__column {
+		display: grid;
+		gap: 36px;
+		align-content: start;
+	}
+
+	.site-footer__nav-group {
+		min-width: 0;
+	}
+
+	.site-footer__nav-heading {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		margin-bottom: 16px;
+	}
+
+	/*
+	 * 第1階層
+	 * .site-footer__nav-group a より詳細度を高くして
+	 * 確実に太字にする
+	 */
+	.site-footer__nav-group .site-footer__heading-link {
+		color: #1d1d1f;
+		font-size: 14px;
+		font-weight: 700;
+		line-height: 1.4;
+		text-decoration: none;
+	}
+
+	.site-footer__links {
+		display: grid;
+		gap: 10px;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.site-footer__links li {
+		display: block;
+		margin: 0;
+	}
+
+	/*
+	 * 第2階層
+	 */
+	.site-footer__nav-group .site-footer__links a {
+		color: #4b5563;
+		font-size: 14px;
+		font-weight: 400;
+		line-height: 1.5;
+		text-decoration: none;
+	}
+
+	.site-footer__nav-group a:hover {
+		color: #ea7300;
+		text-decoration: underline;
+		text-underline-offset: 0.2em;
+	}
+
+	/*
+	 * PCではアコーディオンボタンを非表示
+	 */
+	.site-footer__toggle {
+		display: none;
+		border: 0;
+		background: transparent;
+		color: #1d1d1f;
+		cursor: pointer;
+	}
+
+	.site-footer__bottom {
+		margin-top: 48px;
+		padding-top: 20px;
+		border-top: 1px solid #d2d2d7;
+	}
+
+	.site-footer__bottom p {
+		margin: 0;
+		color: #6e6e73;
+		font-size: 12px;
+	}
+
+	/* =========================
+	   Tablet
+	========================= */
+
+	@media (max-width: 1000px) {
+		.site-footer__navigation {
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+			gap: 48px;
+		}
+	}
+
+	/* =========================
+	   Mobile：Apple型アコーディオン
+	========================= */
+
+	@media (max-width: 600px) {
+		.site-footer__inner {
+			width: min(100% - 32px, 1120px);
+			padding: 40px 0 24px;
+		}
+
+		.site-footer__brand {
+			margin-bottom: 28px;
+		}
+
+		.site-footer__logo img {
+			height: 34px;
+		}
+
+		.site-footer__navigation {
+			display: block;
+		}
+
+		.site-footer__column {
+			display: block;
+		}
+
+		.site-footer__nav-group {
+			border-bottom: 1px solid #d2d2d7;
+		}
+
+		.site-footer__nav-heading {
+			min-height: 52px;
+			margin: 0;
+		}
+
+		.site-footer__nav-group .site-footer__heading-link {
+			display: flex;
+			flex: 1;
+			min-height: 52px;
+			align-items: center;
+			color: #1d1d1f;
+			font-size: 14px;
+			font-weight: 500;
+		}
+
+		.site-footer__toggle {
+			display: grid;
+			width: 44px;
+			height: 44px;
+			flex: 0 0 44px;
+			place-items: center;
+			padding: 0;
+			font-size: 22px;
+		}
+
+		.site-footer__toggle span {
+			display: block;
+			transition: transform 0.25s ease;
+		}
+
+		.site-footer__toggle[aria-expanded='true'] span {
+			transform: rotate(180deg);
+		}
+
+		.site-footer__links {
+			display: none;
+			gap: 12px;
+			padding: 0 16px 20px;
+		}
+
+		.site-footer__links.is-open {
+			display: grid;
+		}
+
+		.site-footer__nav-group .site-footer__links a {
+			font-size: 13px;
+			line-height: 1.6;
+		}
+
+		.site-footer__bottom {
+			margin-top: 36px;
+			padding-top: 20px;
+		}
+	}
+</style>
+
+<script>
+	document.querySelectorAll('.site-footer__toggle').forEach((toggle) => {
+		toggle.addEventListener('click', () => {
+			const group = toggle.closest('.site-footer__nav-group');
+			const links = group?.querySelector('.site-footer__links');
+
+			if (!links) return;
+
+			const isOpen = links.classList.toggle('is-open');
+
+			toggle.setAttribute('aria-expanded', String(isOpen));
+
+			const title =
+				group
+					?.querySelector('.site-footer__heading-link')
+					?.textContent
+					?.trim() ?? '';
+
+			toggle.setAttribute(
+				'aria-label',
+				`${title}のメニューを${isOpen ? '閉じる' : '開く'}`
+			);
+		});
+	});
+</script>

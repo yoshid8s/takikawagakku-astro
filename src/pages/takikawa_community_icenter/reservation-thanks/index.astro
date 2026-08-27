@@ -1,0 +1,220 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+
+const pageTitle = '滝川コミセン予約申込完了';
+---
+
+<Layout title={pageTitle}>
+	<main class="reservation-thanks-page">
+
+		<section class="reservation-thanks">
+			<div class="reservation-thanks__inner">
+
+				<h1>予約のお申し込みを受け付けました</h1>
+
+				<p class="reservation-thanks__lead">
+					このページは、滝川コミュニティセンターの
+					予約のお申し込みが完了したことをお知らせするものです。
+				</p>
+
+				<p>
+					追加のご予約は
+					<a
+						href="https://takikawagakku.jp/takikawa_community_icenter/comisen-reserve/"
+						rel="noopener noreferrer"
+					>
+						こちら
+					</a>
+					からお願いします。
+				</p>
+
+				<div class="reservation-thanks__notice">
+					<h2>予約確定について</h2>
+
+					<p>
+						滝川コミセンのスタッフが、
+						施設への訪問による直接予約との重複がないかを確認します。
+						お申し込みいただいた予約が確定しましたら、
+						予約完了メールをお送りします。
+					</p>
+
+					<p>
+						お申し込みの日程が施設への直接申し込みと重なった場合は、
+						施設への訪問による申し込みが優先されますので、
+						あらかじめご了承ください。
+						その場合は、予約ができなかったことをメールでお知らせします。
+					</p>
+				</div>
+
+				<div class="reservation-thanks__waiting">
+					<h2>確認メールについて</h2>
+
+					<p>
+						できるだけ速やかに予約を確定するようにいたしますが、
+						予約完了または予約不可をお知らせするメールが届くまでに、
+						数日かかる場合がございます。
+					</p>
+
+					<p>
+						ご心配な場合は、下記までご連絡いただきますよう、
+						よろしくお願い申し上げます。
+					</p>
+				</div>
+
+				<address class="reservation-thanks__contact">
+					<strong>滝川コミュニティセンター</strong>
+
+					<p>
+						TEL:
+						<a href="tel:0527108621">
+							052-710-8621
+						</a>
+					</p>
+
+					<p>
+						E-Mail:
+						<a href="mailto:takikawa_comisen_kanrishitsu@takikawagakku.jp">
+							takikawa_comisen_kanrishitsu@takikawagakku.jp
+						</a>
+					</p>
+				</address>
+
+			</div>
+		</section>
+
+	</main>
+</Layout>
+
+<style>
+	.reservation-thanks-page {
+		width: 100%;
+		background: #f4f9fc;
+		color: #111827;
+	}
+
+	.reservation-thanks {
+		padding: 96px 0 120px;
+	}
+
+	.reservation-thanks__inner {
+		width: min(calc(100% - 48px), 860px);
+		margin: 0 auto;
+	}
+
+	.reservation-thanks h1 {
+		margin: 0 0 48px;
+		font-size: clamp(34px, 4vw, 50px);
+		font-weight: 400;
+		line-height: 1.4;
+		text-align: center;
+	}
+
+	.reservation-thanks__lead {
+		margin-bottom: 28px !important;
+		font-size: 19px !important;
+		font-weight: 500;
+	}
+
+	.reservation-thanks__inner > p {
+		margin: 0 0 20px;
+		font-size: 17px;
+		line-height: 1.9;
+	}
+
+	.reservation-thanks a {
+		color: #009fe8;
+		text-decoration: none;
+	}
+
+	.reservation-thanks a:hover {
+		text-decoration: underline;
+		text-underline-offset: 0.2em;
+	}
+
+	.reservation-thanks__notice,
+	.reservation-thanks__waiting {
+		margin-top: 48px;
+		padding: 32px 36px;
+		background: #fff;
+	}
+
+	.reservation-thanks__notice h2,
+	.reservation-thanks__waiting h2 {
+		margin: 0 0 20px;
+		font-size: 22px;
+		font-weight: 600;
+		line-height: 1.5;
+	}
+
+	.reservation-thanks__notice p,
+	.reservation-thanks__waiting p {
+		margin: 0 0 18px;
+		font-size: 17px;
+		line-height: 1.9;
+	}
+
+	.reservation-thanks__notice p:last-child,
+	.reservation-thanks__waiting p:last-child {
+		margin-bottom: 0;
+	}
+
+	.reservation-thanks__contact {
+		margin-top: 56px;
+		padding: 32px 36px;
+		border-top: 3px solid #f97300;
+		background: #fff;
+		font-style: normal;
+	}
+
+	.reservation-thanks__contact strong {
+		display: block;
+		margin-bottom: 18px;
+		font-size: 20px;
+	}
+
+	.reservation-thanks__contact p {
+		margin: 0 0 8px;
+		font-size: 16px;
+		line-height: 1.7;
+	}
+
+	.reservation-thanks__contact p:last-child {
+		margin-bottom: 0;
+	}
+
+	@media (max-width: 600px) {
+		.reservation-thanks {
+			padding: 64px 0 80px;
+		}
+
+		.reservation-thanks__inner {
+			width: calc(100% - 32px);
+		}
+
+		.reservation-thanks h1 {
+			margin-bottom: 36px;
+			font-size: 32px;
+			text-align: left;
+		}
+
+		.reservation-thanks__lead {
+			font-size: 17px !important;
+		}
+
+		.reservation-thanks__inner > p,
+		.reservation-thanks__notice p,
+		.reservation-thanks__waiting p {
+			font-size: 15px;
+		}
+
+		.reservation-thanks__notice,
+		.reservation-thanks__waiting,
+		.reservation-thanks__contact {
+			padding: 26px 22px;
+		}
+
+		.reservation-thanks__contact a {
+			overflow-wrap: anywhere;
+		}
+	}
+</style>

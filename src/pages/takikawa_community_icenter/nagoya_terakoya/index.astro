@@ -1,0 +1,371 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+
+const pageTitle = 'ナゴヤテラコヤ';
+---
+
+<Layout title={pageTitle}>
+	<main class="terakoya-page">
+
+		<!-- =====================================================
+		     Hero
+		===================================================== -->
+
+		<section class="terakoya-hero">
+			<img
+				src="/images/community-center/nagoya-terakoya/hero.png"
+				alt="ナゴヤテラコヤ"
+			/>
+
+			<div class="terakoya-hero__overlay">
+				<h1>ナゴヤテラコヤ</h1>
+			</div>
+		</section>
+
+
+		<!-- =====================================================
+		     Breadcrumbs
+		===================================================== -->
+
+		<nav
+			class="terakoya-breadcrumbs"
+			aria-label="パンくずリスト"
+		>
+			<a href="/">Home</a>
+			<span>/</span>
+
+			<a href="/takikawa_community_icenter/">
+				滝川コミュニティセンター
+			</a>
+			<span>/</span>
+
+			<span>ナゴヤテラコヤ</span>
+		</nav>
+
+
+		<!-- =====================================================
+		     Introduction
+		===================================================== -->
+
+		<section class="terakoya-intro">
+			<div class="terakoya-inner">
+
+				<p class="terakoya-intro__lead">
+					「ヤゴトテラコヤ」は、誰でも無料で参加できる学びと交流の場です。
+					学校の予習・復習や読書、探求活動など、一人でもみんなでも自由に取り組むことができ、
+					学ぶ楽しさを実感できます。
+					元教員や大学生がやさしく見守り・サポートし、
+					異年齢の交流を通じて新しい発見やつながりも生まれます。
+					出入り自由なので、お気軽に立ち寄りください。
+				</p>
+
+
+				<!-- =============================================
+				     開催情報
+				============================================= -->
+
+				<div class="terakoya-info">
+
+					<div class="terakoya-info__item">
+						<h2>参加費無料</h2>
+					</div>
+
+					<div class="terakoya-info__item">
+						<h2>開催日時</h2>
+
+						<p>
+							第2・第4水曜日　17:00〜19:00
+							（時間内出入り自由）
+						</p>
+					</div>
+
+					<div class="terakoya-info__item">
+						<h2>開催場所</h2>
+
+						<p>
+							滝川コミュニティセンター
+							（名古屋市昭和区川名山町46-4）
+						</p>
+					</div>
+
+					<div class="terakoya-info__item">
+						<h2>開催内容</h2>
+
+						<p>
+							学習サポート（予習・復習・読書など）、
+							探求活動の応援、プチおやつタイムあり
+						</p>
+					</div>
+
+					<div class="terakoya-info__item">
+						<h2>お問い合わせ先</h2>
+
+						<p>
+							NPO法人なごやAsoviva
+						</p>
+
+						<p>
+							メール：
+							<a href="mailto:terakoya@nagoya-asoviva.jp">
+								terakoya@nagoya-asoviva.jp
+							</a>
+						</p>
+					</div>
+
+				</div>
+
+
+				<!-- =============================================
+				     案内画像
+				============================================= -->
+
+				<div class="terakoya-guide">
+					<img
+						src="/images/community-center/nagoya-terakoya/terakoya-guide.png"
+						alt="ヤゴトテラコヤのご案内"
+						loading="lazy"
+					/>
+				</div>
+
+			</div>
+		</section>
+
+	</main>
+</Layout>
+
+
+<style>
+	/* =========================================================
+	   Page
+	========================================================= */
+
+	.terakoya-page {
+		width: 100%;
+		margin: 0;
+		padding: 0;
+		background: #fff;
+		color: #111827;
+	}
+
+	.terakoya-inner {
+		width: min(calc(100% - 64px), 1080px);
+		margin: 0 auto;
+	}
+
+
+	/* =========================================================
+	   Hero
+	========================================================= */
+
+	.terakoya-hero {
+		position: relative;
+		width: 100%;
+		height: clamp(300px, 38vw, 520px);
+		overflow: hidden;
+		background: #111827;
+	}
+
+	.terakoya-hero img {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: center;
+	}
+
+	.terakoya-hero__overlay {
+		position: absolute;
+		inset: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 32px;
+		background: rgb(0 0 0 / 22%);
+	}
+
+	.terakoya-hero h1 {
+		margin: 0;
+		color: #fff;
+		font-size: clamp(40px, 5vw, 64px);
+		font-weight: 400;
+		line-height: 1.3;
+		text-align: center;
+		text-shadow: 0 2px 12px rgb(0 0 0 / 40%);
+	}
+
+
+	/* =========================================================
+	   Breadcrumbs
+	========================================================= */
+
+	.terakoya-breadcrumbs {
+		display: flex;
+		align-items: center;
+		flex-wrap: wrap;
+		width: min(calc(100% - 48px), 1280px);
+		margin: 0 auto;
+		padding: 30px 0;
+		gap: 10px;
+		font-size: 14px;
+		line-height: 1.6;
+	}
+
+	.terakoya-breadcrumbs a {
+		color: #009fe8;
+		text-decoration: none;
+	}
+
+	.terakoya-breadcrumbs a:hover {
+		text-decoration: underline;
+		text-underline-offset: 0.2em;
+	}
+
+
+	/* =========================================================
+	   Introduction
+	========================================================= */
+
+	.terakoya-intro {
+		padding: 64px 0 96px;
+		background: #f4f9fc;
+	}
+
+	.terakoya-intro__lead {
+		margin: 0 0 64px;
+		font-size: 17px;
+		line-height: 1.9;
+	}
+
+
+	/* =========================================================
+	   Information
+	========================================================= */
+
+	.terakoya-info {
+		width: min(100%, 900px);
+		margin: 0 auto;
+	}
+
+	.terakoya-info__item {
+		margin: 0 0 34px;
+	}
+
+	.terakoya-info__item:last-child {
+		margin-bottom: 0;
+	}
+
+	.terakoya-info__item h2 {
+		position: relative;
+		margin: 0 0 8px;
+		padding-left: 1.1em;
+		font-size: 17px;
+		font-weight: 600;
+		line-height: 1.6;
+	}
+
+	.terakoya-info__item h2::before {
+		position: absolute;
+		top: 0;
+		left: 0;
+		content: "■";
+	}
+
+	.terakoya-info__item p {
+		margin: 0 0 4px;
+		font-size: 17px;
+		line-height: 1.8;
+	}
+
+	.terakoya-info__item a {
+		color: #009fe8;
+		text-decoration: none;
+	}
+
+	.terakoya-info__item a:hover {
+		text-decoration: underline;
+		text-underline-offset: 0.2em;
+	}
+
+
+	/* =========================================================
+	   Guide image
+	========================================================= */
+
+	.terakoya-guide {
+		width: min(100%, 720px);
+		margin: 72px auto 0;
+	}
+
+	.terakoya-guide img {
+		display: block;
+		width: 100%;
+		height: auto;
+		margin: 0 auto;
+	}
+
+
+	/* =========================================================
+	   Tablet
+	========================================================= */
+
+	@media (max-width: 900px) {
+		.terakoya-inner {
+			width: min(calc(100% - 40px), 760px);
+		}
+
+		.terakoya-intro__lead {
+			margin-bottom: 52px;
+		}
+
+		.terakoya-guide {
+			max-width: 620px;
+		}
+	}
+
+
+	/* =========================================================
+	   Mobile
+	========================================================= */
+
+	@media (max-width: 600px) {
+		.terakoya-inner {
+			width: calc(100% - 32px);
+		}
+
+		.terakoya-hero {
+			height: 300px;
+		}
+
+		.terakoya-hero h1 {
+			font-size: 36px;
+		}
+
+		.terakoya-breadcrumbs {
+			width: calc(100% - 32px);
+			padding: 22px 0;
+			font-size: 13px;
+		}
+
+		.terakoya-intro {
+			padding: 46px 0 68px;
+		}
+
+		.terakoya-intro__lead {
+			margin-bottom: 44px;
+			font-size: 15px;
+		}
+
+		.terakoya-info__item {
+			margin-bottom: 28px;
+		}
+
+		.terakoya-info__item h2,
+		.terakoya-info__item p {
+			font-size: 15px;
+		}
+
+		.terakoya-guide {
+			margin-top: 52px;
+		}
+	}
+</style>

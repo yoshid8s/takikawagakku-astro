@@ -1,1 +1,16 @@
 @import "tailwindcss";
+
+/* 本文のリストは標準のマーカーを表示 */
+main ul {
+  list-style: disc outside;
+  padding-left: 1.5em;
+}
+
+main ol {
+  list-style: decimal outside;
+  padding-left: 1.5em;
+}
+
+main li {
+  display: list-item;
+}

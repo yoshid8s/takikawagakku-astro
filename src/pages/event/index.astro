@@ -1,0 +1,282 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const events = [
+	{
+		label: '滝川ふれあいフェスタ',
+		href: '/event/event-fureai/',
+	},
+	{
+		label: '滝川コミセンまつり',
+		href: '/event/滝川コミセンまつり/',
+	},
+	{
+		label: 'クリーンキャンペーン',
+		href: '/event/クリーンキャンペーン/',
+	},
+	{
+		label: 'こども大学',
+		href: '/event/child_club-child_univ/',
+	},
+	{
+		label: '朝食サロン',
+		href: '/event/breakfast_salon/',
+	},
+	{
+		label: '滝川防災フェス',
+		href: '/event/防災フェス/',
+	},
+	{
+		label: 'おやじ塾',
+		href: '/event/oyaji_jyuku/',
+	},
+	{
+		label: 'お能無料体験',
+		href: '/event/free_noh_trial_session/',
+	},
+];
+---
+
+<Layout>
+	<main>
+        <section class="event-hero">
+            <img
+                src="/images/event/event_top.jpg"
+                alt=""
+                class="event-hero__image"
+            />
+            <div class="event-hero__overlay"></div>
+
+            <div class="event-hero__content">
+                <h1>イベント</h1>
+            </div>
+        </section>
+
+		<nav class="breadcrumbs" aria-label="パンくずリスト">
+			<div class="page-inner">
+				<a href="/">Home</a>
+				<span>/</span>
+				<span>イベント</span>
+			</div>
+		</nav>
+
+		<section class="event-intro">
+			<div class="page-inner event-intro__inner">
+				<p>
+					滝川学区では、地域のつながりを大切にしながら、
+					年間を通してさまざまなイベントが開催されています。
+					こうしたイベントには世代をこえて多くの住民が集い、
+					笑顔あふれるひとときが広がります。
+					恒例の「ふれあいフェスタ」では、
+					地域の絆を再確認する貴重な機会となっています。
+					また、子どもたちの学びと体験を大切にする活動も活発で、
+					地域全体が子どもたちの成長を応援しています。
+					これらのイベントを通じて、住民同士が顔を合わせ、
+					気軽に声をかけ合える関係が自然と育まれています。
+				</p>
+			</div>
+		</section>
+
+		<section class="event-list-section">
+			<div class="page-inner">
+				<h2>イベント一覧</h2>
+
+				<p class="event-list-section__lead">
+					現在、滝川学区自治協議会が計画しているイベントの一覧です。
+					各イベントの詳細はリンクをクリックしてご覧ください。
+				</p>
+
+				<ul class="event-list">
+					{
+						events.map((event) => (
+							<li>
+								<a href={event.href}>
+									<span>{event.label}</span>
+									<span aria-hidden="true">→</span>
+								</a>
+							</li>
+						))
+					}
+				</ul>
+			</div>
+		</section>
+	</main>
+</Layout>
+
+<style>
+	.page-inner {
+		width: min(1120px, calc(100% - 48px));
+		margin: 0 auto;
+	}
+
+    .event-hero {
+        position: relative;
+        height: 420px;
+        overflow: hidden;
+    }
+
+    .event-hero__image {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
+
+    .event-hero__overlay {
+        position: absolute;
+        inset: 0;
+        background: rgb(0 0 0 / 18%);
+    }
+
+    .event-hero__content {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+    }
+
+    .event-hero h1 {
+        margin: 0;
+        color: #fff;
+        font-size: clamp(40px, 4vw, 64px);
+        font-weight: 400;
+        line-height: 1.3;
+        text-align: center;
+    }
+
+	.breadcrumbs {
+		padding: 32px 0;
+		background: #fff;
+	}
+
+	.breadcrumbs .page-inner {
+		display: flex;
+		gap: 8px;
+		font-size: 14px;
+	}
+
+	.breadcrumbs a {
+		color: #338acb;
+		text-decoration: none;
+	}
+
+	.event-intro {
+		padding: 88px 0;
+		background: #f4f9fc;
+	}
+
+	.event-intro__inner {
+		max-width: 900px;
+	}
+
+	.event-intro p {
+		margin: 0;
+		font-size: 16px;
+		line-height: 2;
+	}
+
+	.event-list-section {
+		padding: 88px 0;
+		background: #fff;
+	}
+
+	.event-list-section h2 {
+		margin: 0 0 28px;
+		text-align: center;
+		font-size: 36px;
+		font-weight: 400;
+	}
+
+	.event-list-section__lead {
+		margin: 0 0 48px;
+		text-align: center;
+		font-size: 16px;
+		line-height: 1.9;
+	}
+
+	.event-list {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 0;
+		max-width: 900px;
+		margin: 0 auto;
+		padding: 0;
+		border-top: 1px solid #e5e7eb;
+		list-style: none;
+	}
+
+	.event-list li {
+		border-bottom: 1px solid #e5e7eb;
+	}
+
+	.event-list li:nth-child(odd) {
+		border-right: 1px solid #e5e7eb;
+	}
+
+	.event-list a {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		min-height: 72px;
+		padding: 0 28px;
+		color: #111827;
+		font-size: 16px;
+		font-weight: 500;
+		text-decoration: none;
+		transition:
+			color 0.2s ease,
+			background-color 0.2s ease;
+	}
+
+	.event-list a:hover {
+		background: #f8fafc;
+		color: #ea7300;
+	}
+
+	@media (max-width: 768px) {
+		.page-inner {
+			width: min(100% - 32px, 1120px);
+		}
+
+        .event-hero {
+            height: 300px;
+        }
+
+        .event-hero__image {
+            object-position: center;
+        }
+
+        .event-hero h1 {
+            font-size: 40px;
+        }
+
+		.event-intro,
+		.event-list-section {
+			padding: 64px 0;
+		}
+
+		.event-list-section h2 {
+			font-size: 30px;
+		}
+
+		.event-list-section__lead {
+			text-align: left;
+		}
+
+		.event-list {
+			grid-template-columns: 1fr;
+		}
+
+		.event-list li:nth-child(odd) {
+			border-right: 0;
+		}
+
+		.event-list a {
+			min-height: 64px;
+			padding: 0 16px;
+		}
+	}
+</style>

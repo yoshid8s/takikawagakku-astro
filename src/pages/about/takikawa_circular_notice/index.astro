@@ -1,0 +1,258 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import {
+	circularNotices,
+	copiesPdf,
+} from '../../../data/circularNotices';
+---
+
+<Layout>
+	<main>
+		<section class="circular-hero">
+			<div class="page-inner">
+				<h1>回覧板情報</h1>
+			</div>
+		</section>
+
+		<nav class="breadcrumbs" aria-label="パンくずリスト">
+			<div class="page-inner">
+				<a href="/">Home</a>
+				<span>/</span>
+				<a href="/about/">滝川学区の紹介</a>
+				<span>/</span>
+				<span>回覧板情報</span>
+			</div>
+		</nav>
+
+		<section class="circular-content">
+			<div class="page-inner">
+				<header class="circular-intro">
+					<h2>滝川学区回覧板の情報</h2>
+
+					<p>
+						滝川学区の町内会の回覧板でデジタルデータ（PDF）や
+						関連ホームページのあるものについて、このページでご紹介しています。
+					</p>
+
+                    <div class="copies-button-wrap">
+                        <a
+                            class="copies-button"
+                            href={copiesPdf}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            回覧・配布資料必要部数一覧
+                        </a>
+                    </div>
+				</header>
+
+				<div class="circular-list">
+					{
+						circularNotices.map((notice) => (
+							<section class="circular-group">
+								<h2>{notice.title}</h2>
+
+								<ul>
+									{notice.items.map((item) => (
+										<li>
+											{item.href ? (
+												<a href={item.href}>
+													{item.label}
+												</a>
+											) : (
+												<span>{item.label}</span>
+											)}
+
+											{item.details && (
+												<div class="circular-details">
+													{item.details.map((detail) => (
+														<p>{detail}</p>
+													))}
+												</div>
+											)}
+										</li>
+									))}
+								</ul>
+							</section>
+						))
+					}
+				</div>
+			</div>
+		</section>
+	</main>
+</Layout>
+<style>
+	.page-inner {
+		width: min(1120px, calc(100% - 48px));
+		margin: 0 auto;
+	}
+
+	.circular-hero {
+		padding: 80px 0;
+		background: #f4f9fc;
+	}
+
+	.circular-hero h1 {
+		margin: 0;
+		text-align: center;
+		font-size: clamp(36px, 4vw, 56px);
+		font-weight: 400;
+	}
+
+	.breadcrumbs {
+		padding: 32px 0;
+		background: #fff;
+	}
+
+	.breadcrumbs .page-inner {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 8px;
+		font-size: 14px;
+	}
+
+	.breadcrumbs a {
+		color: #338acb;
+		text-decoration: none;
+	}
+
+	.circular-content {
+		padding: 88px 0;
+		background: #f4f9fc;
+	}
+
+	.circular-intro {
+		max-width: 900px;
+		margin: 0 auto 80px;
+		text-align: center;
+	}
+
+	.circular-intro h2 {
+		margin: 0 0 28px;
+		font-size: 32px;
+		font-weight: 400;
+	}
+
+	.circular-intro p {
+		margin: 0;
+		font-size: 16px;
+		line-height: 1.9;
+	}
+
+    .copies-button-wrap {
+        margin-top: 28px;
+        text-align: center;
+    }
+
+    .copies-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 48px;
+        padding: 0 32px;
+        border-radius: 4px;
+        background: #666;
+        color: #fff;
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 1.4;
+        text-decoration: none;
+        transition:
+            background-color 0.2s ease,
+            transform 0.2s ease;
+    }
+
+    .copies-button:hover {
+        background: #ea7300;
+    }
+
+    .copies-button:focus-visible {
+        outline: 2px solid #ea7300;
+        outline-offset: 3px;
+    }
+
+    @media (max-width: 768px) {
+        .copies-button {
+            width: 100%;
+            max-width: 320px;
+            padding: 0 20px;
+        }
+    }
+
+	.circular-list {
+		max-width: 960px;
+		margin: 0 auto;
+	}
+
+	.circular-group {
+		padding: 48px 0;
+		border-top: 1px solid #d9e0e5;
+	}
+
+	.circular-group h2 {
+		margin: 0 0 28px;
+		font-size: 26px;
+		font-weight: 500;
+	}
+
+	.circular-group ul {
+		margin: 0;
+		padding-left: 1.5em;
+	}
+
+	.circular-group li {
+		margin-bottom: 16px;
+		font-size: 16px;
+		line-height: 1.8;
+	}
+
+	.circular-group a {
+		color: #00a6e9;
+		text-decoration: underline;
+		text-underline-offset: 0.18em;
+	}
+
+	.circular-details {
+		margin-top: 6px;
+		color: #4b5563;
+	}
+
+	.circular-details p {
+		margin: 2px 0;
+	}
+
+	@media (max-width: 768px) {
+		.page-inner {
+			width: min(100% - 32px, 1120px);
+		}
+
+		.circular-hero {
+			padding: 56px 0;
+		}
+
+		.circular-hero h1 {
+			font-size: 36px;
+		}
+
+		.circular-content {
+			padding: 64px 0;
+		}
+
+		.circular-intro {
+			margin-bottom: 48px;
+			text-align: left;
+		}
+
+		.circular-intro h2 {
+			font-size: 26px;
+		}
+
+		.circular-group {
+			padding: 36px 0;
+		}
+
+		.circular-group h2 {
+			font-size: 22px;
+		}
+	}
+</style>

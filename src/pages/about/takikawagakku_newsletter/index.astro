@@ -1,0 +1,659 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+
+const issues = [
+	{
+		number: 13,
+		date: '2026年7月11日',
+		images: [
+			'/images/newsletter/13-1.png',
+			'/images/newsletter/13-2.png',
+		],
+	},
+	{
+		number: 12,
+		date: '2026年5月9日',
+		images: [
+			'/images/newsletter/12-1.jpg',
+			'/images/newsletter/12-2.jpg',
+		],
+	},
+	{
+		number: 11,
+		date: '2026年3月14日',
+		images: [
+			'/images/newsletter/11-1.jpg',
+			'/images/newsletter/11-2.jpg',
+		],
+	},
+	{
+		number: 10,
+		date: '2026年1月17日',
+		images: [
+			'/images/newsletter/10-1.png',
+			'/images/newsletter/10-2.png',
+			'/images/newsletter/10-3.png',
+			'/images/newsletter/10-4.png',
+		],
+	},
+	{
+		number: 9,
+		date: '2025年11月8日',
+		images: [
+			'/images/newsletter/09-1.png',
+			'/images/newsletter/09-2.png',
+		],
+	},
+	{
+		number: 8,
+		date: '2025年9月13日',
+		images: [
+			'/images/newsletter/08-1.png',
+			'/images/newsletter/08-2.png',
+		],
+	},
+	{
+		number: 7,
+		date: '2025年7月12日',
+		images: [
+			'/images/newsletter/07-1.png',
+			'/images/newsletter/07-2.png',
+		],
+	},
+	{
+		number: 6,
+		date: '2025年5月10日',
+		images: [
+			'/images/newsletter/06-1.png',
+			'/images/newsletter/06-2.png',
+		],
+	},
+];
+---
+<Layout>
+	<main>
+		<section class="newsletter-hero">
+			<div class="page-inner">
+				<h1>滝川学区だより</h1>
+			</div>
+		</section>
+
+		<nav class="breadcrumbs" aria-label="パンくずリスト">
+			<div class="page-inner">
+				<a href="/">Home</a>
+				<span>/</span>
+				<a href="/about/">滝川学区の紹介</a>
+				<span>/</span>
+				<span>滝川学区だより</span>
+			</div>
+		</nav>
+
+		<section class="newsletter-intro">
+			<div class="page-inner">
+				<h2>「滝川学区だより」とは</h2>
+
+				<p>
+					「滝川学区だより」は、滝川学区にお住まいの住民の方たちに、
+					滝川学区での活動を定期的にお知らせするニュースレターです。
+					各月で発行していく予定です。滝川コミュニティセンターで入手できるほか、
+					町内会を通じて最新号をお届けしています。このページでは、
+					最新号から過去のバックナンバーをご覧いただくことができます。
+				</p>
+			</div>
+		</section>
+
+		<section class="newsletter-list">
+			<div class="page-inner">
+				{
+					issues.map((issue) => (
+						<article class="newsletter-issue">
+							<h2>
+								第{issue.number}号
+								<span>（{issue.date}発行）</span>
+							</h2>
+
+                            <div class="newsletter-images">
+                                {issue.images.map((image, index) => (
+                                    <button
+                                        class="newsletter-image"
+                                        type="button"
+                                        data-lightbox-image={image}
+                                        data-lightbox-group={`issue-${issue.number}`}
+                                        data-lightbox-index={index}
+                                        aria-label={`第${issue.number}号 ${index + 1}ページ目を拡大表示`}
+                                    >
+                                        <img
+                                            src={image}
+                                            alt={`滝川学区だより 第${issue.number}号 ${index + 1}ページ目`}
+                                            loading="lazy"
+                                        />
+                                    </button>
+                                ))}
+                            </div>
+						</article>
+					))
+				}
+			</div>
+		</section>
+
+        <div
+            class="lightbox"
+            data-lightbox
+            aria-hidden="true"
+        >
+            <button
+                class="lightbox__close"
+                type="button"
+                aria-label="拡大表示を閉じる"
+            >
+                ×
+            </button>
+
+            <button
+                class="lightbox__nav lightbox__nav--prev"
+                type="button"
+                aria-label="前の画像を見る"
+            >
+                ‹
+            </button>
+
+            <div class="lightbox__content">
+                <img class="lightbox__image" src="" alt="" />
+
+                <p class="lightbox__counter" aria-live="polite"></p>
+            </div>
+
+            <button
+                class="lightbox__nav lightbox__nav--next"
+                type="button"
+                aria-label="次の画像を見る"
+            >
+                ›
+            </button>
+        </div>
+	</main>
+</Layout>
+<style>
+	.page-inner {
+		width: min(1120px, calc(100% - 48px));
+		margin: 0 auto;
+	}
+
+	.newsletter-hero {
+		padding: 80px 0;
+		background: #f4f9fc;
+	}
+
+	.newsletter-hero h1 {
+		margin: 0;
+		text-align: center;
+		font-size: clamp(36px, 4vw, 56px);
+		font-weight: 400;
+	}
+
+	.breadcrumbs {
+		padding: 32px 0;
+		background: #fff;
+	}
+
+	.breadcrumbs .page-inner {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 8px;
+		font-size: 14px;
+	}
+
+	.breadcrumbs a {
+		color: #338acb;
+		text-decoration: none;
+	}
+
+	.newsletter-intro {
+		padding: 88px 0;
+		background: #f4f9fc;
+		color: #333;
+	}
+
+	.newsletter-intro h2 {
+		margin: 0 0 32px;
+		text-align: center;
+		font-size: 30px;
+		font-weight: 400;
+	}
+
+	.newsletter-intro p {
+		max-width: 860px;
+		margin: 0 auto;
+		font-size: 16px;
+		line-height: 2;
+	}
+
+	.newsletter-list {
+		padding: 88px 0;
+		background: #fff;
+	}
+
+	.newsletter-issue {
+		padding: 64px 0;
+		border-bottom: 1px solid #e5e7eb;
+	}
+
+	.newsletter-issue:first-child {
+		padding-top: 0;
+	}
+
+	.newsletter-issue h2 {
+		margin: 0 0 36px;
+		font-size: 26px;
+		font-weight: 500;
+	}
+
+	.newsletter-issue h2 span {
+		font-size: 16px;
+		font-weight: 400;
+		color: #6b7280;
+	}
+
+	.newsletter-images {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 32px;
+		align-items: start;
+	}
+
+	.newsletter-image {
+		display: block;
+		padding: 0;
+		border: 0;
+		background: transparent;
+		cursor: zoom-in;
+	}
+
+	.newsletter-image img {
+		display: block;
+		width: 100%;
+		height: auto;
+	}
+
+	/* ライトボックス */
+
+    .lightbox {
+        position: fixed;
+        inset: 0;
+        z-index: 3000;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 40px 90px;
+        background: rgb(0 0 0 / 88%);
+    }
+
+    .lightbox.is-open {
+        display: flex;
+    }
+
+    .lightbox__content {
+        position: relative;
+        display: flex;
+        max-width: 100%;
+        max-height: 100%;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+    }
+
+    .lightbox__image {
+        display: block;
+        max-width: 94%;
+        max-height: 86vh;
+        width: auto;
+        height: auto;
+        object-fit: contain;
+
+        cursor: zoom-in;
+        user-select: none;
+        -webkit-user-drag: none;
+
+        transform: translate(0, 0) scale(1);
+        transform-origin: center center;
+        transition: transform 0.2s ease;
+    }
+
+    .lightbox__image.is-zoomed {
+        cursor: grab;
+        transition: none;
+    }
+
+    .lightbox__image.is-dragging {
+        cursor: grabbing;
+    }
+
+    .lightbox__close {
+        position: absolute;
+        top: 20px;
+        right: 24px;
+        z-index: 2;
+        width: 48px;
+        height: 48px;
+        border: 0;
+        background: transparent;
+        color: #fff;
+        font-size: 40px;
+        line-height: 1;
+        cursor: pointer;
+    }
+
+    .lightbox__nav {
+        position: absolute;
+        top: 50%;
+        z-index: 2;
+        display: grid;
+        width: 56px;
+        height: 72px;
+        place-items: center;
+        border: 0;
+        background: rgb(0 0 0 / 25%);
+        color: #fff;
+        font-size: 56px;
+        font-weight: 300;
+        line-height: 1;
+        cursor: pointer;
+        transform: translateY(-50%);
+    }
+
+    .lightbox__nav:hover {
+        background: rgb(0 0 0 / 45%);
+    }
+
+    .lightbox__nav--prev {
+        left: 20px;
+    }
+
+    .lightbox__nav--next {
+        right: 20px;
+    }
+
+    .lightbox__counter {
+        margin: 12px 0 0;
+        color: #fff;
+        font-size: 13px;
+    }
+
+    @media (max-width: 768px) {
+        .lightbox {
+            padding: 64px 50px 32px;
+        }
+
+        .lightbox__image {
+            max-width: 100%;
+            max-height: 78vh;
+        }
+
+        .lightbox__nav {
+            width: 44px;
+            height: 60px;
+            font-size: 44px;
+        }
+
+        .lightbox__nav--prev {
+            left: 4px;
+        }
+
+        .lightbox__nav--next {
+            right: 4px;
+        }
+
+        .lightbox__close {
+            top: 8px;
+            right: 8px;
+        }
+    }
+</style>
+<script>
+	const lightbox = document.querySelector('[data-lightbox]');
+	const lightboxImage = lightbox?.querySelector('.lightbox__image');
+	const closeButton = lightbox?.querySelector('.lightbox__close');
+	const prevButton = lightbox?.querySelector('.lightbox__nav--prev');
+	const nextButton = lightbox?.querySelector('.lightbox__nav--next');
+	const counter = lightbox?.querySelector('.lightbox__counter');
+
+	let currentImages = [];
+	let currentIndex = 0;
+
+	let isZoomed = false;
+    let didDrag = false;
+
+    const DRAG_THRESHOLD = 5;
+
+	let isDragging = false;
+
+	let translateX = 0;
+	let translateY = 0;
+
+	let dragStartX = 0;
+	let dragStartY = 0;
+	let dragOriginX = 0;
+	let dragOriginY = 0;
+
+	const ZOOM_SCALE = 2;
+
+	const updateTransform = () => {
+		if (!lightboxImage) return;
+
+		const scale = isZoomed ? ZOOM_SCALE : 1;
+
+		lightboxImage.style.transform =
+			`translate(${translateX}px, ${translateY}px) scale(${scale})`;
+	};
+
+	const resetZoom = () => {
+		if (!lightboxImage) return;
+
+		isZoomed = false;
+		isDragging = false;
+
+		translateX = 0;
+		translateY = 0;
+
+		lightboxImage.classList.remove('is-zoomed', 'is-dragging');
+
+		updateTransform();
+	};
+
+	const renderImage = () => {
+		if (!lightboxImage || currentImages.length === 0) return;
+
+		resetZoom();
+
+		const current = currentImages[currentIndex];
+
+		lightboxImage.setAttribute(
+			'src',
+			current.getAttribute('data-lightbox-image') || ''
+		);
+
+		const thumbnail = current.querySelector('img');
+
+		lightboxImage.setAttribute(
+			'alt',
+			thumbnail?.getAttribute('alt') || ''
+		);
+
+		if (counter) {
+			counter.textContent =
+				currentImages.length > 1
+					? `${currentIndex + 1} / ${currentImages.length}`
+					: '';
+		}
+
+		const hasMultiple = currentImages.length > 1;
+
+		if (prevButton) {
+			prevButton.hidden = !hasMultiple;
+		}
+
+		if (nextButton) {
+			nextButton.hidden = !hasMultiple;
+		}
+	};
+
+	const showPrevious = () => {
+		if (currentImages.length < 2) return;
+
+		currentIndex =
+			(currentIndex - 1 + currentImages.length) %
+			currentImages.length;
+
+		renderImage();
+	};
+
+	const showNext = () => {
+		if (currentImages.length < 2) return;
+
+		currentIndex =
+			(currentIndex + 1) %
+			currentImages.length;
+
+		renderImage();
+	};
+
+	const closeLightbox = () => {
+		if (!lightbox || !lightboxImage) return;
+
+		resetZoom();
+
+		lightbox.classList.remove('is-open');
+		lightbox.setAttribute('aria-hidden', 'true');
+
+		lightboxImage.setAttribute('src', '');
+
+		currentImages = [];
+		currentIndex = 0;
+
+		document.body.style.overflow = '';
+	};
+
+	document.querySelectorAll('[data-lightbox-image]').forEach((button) => {
+		button.addEventListener('click', () => {
+			if (!lightbox || !lightboxImage) return;
+
+			const group = button.getAttribute('data-lightbox-group');
+
+			currentImages = Array.from(
+				document.querySelectorAll(
+					`[data-lightbox-group="${group}"]`
+				)
+			);
+
+			currentIndex = currentImages.indexOf(button);
+
+			renderImage();
+
+			lightbox.classList.add('is-open');
+			lightbox.setAttribute('aria-hidden', 'false');
+
+			document.body.style.overflow = 'hidden';
+		});
+	});
+
+    lightboxImage?.addEventListener('click', () => {
+        if (didDrag) {
+            didDrag = false;
+            return;
+        }
+
+        if (isZoomed) {
+            resetZoom();
+            return;
+        }
+
+        isZoomed = true;
+        translateX = 0;
+        translateY = 0;
+
+        lightboxImage.classList.add('is-zoomed');
+
+        updateTransform();
+    });
+
+	lightboxImage?.addEventListener('pointerdown', (event) => {
+        if (!isZoomed) return;
+
+        isDragging = true;
+        didDrag = false;
+
+        dragStartX = event.clientX;
+        dragStartY = event.clientY;
+
+        dragOriginX = translateX;
+        dragOriginY = translateY;
+
+        lightboxImage.classList.add('is-dragging');
+        lightboxImage.setPointerCapture(event.pointerId);
+
+        event.preventDefault();
+	});
+
+	lightboxImage?.addEventListener('pointermove', (event) => {
+        if (!isZoomed || !isDragging) return;
+
+        const deltaX = event.clientX - dragStartX;
+        const deltaY = event.clientY - dragStartY;
+
+        if (
+            Math.abs(deltaX) > DRAG_THRESHOLD ||
+            Math.abs(deltaY) > DRAG_THRESHOLD
+        ) {
+            didDrag = true;
+        }
+
+        translateX = dragOriginX + deltaX;
+        translateY = dragOriginY + deltaY;
+
+        updateTransform();
+	});
+
+	const stopDragging = (event) => {
+		if (!isDragging || !lightboxImage) return;
+
+		isDragging = false;
+		lightboxImage.classList.remove('is-dragging');
+
+		if (
+			event?.pointerId !== undefined &&
+			lightboxImage.hasPointerCapture(event.pointerId)
+		) {
+			lightboxImage.releasePointerCapture(event.pointerId);
+		}
+	};
+
+	lightboxImage?.addEventListener('pointerup', stopDragging);
+	lightboxImage?.addEventListener('pointercancel', stopDragging);
+
+	prevButton?.addEventListener('click', showPrevious);
+	nextButton?.addEventListener('click', showNext);
+	closeButton?.addEventListener('click', closeLightbox);
+
+	lightbox?.addEventListener('click', (event) => {
+		if (event.target === lightbox) {
+			closeLightbox();
+		}
+	});
+
+	document.addEventListener('keydown', (event) => {
+		if (!lightbox?.classList.contains('is-open')) return;
+
+		if (event.key === 'Escape') {
+			closeLightbox();
+		}
+
+		if (event.key === 'ArrowLeft') {
+			showPrevious();
+		}
+
+		if (event.key === 'ArrowRight') {
+			showNext();
+		}
+	});
+</script>

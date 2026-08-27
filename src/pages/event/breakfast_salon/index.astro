@@ -1,0 +1,309 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+---
+
+<Layout>
+	<main>
+		<section class="page-hero">
+			<img
+				src="/images/event/breakfast-salon/hero.jpeg"
+				alt=""
+				class="page-hero__image"
+			/>
+
+			<div class="page-hero__overlay"></div>
+
+			<div class="page-hero__content">
+				<h1>朝食サロン</h1>
+			</div>
+		</section>
+
+		<nav class="breadcrumbs" aria-label="パンくずリスト">
+			<div class="page-inner">
+				<a href="/">Home</a>
+				<span>/</span>
+				<a href="/event/">イベント</a>
+				<span>/</span>
+				<span>朝食サロン</span>
+			</div>
+		</nav>
+
+		<section class="breakfast-intro">
+			<div class="page-inner">
+				<h2>
+					加子母の特産品を味わいながら<br />
+					日曜の朝のひとときを色々な方々との交流を楽しみませんか？
+				</h2>
+
+				<div class="intro-grid">
+					<div class="intro-images">
+						<img
+							src="/images/event/breakfast-salon/main-01.jpg"
+							alt="朝食サロンの様子"
+						/>
+
+						<img
+							src="/images/event/breakfast-salon/main-02.jpg"
+							alt="朝食サロンの様子"
+						/>
+					</div>
+
+					<div class="prose">
+						<p>
+							『中津川市加子母地区』の野菜やジャムなど特産品を使用した
+							朝食と珈琲等の飲物をご用意して、
+							皆様のお越しをお待ちしております。
+						</p>
+
+						<p>
+							また当日、入荷状況により、
+							中津川市加子母地区の野菜などの販売も行う予定です。
+						</p>
+
+						<div class="event-details">
+							<p>
+								<strong>【開催時間】</strong>
+								<span>9:30〜11:00</span>
+							</p>
+
+							<p>
+								<strong>【開催場所】</strong>
+								<span>滝川コミュニティーセンター</span>
+							</p>
+
+							<p>
+								<strong>【参加費】</strong>
+								<span>300円</span>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="schedule-section">
+			<div class="page-inner narrow">
+				<h2>開催スケジュール</h2>
+
+				<div class="schedule-details">
+					<h3>2026年度のスケジュール</h3>
+
+					<ul>
+                      <li>3月29日（日）</li>
+                      <li>4月26日（日）</li>
+                      <li>5月31日（日）</li>
+                      <li>6月28日（日）</li>
+                      <li>7月26日（日）</li>
+                      <li>8月30日（日）</li>
+                      <li>9月27日（日）</li>
+                      <li>10月は開催なし</li>
+                      <li>11月29日（日）</li>
+                      <li>12月27日（日）</li>
+                      <li>令和9年　1月31日（日）</li>
+                      <li>2月28日（日）</li>
+                      <li>3月28日（日）</li>
+					</ul>
+				</div>
+			</div>
+		</section>
+
+		<section class="contact-section">
+			<div class="page-inner narrow">
+				<h2>お問い合わせ先</h2>
+
+				<p>滝川コミュニティーセンター</p>
+				<p>
+					TEL.
+					<a href="tel:0527108621">052-710-8621</a>
+				</p>
+			</div>
+		</section>
+	</main>
+</Layout>
+<style>
+	.page-inner {
+		width: min(1120px, calc(100% - 48px));
+		margin: 0 auto;
+	}
+
+	.narrow {
+		max-width: 900px;
+	}
+
+	.page-hero {
+		position: relative;
+		height: 420px;
+		overflow: hidden;
+	}
+
+	.page-hero__image {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: center;
+	}
+
+	.page-hero__overlay {
+		position: absolute;
+		inset: 0;
+		background: rgb(0 0 0 / 20%);
+	}
+
+	.page-hero__content {
+		position: absolute;
+		inset: 0;
+		display: grid;
+		place-items: center;
+		padding: 24px;
+	}
+
+	.page-hero h1 {
+		margin: 0;
+		color: #fff;
+		font-size: clamp(38px, 4vw, 60px);
+		font-weight: 400;
+		text-align: center;
+	}
+
+	.breadcrumbs {
+		padding: 32px 0;
+		background: #fff;
+	}
+
+	.breadcrumbs .page-inner {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 8px;
+		font-size: 14px;
+	}
+
+	.breadcrumbs a,
+	.text-link {
+		color: #00a6e9;
+		text-underline-offset: 0.2em;
+	}
+
+.breakfast-intro {
+	padding: 88px 0;
+	background: #f4f9fc;
+}
+
+.breakfast-intro h2,
+.schedule-section h2,
+.contact-section h2 {
+	margin: 0 0 56px;
+	text-align: center;
+	font-size: clamp(32px, 4vw, 46px);
+	font-weight: 400;
+	line-height: 1.4;
+}
+
+.intro-grid {
+	display: grid;
+	grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+	gap: 64px;
+	align-items: start;
+}
+
+.intro-images {
+	display: grid;
+	gap: 24px;
+}
+
+.intro-images img {
+	display: block;
+	width: 100%;
+	height: auto;
+}
+
+.prose {
+	font-size: 16px;
+	line-height: 2;
+}
+
+.prose p {
+	margin: 0 0 22px;
+}
+
+.event-details {
+	margin-top: 40px;
+}
+
+.event-details p {
+	display: grid;
+	grid-template-columns: max-content 1fr;
+	gap: 12px;
+	margin: 0 0 14px;
+}
+
+.schedule-section {
+	padding: 88px 0;
+	background: #fff;
+}
+
+.schedule-details {
+	max-width: 720px;
+	margin: 0 auto;
+	font-size: 16px;
+	line-height: 2;
+}
+
+.schedule-details h3 {
+	margin: 0 0 24px;
+	font-size: 22px;
+	font-weight: 500;
+}
+
+.schedule-details ul {
+	margin: 0;
+	padding-left: 1.5em;
+}
+
+.contact-section {
+	padding: 72px 0 88px;
+	background: #f4f9fc;
+	text-align: center;
+}
+
+.contact-section p {
+	margin: 8px 0;
+	font-size: 16px;
+	line-height: 1.8;
+}
+
+.contact-section a {
+	color: #00a6e9;
+	text-decoration: none;
+}
+
+.contact-section a:hover {
+	text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+	.breakfast-intro,
+	.schedule-section,
+	.contact-section {
+		padding: 64px 0;
+	}
+
+	.intro-grid {
+		grid-template-columns: 1fr;
+		gap: 36px;
+	}
+
+	.intro-images {
+		gap: 16px;
+	}
+
+	.event-details p {
+		display: block;
+	}
+
+	.event-details strong {
+		display: block;
+		margin-bottom: 2px;
+	}
+}
+</style>

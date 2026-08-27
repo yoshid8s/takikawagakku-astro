@@ -1,0 +1,2430 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const availabilityItems = [
+	{
+		key: '202608',
+		label: '8月',
+		src: '/images/community-center/availability/202608.svg',
+		alt: '2026年8月 滝川コミュニティセンター空室状況',
+	},
+	{
+		key: '202609',
+		label: '9月',
+		src: '/images/community-center/availability/202609.svg',
+		alt: '2026年9月 滝川コミュニティセンター空室状況',
+	},
+	{
+		key: '202610',
+		label: '10月',
+		src: '/images/community-center/availability/202610.svg',
+		alt: '2026年10月 滝川コミュニティセンター空室状況',
+	},
+	{
+		key: '202611',
+		label: '11月',
+		src: '/images/community-center/availability/202611.svg',
+		alt: '2026年11月 滝川コミュニティセンター空室状況',
+	},
+];
+
+const rooms = [
+	{
+		title: '第1会議室',
+		image: '/images/community-center/rooms/room-01.png',
+		alt: '滝川コミュニティセンター 第1会議室',
+		content: `
+			<p>広さ 46.93㎡</p>
+			<ul>
+				<li>集会・講演会・学習会などにご利用いただけます。</li>
+				<li>約 40 名(イスのみ)~約 20 名(テーブル・イスあり)</li>
+                <li>プロジェクター用スクリーン、ホワイトボード(固定式)</li>
+                <li>第1会議室と第2会議室をつなげて 1 つの会議室としてご利用いただくこともできます。</li>
+                <li>館内フリーWi-Fi 利用可能です。</li>
+			</ul>
+		`,
+	},
+	{
+		title: '第2会議室',
+		image: '/images/community-center/rooms/room-02.png',
+		alt: '滝川コミュニティセンター 第2会議室',
+		content: `
+			<p>広さ 36.06㎡</p>
+			<ul>
+				<li>集会・講演会・学習会などにご利用いただけます。</li>
+				<li>約 30 名(イスのみ)~約 15 名(テーブル・イスあり)</li>
+                <li>ホワイトボード(可動式)</li>
+                <li>第1会議室と第2会議室をつなげて 1 つの会議室としてご利用いただくこともできます。</li>
+                <li>館内フリーWi-Fi 利用可能です。</li>
+			</ul>
+		`,
+	},
+	{
+		title: '和室',
+		image: '/images/community-center/rooms/japanese-room.png',
+		alt: '滝川コミュニティセンター 和室',
+		content: `
+			<p>12帖と10帖の和室があります。</p>
+			<ul>
+				<li>茶道・囲碁・将棋の他、会議にもご利用いただけます。</li>
+				<li>約 40 名(イスのみ)~約 20 名(テーブル・イスあり)</li>
+                <li>炉、床の間、ホワイトボード(固定式)、テーブル、イス
+                ※ 通常はカーペット敷き(取り外して畳での使用可)</li>
+                <li>この他、調理室、湯沸室、多目的トイレ、などの部屋や設備があります。</li>
+                <li>館内フリーWi-Fi 利用可能です。</li>
+			</ul>
+		`,
+	},
+];
+---
+
+<Layout title="滝川コミュニティセンター">
+	<main class="community-center-page">
+		<section
+			class="community-center-hero"
+			style={`background-image: linear-gradient(rgba(0,0,0,.25), rgba(0,0,0,.25)), url('/images/community-center/hero.jpg');`}
+		>
+			<h1>滝川コミュニティセンター</h1>
+		</section>
+
+		<nav class="breadcrumbs" aria-label="パンくずリスト">
+			<a href="/">Home</a>
+			<span>/</span>
+			<span>滝川コミュニティセンター</span>
+		</nav>
+
+		<section class="intro-section content-section">
+			<div class="section-inner two-column">
+				<div class="section-text">
+					<h2>滝川コミュニティセンター</h2>
+
+					<p>
+						滝川コミュニティセンターは、市の指定管理者制度により、指定管理者となった滝川学区自治協議会が
+                        運営委員会を設置して管理・運営している公共施設で、平成23年12月に開館しました。
+                        滝川学区自治協議会および滝川コミュニティセンターが主催する 「文化教養講座」 を
+                        定期的に開催しているほか、学区の皆様を中心としたサークル活動や学習会、会合など 
+                        自主活動クラブ の拠点として幅広く活用していただいています。
+                        また、滝川学区社会福祉協議会による 「困りごと相談窓口」 も設置されています。
+					</p>
+
+					<p>
+						滝川コミセンに関するニュースは<a href="/category/%e6%bb%9d%e5%b7%9d%e3%82%b3%e3%83%9f%e3%82%bb%e3%83%b3">こちら</a> 
+					</p>
+				</div>
+
+				<div class="section-image">
+					<img
+						src="/images/community-center/exterior.png"
+						alt="滝川コミュニティセンター外観"
+						loading="lazy"
+					/>
+				</div>
+			</div>
+		</section>
+
+		<section class="availability-section content-section">
+			<div class="section-inner">
+				<h2>滝川コミセンの空室状況・予約</h2>
+
+				<p class="section-lead">
+					滝川コミセンで開催されている自主活動クラブを含めたイベントカレンダーです。
+				</p>
+                <p class="attention-note">
+                    令和8年8月22日更新
+                </p>
+				<div
+					class="availability-tabs"
+					role="tablist"
+					aria-label="空室状況 月選択"
+				>
+					{
+						availabilityItems.map((item, index) => (
+							<button
+								class:list={[
+									'availability-tab',
+									index === 0 && 'is-active',
+								]}
+								type="button"
+								role="tab"
+								aria-selected={index === 0 ? 'true' : 'false'}
+								data-availability-tab={item.key}
+							>
+								{item.label}
+							</button>
+						))
+					}
+				</div>
+
+				<div class="availability-panels">
+					{
+						availabilityItems.map((item, index) => (
+							<div
+								class:list={[
+									'availability-panel',
+									index === 0 && 'is-active',
+								]}
+								data-availability-panel={item.key}
+								role="tabpanel"
+							>
+								<button
+									class="availability-image-button"
+									type="button"
+									data-lightbox-image={item.src}
+									data-lightbox-group="availability"
+									aria-label={`${item.alt}を拡大表示`}
+								>
+									<img
+										src={item.src}
+										alt={item.alt}
+										loading={index === 0 ? 'eager' : 'lazy'}
+									/>
+								</button>
+
+								<p class="availability-caption">
+									画像をクリックすると拡大表示できます。
+								</p>
+							</div>
+						))
+					}
+				</div>
+
+				<div class="reservation-notice">
+					<h3>新規に滝川コミセンのご利用希望の方へ</h3>
+                    <ul>
+                        <li>滝川コミセンへの直接ご訪問いただき、申込書を提出いただくか、 オンラインからもお申し込みができます。</li>
+                        <li>オンライン申し込みには、滝川コミセンを訪問されてのお申し込みが優先されますので、お申し込み時点で空室でも予約保証をするものではありませんので、あらかじめご了承ください。</li>
+                        <li>お申し込みは「先着順」による受付で、電話・メール・ファックス等によるお申し込みや仮予約はできません。</li>
+                        <li>空室状況は毎月第1・第3土曜日更新です。</li>
+                        <li>最新の利用情報は電話にてお問合せください。052-710-8621</li>
+                    </ul>
+
+					<div class="reservation-actions">
+						<a
+							class="primary-button"
+							href="https://takikawagakku.jp/takikawa_community_icenter/comisen-reserve/"
+						>
+							オンラインで予約する
+						</a>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="facility-section content-section content-section--white">
+			<div class="section-inner">
+				<h2>施設概要</h2>
+
+				<div class="info-grid">
+					<div class="info-card">
+						<h3>所在地</h3>
+						<p>
+							〒466-0827<br />
+							名古屋市昭和区川名山町46-4
+						</p>
+                        <h3>駐車場について</h3>
+						<p>
+							駐車場が狭いため、できるだけお車のご利用はお控えください。<br />
+                            なお、駐車場のご利用は 1 団体につき2台までとさせていただきます。<br />
+                            それ以外は、お近くのコインパーキングをご利用ください。
+						</p>
+					</div>
+
+                    <div class="info-card">
+						<h3>施設概要</h3>
+						<ul>
+							<li>面 積 敷地 501.63 m2 延床 299.91 m2</li>
+                            <li>構造・規模 鉄筋コンクリート造り 2階建て</li>
+                            <li>その他 太陽光発電施設併設</li>
+                            <li>当センターでは、「AED」(自動体外式除細動器)を備えています。</li>　
+						</ul>
+                        <p class="attention-note">エレベーターはありません</p>
+					</div>
+
+					<div class="info-card">
+						<h3>開館時間</h3>
+						<p>
+							9:00〜20:00
+						</p>
+						<p>
+							窓口業務：9:00〜16:00
+						</p>
+                        <h3>お問い合わせ</h3>
+						<p>
+							TEL.052-710-8621
+						</p>
+					</div>
+
+					<div class="info-card">
+						<h3>休館日</h3>
+						<p>毎週月曜日</p>
+						<p>夏季休館：8月12日〜16日</p>
+						<p>年末年始：12月28日〜1月6日</p>
+                        <p>その他、運営委員会が定める日</p>
+					</div>
+
+					<div class="info-card">
+						<h3>利用の制限</h3>
+						<p>
+							以下に該当する場合はご利用いただけません。
+						</p>
+                        <ul>
+							<li>法律で定める選挙における選挙運動としての利用</li>
+                            <li>専ら営利を目的とした利用（ただし、地域の公共団体等がバザーなど得た利益を公共の目的に利用する場合を除きます。）</li>
+                            <li>その他、管理運営上、支障があると運営委員会が判断したとき</li>
+						</ul>
+					</div>
+
+                    <div class="info-card">
+						<h3>主な利用例</h3>
+                        <ul>
+							<li>サークル・各種団体の会合、練習</li>
+                            <li>各種教室の発表会</li>
+                            <li>勉強会・趣味の会</li>
+                            <li>お仲間同士での食事会</li>
+                            <li>子ども会や老人クラブ、保育園などの行事</li>
+                            <li>ハロウィンパーティー・クリスマス会・誕生日会</li>
+                            <li>お茶会 など</li>
+						</ul>
+					</div>
+
+                    <div class="info-card">
+						<h3>利用ルール遵守のお願い</h3>
+                        <ul>
+							<li>全館禁煙にご協力ください。</li>
+                            <li>所定の場所を除き、火気の使用はできません。</li>
+                            <li>出たゴミはすべてお持ち帰りください。</li>
+                            <li>他の利用者に迷惑がかかる行為はお控えください。</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</section>
+
+        <section class="rooms-section">
+            <div class="section-inner">
+                <h2>お部屋のご案内</h2>
+
+                <div class="rooms-intro">
+                    <p>
+                        ご利用になれるお部屋は、以下の3部屋の他に調理室があります。
+                    </p>
+                    <p>
+                        同時に複数の部屋をご利用いただくこともできます。
+                    </p>
+                </div>
+
+                <div class="rooms-notes">
+                    <ul>
+                        <li>
+                            2つの会議室を1部屋として利用する際は、2部屋分の利用料が必要となります。
+                        </li>
+                        <li>
+                            楽器を使用したり、大きな声や音を出す場合は、和室又は会議室2室のご利用をお願いする場合があります。
+                        </li>
+                        <li>
+                            「調理室」の一般利用については他の利用区分との併用であり湯沸かしないし調理を伴う利用に限ります。
+                        </li>
+                    </ul>
+                </div>
+				<div class="room-grid">
+					{
+						rooms.map((room) => (
+							<article class="room-card">
+								<img
+									src={room.image}
+									alt={room.alt}
+									loading="lazy"
+								/>
+
+								<div class="room-card__body">
+									<h3>{room.title}</h3>
+									<div set:html={room.content} />
+								</div>
+							</article>
+						))
+					}
+				</div>
+			</div>
+		</section>
+
+		<section class="floor-section content-section content-section--white">
+			<div class="section-inner">
+				<h2>館内平面図</h2>
+
+				<div class="floor-grid">
+					<figure>
+						<button
+							class="floor-image-button"
+							type="button"
+							data-lightbox-image="/images/community-center/floor/1f.png"
+							data-lightbox-group="floor"
+							aria-label="1階平面図を拡大表示"
+						>
+							<img
+								src="/images/community-center/floor/1f.png"
+								alt="滝川コミュニティセンター 1階平面図"
+								loading="lazy"
+							/>
+						</button>
+						<figcaption>1階平面図</figcaption>
+					</figure>
+
+					<figure>
+						<button
+							class="floor-image-button"
+							type="button"
+							data-lightbox-image="/images/community-center/floor/2f.png"
+							data-lightbox-group="floor"
+							aria-label="2階平面図を拡大表示"
+						>
+							<img
+								src="/images/community-center/floor/2f.png"
+								alt="滝川コミュニティセンター 2階平面図"
+								loading="lazy"
+							/>
+						</button>
+						<figcaption>2階平面図</figcaption>
+					</figure>
+				</div>
+			</div>
+		</section>
+
+        <section class="usage-section content-section">
+            <div class="section-inner">
+                <h2>利用時間</h2>
+
+                <p class="usage-description">
+                    ご利用は、以下の時間区分によります。
+                    なお、時間区分を連続してご利用の場合は、
+                    あいだの時間も利用していただけます。
+                </p>
+
+                <div class="usage-table-wrap">
+                    <table class="usage-table usage-time-table">
+                        <thead>
+                            <tr>
+                                <th>利用時間区分</th>
+                                <th>午前</th>
+                                <th>午後</th>
+                                <th>夜間</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <th>利用時間</th>
+                                <td>9:00〜12:00</td>
+                                <td>13:00〜16:00</td>
+                                <td>17:00〜20:00</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="usage-fee">
+                    <h2>利用料</h2>
+
+                    <p>
+                        利用料は、利用代表者の方のお住まいの地域により異なります。
+                    </p>
+
+                    <div class="usage-table-wrap">
+                        <table class="usage-table fee-table">
+                            <thead>
+                                <tr>
+                                    <th>時間区分及び<br />施設区分単位</th>
+                                    <th>滝川学区在住の方</th>
+                                    <th>それ以外の方</th>
+                                    <th>学区自治協議会関係</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr>
+                                    <th>利用料</th>
+                                    <td>
+                                        会議室&nbsp; 1,200 円<br />
+                                        調理室&nbsp; 600 円
+                                    </td>
+                                    <td>
+                                        会議室&nbsp; 2,200 円<br />
+                                        調理室&nbsp; 1,100 円
+                                    </td>
+                                    <td>減免適用</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <ul class="usage-fee-notes">
+                        <li>
+                            2つの会議室を1部屋として利用する際は、
+                            2部屋分の利用料が必要となります。
+                        </li>
+                        <li>
+                            上記の利用料には、冷暖房費を含みます。
+                        </li>
+                    </ul>
+
+                    <p class="usage-example">
+                        （例）滝川学区在住の方が、「午前」に1部屋利用される場合の
+                        利用料は「1,200円」となり、「午前」と「午後」を利用される場合は
+                        「2,400円」となります。
+                    </p>
+
+                    <div class="cancellation-fee">
+                        <h3>【取消料】</h3>
+
+                        <ul>
+                            <li>
+                                利用者のご都合により、予約後の利用を取り消される場合は、
+                                以下の通り「取消料」を申し受けます。
+                            </li>
+                            <li>
+                                センターの都合又は暴風警報等の発令により
+                                利用できなかった場合の取消料は不要です。
+                            </li>
+                            <li>
+                                <strong>利用日の前日・当日　利用料の100%</strong>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+		<section class="rules-section content-section content-section--white">
+			<div class="section-inner">
+				<h2>利用方法・利用上のお願い</h2>
+
+				<div class="accordion-list">
+					<details>
+						<summary>
+							<span>利用申込について</span>
+							<span aria-hidden="true">＋</span>
+						</summary>
+
+						<div class="accordion-body">
+							<p>
+								利用を希望される方は、空室状況をご確認のうえ、
+								窓口またはオンライン予約をご利用ください。
+							</p>
+
+							<p>
+								窓口での申し込みが優先となり、オンラインへの予約データ反映が遅れることがありますので、
+								オンライン上で空室と表示されていても、
+								予約済みの場合があります。
+							</p>
+						</div>
+					</details>
+
+					<details>
+						<summary>
+							<span>利用上のお願い</span>
+							<span aria-hidden="true">＋</span>
+						</summary>
+
+						<div class="accordion-body">
+							<ul>
+								<li>施設・設備は大切にご利用ください。</li>
+								<li>利用後は室内を原状に戻してください。</li>
+								<li>ゴミは各自ですべてお持ち帰りください。</li>
+								<li>他の利用者や近隣の迷惑となる行為はお控えください。</li>
+                                <li>全館禁煙にご協力ください。</li>
+                                <li>所定の場所を除き、火気の使用はできません。</li>
+							</ul>
+						</div>
+					</details>
+
+					<details>
+						<summary>
+							<span>臨時休館・警報発令時について</span>
+							<span aria-hidden="true">＋</span>
+						</summary>
+
+						<div class="accordion-body">
+							<p>
+								以下に該当する場合は「臨時休館」となります。
+							</p>
+
+							<ul>
+								<li>名古屋市域に「暴風警報」が発令されたとき。</li>
+                                <li>昭和区に「震度 5 弱」以上の地震が発生したとき。</li>
+								<li>利用者の安全が確保されないと判断されるとき。</li>
+								<li>センター又は学区主催の行事(その準備を含む)等と重なったとき。</li>
+								<li>センターに避難所が開設されたとき。</li>
+                                <li>その他、運営委員会において必要と判断したいとき。</li>
+							</ul>
+						</div>
+					</details>
+                    <details>
+						<summary>
+							<span>警報発令時の対応</span>
+							<span aria-hidden="true">＋</span>
+						</summary>
+
+						<div class="accordion-body">
+							<ul>
+								<li>午前7時までに解除：通常通り開館</li>
+                                <li>午前7時時点で発令中：午前閉館</li>
+								<li>午前11時時点で発令中：午後閉館</li>
+								<li>午後3時時点で発令中：夜間閉館</li>
+							</ul>
+						</div>
+					</details>
+                    <details open>
+                        <summary>
+                                <span>設備・貸出備品一覧</span>
+                                <span aria-hidden="true">＋</span>
+                            </summary>
+
+                            <div class="accordion-body">
+                                <div class="equipment-table-wrap">
+                                    <table class="equipment-table">
+                                        <thead>
+                                            <tr>
+                                                <th>設備・物品名</th>
+                                                <th>第１会議室</th>
+                                                <th>第２会議室</th>
+                                                <th>和室</th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody>
+                                            <tr>
+                                                <th>冷暖房</th>
+                                                <td>○</td>
+                                                <td>○</td>
+                                                <td>○</td>
+                                            </tr>
+
+                                            <tr>
+                                                <th>フリーWi-Fi</th>
+                                                <td>○</td>
+                                                <td>○</td>
+                                                <td>○（取り外し可）</td>
+                                            </tr>
+
+                                            <tr>
+                                                <th>カーペット</th>
+                                                <td>×</td>
+                                                <td>×</td>
+                                                <td>○</td>
+                                            </tr>
+
+                                            <tr>
+                                                <th>暗幕（遮光カーテン）</th>
+                                                <td>○</td>
+                                                <td>○</td>
+                                                <td>×</td>
+                                            </tr>
+
+                                            <tr>
+                                                <th>ホワイトボード（固定式）</th>
+                                                <td>○1</td>
+                                                <td>×</td>
+                                                <td>×</td>
+                                            </tr>
+
+                                            <tr>
+                                                <th>ホワイトボード（可動式）</th>
+                                                <td colspan="2">○1</td>
+                                                <td>○1</td>
+                                            </tr>
+
+                                            <tr>
+                                                <th>ホワイトボード用マーカー</th>
+                                                <td colspan="3">○（黒・赤・青）</td>
+                                            </tr>
+
+                                            <tr>
+                                                <th>大型姿見（可搬式）</th>
+                                                <td colspan="2">○1</td>
+                                                <td>×</td>
+                                            </tr>
+
+                                            <tr>
+                                                <th>テーブル（腰高）</th>
+                                                <td colspan="2">○可動式20</td>
+                                                <td>○可動式10</td>
+                                            </tr>
+
+                                            <tr>
+                                                <th>テーブル（座敷用）</th>
+                                                <td>×</td>
+                                                <td>×</td>
+                                                <td>○5</td>
+                                            </tr>
+
+                                            <tr>
+                                                <th>イス</th>
+                                                <td colspan="2">○60</td>
+                                                <td>○折畳み20</td>
+                                            </tr>
+
+                                            <tr>
+                                                <th>座布団</th>
+                                                <td>×</td>
+                                                <td>×</td>
+                                                <td>○20</td>
+                                            </tr>
+
+                                            <tr>
+                                                <th>演台</th>
+                                                <td colspan="2">○1</td>
+                                                <td>×</td>
+                                            </tr>
+
+                                            <tr>
+                                                <th>ロールスクリーン（固定式）</th>
+                                                <td>○1</td>
+                                                <td>×</td>
+                                                <td>×</td>
+                                            </tr>
+
+                                            <tr>
+                                                <th>プロジェクター</th>
+                                                <td colspan="3">○1（パソコン要持参）</td>
+                                            </tr>
+
+                                            <tr>
+                                                <th>延長コード</th>
+                                                <td colspan="3">○2（10mコード／30mコードリール）</td>
+                                            </tr>
+
+                                            <tr>
+                                                <th>ワイヤレスマイク</th>
+                                                <td colspan="3">○3</td>
+                                            </tr>
+
+                                            <tr>
+                                                <th>有線マイク</th>
+                                                <td colspan="3">○1</td>
+                                            </tr>
+
+                                            <tr>
+                                                <th>ピンマイク</th>
+                                                <td colspan="3">○1</td>
+                                            </tr>
+
+                                            <tr>
+                                                <th>マイクスタンド</th>
+                                                <td colspan="3">○1</td>
+                                            </tr>
+
+                                            <tr>
+                                                <th>スピーカーアンプ（可搬式）</th>
+                                                <td colspan="3">○1</td>
+                                            </tr>
+
+                                            <tr>
+                                                <th>茶道用炉</th>
+                                                <td>×</td>
+                                                <td>×</td>
+                                                <td>○1</td>
+                                            </tr>
+
+                                            <tr>
+                                                <th>炉縁</th>
+                                                <td>×</td>
+                                                <td>×</td>
+                                                <td>○1（漆塗り）</td>
+                                            </tr>
+
+                                            <tr>
+                                                <th>湯飲み</th>
+                                                <td colspan="3">○20</td>
+                                            </tr>
+
+                                            <tr>
+                                                <th>コップ（ガラス）</th>
+                                                <td colspan="3">○20</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <ul class="equipment-notes">
+                                    <li>
+                                        貸出し・使用は無料です。備品の貸出しをご希望の方は「利用申込書」にご記入ください。
+                                    </li>
+                                    <li>
+                                        数に限りがありますので、貸出しは申し込み順とします。
+                                    </li>
+                                    <li>
+                                        備品の設置、移動、片付けなどは各自で行っていただきます。
+                                    </li>
+                                    <li>
+                                        破損などの場合には、現状復帰または弁償していただきますので、大切にご使用ください。
+                                    </li>
+                                </ul>
+                            </div>
+					</details>
+				</div>
+			</div>
+		</section>
+
+		<section class="emergency-section content-section">
+			<div class="section-inner two-column">
+				<div class="section-text">
+					<h2>指定緊急避難場所・指定避難所としての役割</h2>
+
+					<p>
+						滝川コミュニティセンターは、災害時に地域のみなさまの安全を確保するための
+						施設としても重要な役割を担っています。
+					</p>
+                    <p class="attention-note-left">
+                        ＊地震・大規模火災には適しておりません
+                    </p>
+                    <ul>
+					    <li>指定緊急避難場所<br />
+                        命を守るため災害の危険から非難する場所</li>
+						<li>指定避難所<br />
+						帰宅困難時に一定期間避難生活を送る場所</li>
+					</ul>
+				</div>
+
+				<div class="section-image">
+					<button
+						class="emergency-image-button"
+						type="button"
+						data-lightbox-image="/images/community-center/emergency/emergency-place.jpg"
+						data-lightbox-group="emergency"
+						aria-label="指定緊急避難場所の案内写真を拡大表示"
+					>
+						<img
+							src="/images/community-center/emergency/emergency-place.jpg"
+							alt="指定緊急避難場所の案内"
+							loading="lazy"
+						/>
+					</button>
+				</div>
+			</div>
+		</section>
+
+		<div
+			class="image-lightbox"
+			id="community-center-lightbox"
+			aria-hidden="true"
+		>
+			<button
+				class="image-lightbox__close"
+				type="button"
+				aria-label="画像を閉じる"
+			>
+				×
+			</button>
+
+			<button
+				class="image-lightbox__nav image-lightbox__nav--prev"
+				type="button"
+				aria-label="前の画像"
+			>
+				‹
+			</button>
+
+			<div class="image-lightbox__content">
+				<img
+					class="image-lightbox__image"
+					src=""
+					alt=""
+				/>
+
+				<p class="image-lightbox__counter"></p>
+			</div>
+
+			<button
+				class="image-lightbox__nav image-lightbox__nav--next"
+				type="button"
+				aria-label="次の画像"
+			>
+				›
+			</button>
+		</div>
+	</main>
+</Layout>
+
+<style>
+	/* =========================================================
+	   Base
+	========================================================= */
+
+	.community-center-page {
+		background: #f4f9fc;
+		color: #111827;
+	}
+
+	.content-section {
+		padding: 80px 0;
+	}
+
+	.content-section--white {
+		background: #fff;
+	}
+
+	.section-inner {
+		width: min(calc(100% - 64px), 1440px);
+		margin: 0 auto;
+	}
+
+	.section-inner > h2,
+	.section-text > h2 {
+		margin: 0 0 36px;
+		font-size: clamp(32px, 4vw, 50px);
+		font-weight: 400;
+		line-height: 1.4;
+	}
+
+	.section-inner > h2 {
+		text-align: center;
+	}
+
+	.section-lead {
+		max-width: 1000px;
+		margin: 0 auto 40px;
+		font-size: 17px;
+		line-height: 1.9;
+		text-align: center;
+	}
+
+	.attention-note {
+		max-width: 1000px;
+		margin: 0 auto 40px;
+		color: #f00;
+		font-size: 17px;
+		line-height: 1.9;
+		text-align: center;
+	}
+
+    .attention-note-left {
+		max-width: 1000px;
+		margin: 0 auto 40px;
+		color: #f00;
+		font-size: 17px;
+		line-height: 1.9;
+		text-align: left;
+	}
+
+
+	/* =========================================================
+	   Hero
+	========================================================= */
+
+	.community-center-hero {
+		display: grid;
+		min-height: 480px;
+		place-items: center;
+		background-position: center;
+		background-size: cover;
+	}
+
+	.community-center-hero h1 {
+		margin: 0;
+		color: #fff;
+		font-size: clamp(40px, 5vw, 68px);
+		font-weight: 400;
+		text-align: center;
+		text-shadow: 0 2px 12px rgb(0 0 0 / 30%);
+	}
+
+
+	/* =========================================================
+	   Breadcrumbs
+	========================================================= */
+
+	.breadcrumbs {
+		display: flex;
+		width: min(calc(100% - 48px), 1280px);
+		margin: 0 auto;
+		padding: 32px 0;
+		gap: 12px;
+		font-size: 14px;
+	}
+
+	.breadcrumbs a {
+		color: #009fe8;
+		text-decoration: none;
+	}
+
+
+	/* =========================================================
+	   Generic two-column
+	========================================================= */
+
+	.two-column {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) minmax(420px, 0.9fr);
+		align-items: center;
+		gap: 72px;
+	}
+
+	.section-text p {
+		margin: 0 0 22px;
+		font-size: 17px;
+		line-height: 1.9;
+	}
+
+	.section-image img {
+		display: block;
+		width: 100%;
+		height: auto;
+	}
+
+
+	/* =========================================================
+	   Intro
+	========================================================= */
+
+	.intro-section .section-image {
+		width: 100%;
+		max-width: 520px;
+		justify-self: end;
+	}
+
+	.intro-section .section-image img {
+		display: block;
+		width: 100%;
+		height: auto;
+	}
+
+
+	/* =========================================================
+	   Availability
+	========================================================= */
+
+	.availability-tabs {
+		display: flex;
+		justify-content: center;
+		gap: 8px;
+		margin-bottom: 28px;
+	}
+
+	.availability-tab {
+		min-width: 88px;
+		padding: 12px 20px;
+		border: 1px solid #d1d5db;
+		border-radius: 999px;
+		background: #fff;
+		color: #374151;
+		cursor: pointer;
+		font-size: 15px;
+	}
+
+	.availability-tab.is-active {
+		border-color: #0da5df;
+		background: #0da5df;
+		color: #fff;
+	}
+
+	.availability-panel {
+		display: none;
+		max-width: 1100px;
+		margin: 0 auto;
+	}
+
+	.availability-panel.is-active {
+		display: block;
+	}
+
+	.availability-image-button,
+	.floor-image-button,
+	.emergency-image-button {
+		display: block;
+		width: 100%;
+		padding: 0;
+		border: 0;
+		background: transparent;
+		cursor: zoom-in;
+	}
+
+	.availability-image-button img,
+	.floor-image-button img,
+	.emergency-image-button img {
+		display: block;
+		width: 100%;
+		height: auto;
+	}
+
+	.availability-image-button img {
+		border: 1px solid #d1d5db;
+		background: #fff;
+	}
+
+	.availability-caption {
+		margin: 12px 0 0;
+		color: #6b7280;
+		font-size: 13px;
+		text-align: center;
+	}
+
+
+	/* =========================================================
+	   Reservation
+	========================================================= */
+
+	.reservation-notice {
+		max-width: 1000px;
+		margin: 48px auto 0;
+		padding: 32px;
+		border-radius: 12px;
+		background: #fff;
+	}
+
+	.reservation-notice h3 {
+		margin: 0 0 20px;
+		font-size: 22px;
+	}
+
+	.reservation-notice ul {
+		margin: 0;
+		padding-left: 1.4em;
+		list-style: disc outside;
+	}
+
+	.reservation-notice li {
+		display: list-item;
+		margin-bottom: 10px;
+		line-height: 1.8;
+	}
+
+	.reservation-actions {
+		margin-top: 28px;
+	}
+
+	.primary-button {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		min-height: 50px;
+		padding: 0 26px;
+		border-radius: 6px;
+		background: #ea7300;
+		color: #fff;
+		font-weight: 600;
+		text-decoration: none;
+	}
+
+	.primary-button:hover {
+		background: #d86700;
+	}
+
+
+	/* =========================================================
+	   Facility information
+	========================================================= */
+
+	.info-grid {
+		display: grid;
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+		gap: 24px;
+	}
+
+	.info-card {
+		padding: 28px;
+		border: 1px solid #e5e7eb;
+		border-radius: 10px;
+	}
+
+	.info-card h3 {
+		margin: 0 0 16px;
+		font-size: 19px;
+	}
+
+	.info-card p {
+		margin: 0 0 8px;
+		line-height: 1.8;
+	}
+
+
+	/* =========================================================
+	   Rooms
+	========================================================= */
+
+	.rooms-section {
+		padding: 64px 0 72px;
+	}
+
+	.rooms-section .section-inner {
+		width: min(calc(100% - 48px), 1120px);
+		margin: 0 auto;
+	}
+
+	.rooms-section .section-inner > h2 {
+		margin: 0 0 36px;
+		text-align: center;
+	}
+
+	/*
+	 * 説明文は「文字列の幅」に合わせた独立ブロック。
+	 * ブロック自体を中央配置し、中の文章は左揃え。
+	 */
+	.rooms-intro {
+		width: fit-content;
+		max-width: 100%;
+		margin: 0 auto;
+		text-align: left;
+	}
+
+	.rooms-intro p {
+		margin: 0 0 12px;
+		line-height: 1.8;
+	}
+
+	.rooms-intro p:last-child {
+		margin-bottom: 0;
+	}
+
+	/*
+	 * 注意事項も独立したブロック。
+	 * 内容幅に合わせた箱全体を中央へ置く。
+	 */
+	.rooms-notes {
+		width: fit-content;
+		max-width: 100%;
+		margin: 32px auto 40px;
+		text-align: left;
+	}
+
+	.rooms-notes ul {
+		margin: 0;
+		padding-left: 1.5em;
+		list-style: disc outside;
+	}
+
+	.rooms-notes li {
+		display: list-item;
+		margin: 0 0 12px;
+		line-height: 1.8;
+	}
+
+	.rooms-notes li:last-child {
+		margin-bottom: 0;
+	}
+
+	.room-grid {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 28px;
+		width: 100%;
+		margin: 0 auto;
+	}
+
+	.room-card {
+		min-width: 0;
+		overflow: hidden;
+		border-radius: 10px;
+		background: #fff;
+	}
+
+    .room-card > img {
+        display: block;
+        width: calc(100% - 32px);
+        height: 280px;
+        margin: 16px auto 0;
+        object-fit: cover;
+        object-position: center;
+    }
+
+	.room-card__body {
+		padding: 28px;
+	}
+
+	.room-card__body h3 {
+		margin: 0 0 16px;
+		font-size: 22px;
+	}
+
+	.room-card__body :global(p) {
+		margin: 0 0 14px;
+		line-height: 1.8;
+	}
+
+	.room-card__body :global(ul) {
+		margin: 16px 0 0;
+		padding-left: 1.4em;
+		list-style: disc outside;
+	}
+
+	.room-card__body :global(li) {
+		display: list-item;
+		margin: 0 0 10px;
+		padding-left: 0.2em;
+		line-height: 1.7;
+	}
+
+
+	/* =========================================================
+	   Floor maps
+	========================================================= */
+
+	.floor-grid {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 36px;
+	}
+
+	.floor-grid figure {
+		margin: 0;
+	}
+
+	.floor-grid img {
+		border: 1px solid #e5e7eb;
+		background: #fff;
+	}
+
+	.floor-grid figcaption {
+		margin-top: 12px;
+		font-size: 15px;
+		text-align: center;
+	}
+
+
+	/* =========================================================
+	   Usage time / fees
+	========================================================= */
+
+	.usage-description {
+		max-width: 1000px;
+		margin: 0 auto 32px;
+		font-size: 17px;
+		line-height: 1.9;
+		text-align: left;
+	}
+
+	.usage-table-wrap {
+		overflow-x: auto;
+	}
+
+	.usage-table {
+		width: min(100%, 1100px);
+		margin: 0 auto;
+		border-collapse: collapse;
+		background: #fff;
+	}
+
+	.usage-table th,
+	.usage-table td {
+		padding: 18px 20px;
+		border: 2px solid #4b5b42;
+		text-align: center;
+		line-height: 1.7;
+		vertical-align: middle;
+	}
+
+	.usage-time-table th {
+		background: #f4f6f8;
+		font-weight: 600;
+	}
+
+	.usage-note {
+		margin: 20px 0 0;
+		text-align: center;
+	}
+
+	.usage-fee {
+		margin-top: 80px;
+	}
+
+	.usage-fee > h2 {
+		margin: 0 0 36px;
+		font-size: clamp(32px, 4vw, 50px);
+		font-weight: 400;
+		text-align: center;
+	}
+
+	.usage-fee > p {
+		max-width: 1100px;
+		margin: 0 auto 30px;
+		font-size: 17px;
+		line-height: 1.9;
+		text-align: left;
+	}
+
+	.fee-table {
+		max-width: 1200px;
+	}
+
+	.fee-table th,
+	.fee-table td {
+		background: #ffdf72;
+		font-size: 17px;
+	}
+
+	.fee-table thead th {
+		font-weight: 700;
+	}
+
+	.usage-fee-notes {
+		max-width: 1140px;
+		margin: 32px auto 0;
+		padding-left: 1.5em;
+		list-style: disc outside;
+	}
+
+	.usage-fee-notes li {
+		display: list-item;
+		margin-bottom: 8px;
+		line-height: 1.8;
+	}
+
+	.usage-example {
+		max-width: 1140px !important;
+		margin-top: 8px !important;
+	}
+
+	.cancellation-fee {
+		max-width: 1140px;
+		margin: 24px auto 0;
+	}
+
+	.cancellation-fee h3 {
+		margin: 0 0 12px;
+		font-size: 18px;
+	}
+
+	.cancellation-fee ul {
+		margin: 0;
+		padding-left: 1.5em;
+		list-style: disc outside;
+	}
+
+	.cancellation-fee li {
+		display: list-item;
+		margin-bottom: 8px;
+		line-height: 1.8;
+	}
+
+
+	/* =========================================================
+	   Accordion
+	========================================================= */
+
+	.accordion-list {
+		display: grid;
+		max-width: 1100px;
+		margin: 0 auto;
+		gap: 16px;
+	}
+
+	.accordion-list details {
+		overflow: hidden;
+		border-radius: 8px;
+		background: #f4f9fc;
+	}
+
+	.accordion-list summary {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 20px 26px;
+		cursor: pointer;
+		font-size: 18px;
+		font-weight: 600;
+		list-style: none;
+	}
+
+	.accordion-list summary::-webkit-details-marker {
+		display: none;
+	}
+
+	.accordion-list details[open] summary span:last-child {
+		transform: rotate(45deg);
+	}
+
+	.accordion-body {
+		padding: 8px 26px 28px;
+	}
+
+	.accordion-body p,
+	.accordion-body li {
+		font-size: 16px;
+		line-height: 1.8;
+	}
+
+	.accordion-body ul {
+		padding-left: 1.4em;
+		list-style: disc outside;
+	}
+
+	.accordion-body li {
+		display: list-item;
+		margin-bottom: 8px;
+	}
+
+    /* =========================================================
+    Equipment
+    ========================================================= */
+
+    .equipment-section {
+        background: #f4f9fc;
+    }
+
+    .equipment-section .section-inner {
+        width: min(calc(100% - 64px), 1440px);
+        margin: 0 auto;
+    }
+
+    .equipment-accordion {
+        margin: 0;
+    }
+
+    .equipment-accordion > summary {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 18px 28px;
+        border-radius: 8px;
+        background: #0da5df;
+        color: #fff;
+        cursor: pointer;
+        font-size: 18px;
+        font-weight: 600;
+        list-style: none;
+    }
+
+    .equipment-accordion > summary::-webkit-details-marker {
+        display: none;
+    }
+
+    .equipment-accordion__icon {
+        font-size: 24px;
+        font-weight: 300;
+        line-height: 1;
+    }
+
+    .equipment-accordion:not([open]) .equipment-accordion__icon {
+        transform: rotate(90deg);
+    }
+
+    .equipment-accordion__body {
+        padding: 24px 20px 0;
+    }
+
+    .equipment-table-wrap {
+        overflow-x: auto;
+    }
+
+    .equipment-table {
+        width: min(100%, 1180px);
+        margin: 0 auto;
+        border-collapse: collapse;
+        background: #ffdf72;
+        table-layout: fixed;
+    }
+
+    .equipment-table th,
+    .equipment-table td {
+        padding: 10px 12px;
+        border: 1px solid #4b5b42;
+        background: #ffdf72;
+        color: #111827;
+        font-size: 14px;
+        line-height: 1.5;
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    .equipment-table thead th {
+        font-weight: 700;
+    }
+
+    .equipment-table thead th:first-child {
+        width: 39%;
+    }
+
+    .equipment-table tbody th {
+        font-weight: 400;
+    }
+
+    .equipment-notes {
+        width: min(100%, 1180px);
+        margin: 20px auto 0;
+        padding-left: 1.5em;
+        list-style: disc outside;
+        text-align: left;
+    }
+
+    .equipment-notes li {
+        display: list-item;
+        margin-bottom: 6px;
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+	/* =========================================================
+	   Lightbox
+	========================================================= */
+
+	.image-lightbox {
+		position: fixed;
+		z-index: 9999;
+		inset: 0;
+		display: none;
+		align-items: center;
+		justify-content: center;
+		padding: 48px;
+		background: rgb(0 0 0 / 88%);
+	}
+
+	.image-lightbox.is-open {
+		display: flex;
+	}
+
+	.image-lightbox__content {
+		display: flex;
+		max-width: 100%;
+		max-height: 100%;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+	}
+
+    .image-lightbox__image {
+        display: block;
+        width: auto;
+        height: auto;
+        max-width: min(1500px, 94vw);
+        max-height: 88vh;
+        object-fit: contain;
+
+        cursor: zoom-in;
+        user-select: none;
+        -webkit-user-drag: none;
+
+        transition: transform 0.15s ease;
+        transform-origin: center center;
+    }
+
+    .image-lightbox__image.is-zoomed {
+        cursor: grab;
+        transition: none;
+    }
+
+    .image-lightbox__image.is-dragging {
+        cursor: grabbing;
+    }
+
+	.image-lightbox__counter {
+		margin: 10px 0 0;
+		color: #fff;
+		font-size: 13px;
+	}
+
+	.image-lightbox__close {
+		position: absolute;
+		top: 18px;
+		right: 24px;
+		width: 48px;
+		height: 48px;
+		padding: 0;
+		border: 0;
+		background: transparent;
+		color: #fff;
+		cursor: pointer;
+		font-size: 42px;
+		line-height: 1;
+	}
+
+	.image-lightbox__nav {
+		position: absolute;
+		top: 50%;
+		display: grid;
+		width: 56px;
+		height: 72px;
+		place-items: center;
+		padding: 0;
+		border: 0;
+		background: rgb(0 0 0 / 25%);
+		color: #fff;
+		cursor: pointer;
+		font-size: 52px;
+		transform: translateY(-50%);
+	}
+
+	.image-lightbox__nav--prev {
+		left: 16px;
+	}
+
+	.image-lightbox__nav--next {
+		right: 16px;
+	}
+
+	.image-lightbox__nav:disabled {
+		display: none;
+	}
+
+    .lightbox-image {
+        cursor: zoom-in;
+        transition: transform 0.25s ease;
+        transform-origin: center center;
+    }
+
+    .lightbox-image.is-zoomed {
+        transform: scale(2);
+        cursor: zoom-out;
+    }
+
+	/* =========================================================
+	   Tablet
+	========================================================= */
+
+	@media (max-width: 900px) {
+		.community-center-hero {
+			min-height: 360px;
+		}
+
+		.section-inner {
+			width: min(calc(100% - 40px), 1440px);
+		}
+
+		.two-column {
+			grid-template-columns: 1fr;
+			gap: 36px;
+		}
+
+		.intro-section .section-image {
+			max-width: 520px;
+			margin: 0 auto;
+			justify-self: center;
+		}
+
+		.info-grid {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+
+		.rooms-section .section-inner {
+			width: min(calc(100% - 40px), 1120px);
+		}
+
+		.rooms-intro,
+		.rooms-notes {
+			width: 100%;
+		}
+
+		.room-grid {
+			grid-template-columns: 1fr;
+			max-width: 560px;
+		}
+
+        .room-card > img {
+            height: auto;
+            object-fit: contain;
+        }
+
+		.floor-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+
+
+	/* =========================================================
+	   Mobile
+	========================================================= */
+
+	@media (max-width: 600px) {
+		.community-center-hero {
+			min-height: 300px;
+		}
+
+		.breadcrumbs {
+			width: calc(100% - 32px);
+			padding: 24px 0;
+		}
+
+		.content-section {
+			padding: 56px 0;
+		}
+
+		.section-inner {
+			width: calc(100% - 32px);
+		}
+
+		.section-text p,
+		.section-lead {
+			font-size: 15px;
+		}
+
+		.availability-tabs {
+			display: grid;
+			grid-template-columns: repeat(4, 1fr);
+		}
+
+		.availability-tab {
+			min-width: 0;
+			padding: 10px 8px;
+		}
+
+		.reservation-notice {
+			padding: 24px 20px;
+		}
+
+		.info-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.rooms-section {
+			padding: 48px 0 56px;
+		}
+
+		.rooms-section .section-inner {
+			width: calc(100% - 32px);
+		}
+
+		.rooms-section .section-inner > h2 {
+			margin-bottom: 28px;
+		}
+
+		.rooms-intro,
+		.rooms-notes {
+			width: 100%;
+		}
+
+		.rooms-intro {
+			font-size: 15px;
+		}
+
+		.rooms-notes {
+			margin-top: 24px;
+			margin-bottom: 28px;
+			font-size: 14px;
+		}
+
+        .room-card > img {
+            width: calc(100% - 32px);
+            height: auto;
+            margin-top: 16px;
+            object-fit: contain;
+        }
+
+		.room-card__body {
+			padding: 22px;
+		}
+
+		.usage-table {
+			min-width: 680px;
+		}
+
+		.usage-table th,
+		.usage-table td {
+			padding: 14px 12px;
+			font-size: 14px;
+		}
+
+		.usage-fee {
+			margin-top: 56px;
+		}
+
+        .equipment-section .section-inner {
+            width: calc(100% - 32px);
+        }
+
+        .equipment-accordion > summary {
+            padding: 16px 20px;
+            font-size: 16px;
+        }
+
+        .equipment-accordion__body {
+            padding: 20px 0 0;
+        }
+
+        .equipment-table {
+            min-width: 760px;
+        }
+
+        .equipment-table th,
+        .equipment-table td {
+            padding: 9px 10px;
+            font-size: 13px;
+        }
+
+        .equipment-notes {
+            font-size: 13px;
+        }
+
+		.image-lightbox {
+			padding: 24px;
+		}
+
+		.image-lightbox__nav {
+			width: 44px;
+			height: 60px;
+			font-size: 42px;
+		}
+
+		.image-lightbox__nav--prev {
+			left: 4px;
+		}
+
+		.image-lightbox__nav--next {
+			right: 4px;
+		}
+	}
+</style>
+
+<script>
+	/* =========================================================
+	   Availability tabs
+	========================================================= */
+
+	const tabs = document.querySelectorAll('[data-availability-tab]');
+	const panels = document.querySelectorAll('[data-availability-panel]');
+
+	tabs.forEach((tab) => {
+		tab.addEventListener('click', () => {
+			if (!(tab instanceof HTMLElement)) return;
+
+			const key = tab.dataset.availabilityTab;
+
+			if (!key) return;
+
+			tabs.forEach((item) => {
+				const isActive =
+					item instanceof HTMLElement &&
+					item.dataset.availabilityTab === key;
+
+				item.classList.toggle('is-active', isActive);
+
+				item.setAttribute(
+					'aria-selected',
+					String(isActive),
+				);
+			});
+
+			panels.forEach((panel) => {
+				if (!(panel instanceof HTMLElement)) return;
+
+				panel.classList.toggle(
+					'is-active',
+					panel.dataset.availabilityPanel === key,
+				);
+			});
+		});
+	});
+
+
+	/* =========================================================
+	   Lightbox elements
+	========================================================= */
+
+	const lightbox =
+		document.querySelector('#community-center-lightbox');
+
+	const lightboxImage =
+		lightbox?.querySelector('.image-lightbox__image');
+
+	const closeButton =
+		lightbox?.querySelector('.image-lightbox__close');
+
+	const prevButton =
+		lightbox?.querySelector('.image-lightbox__nav--prev');
+
+	const nextButton =
+		lightbox?.querySelector('.image-lightbox__nav--next');
+
+	const counter =
+		lightbox?.querySelector('.image-lightbox__counter');
+
+
+	/* =========================================================
+	   Lightbox state
+	========================================================= */
+
+	let currentGroup = [];
+	let currentIndex = 0;
+
+	let isZoomed = false;
+	let isDragging = false;
+	let hasDragged = false;
+
+	let imageX = 0;
+	let imageY = 0;
+
+	let dragStartX = 0;
+	let dragStartY = 0;
+
+	let pointerStartX = 0;
+	let pointerStartY = 0;
+
+	let activePointerId = null;
+
+	const zoomScale = 2;
+
+
+	/* =========================================================
+	   Transform
+	========================================================= */
+
+	const applyImageTransform = () => {
+		if (!(lightboxImage instanceof HTMLImageElement)) return;
+
+		if (!isZoomed) {
+			lightboxImage.style.transform = '';
+			return;
+		}
+
+		lightboxImage.style.transform =
+			`translate(${imageX}px, ${imageY}px) scale(${zoomScale})`;
+	};
+
+
+	/* =========================================================
+	   Zoom reset
+	========================================================= */
+
+	const resetZoom = () => {
+		if (!(lightboxImage instanceof HTMLImageElement)) return;
+
+		isZoomed = false;
+		isDragging = false;
+		hasDragged = false;
+
+		imageX = 0;
+		imageY = 0;
+
+		dragStartX = 0;
+		dragStartY = 0;
+
+		pointerStartX = 0;
+		pointerStartY = 0;
+
+		activePointerId = null;
+
+		lightboxImage.classList.remove(
+			'is-zoomed',
+			'is-dragging',
+		);
+
+		lightboxImage.style.transform = '';
+	};
+
+
+	/* =========================================================
+	   Zoom in / out
+	========================================================= */
+
+	const toggleZoom = () => {
+		if (!(lightboxImage instanceof HTMLImageElement)) return;
+
+		if (isZoomed) {
+			resetZoom();
+			return;
+		}
+
+		isZoomed = true;
+
+		imageX = 0;
+		imageY = 0;
+
+		lightboxImage.classList.add('is-zoomed');
+
+		applyImageTransform();
+	};
+
+
+	/*
+	 * クリックで拡大／縮小
+	 *
+	 * ドラッグ直後に発生する click では
+	 * 縮小しないよう hasDragged で判定。
+	 */
+	lightboxImage?.addEventListener('click', (event) => {
+		if (!(lightboxImage instanceof HTMLImageElement)) return;
+
+		event.preventDefault();
+		event.stopPropagation();
+
+		if (hasDragged) {
+			hasDragged = false;
+			return;
+		}
+
+		toggleZoom();
+	});
+
+
+	/* =========================================================
+	   Drag start
+	========================================================= */
+
+	lightboxImage?.addEventListener('pointerdown', (event) => {
+		if (
+			!isZoomed ||
+			!(lightboxImage instanceof HTMLImageElement)
+		) {
+			return;
+		}
+
+		/*
+		 * マウスの場合は左クリックだけ許可。
+		 */
+		if (
+			event.pointerType === 'mouse' &&
+			event.button !== 0
+		) {
+			return;
+		}
+
+		event.preventDefault();
+		event.stopPropagation();
+
+		isDragging = true;
+		hasDragged = false;
+
+		activePointerId = event.pointerId;
+
+		pointerStartX = event.clientX;
+		pointerStartY = event.clientY;
+
+		dragStartX = event.clientX - imageX;
+		dragStartY = event.clientY - imageY;
+
+		lightboxImage.classList.add('is-dragging');
+
+		/*
+		 * 画像外までドラッグしても
+		 * pointermove / pointerup を追跡できるようにする。
+		 */
+		lightboxImage.setPointerCapture(event.pointerId);
+	});
+
+
+	/* =========================================================
+	   Drag move
+	========================================================= */
+
+	lightboxImage?.addEventListener('pointermove', (event) => {
+		if (
+			!isDragging ||
+			!isZoomed ||
+			activePointerId !== event.pointerId
+		) {
+			return;
+		}
+
+		event.preventDefault();
+
+		const movedX =
+			Math.abs(event.clientX - pointerStartX);
+
+		const movedY =
+			Math.abs(event.clientY - pointerStartY);
+
+		/*
+		 * 数px程度ならクリックとみなす。
+		 */
+		if (movedX > 4 || movedY > 4) {
+			hasDragged = true;
+		}
+
+		imageX =
+			event.clientX - dragStartX;
+
+		imageY =
+			event.clientY - dragStartY;
+
+		applyImageTransform();
+	});
+
+
+	/* =========================================================
+	   Drag end
+	========================================================= */
+
+	const endDrag = (event) => {
+		if (
+			!isDragging ||
+			activePointerId !== event.pointerId
+		) {
+			return;
+		}
+
+		isDragging = false;
+
+		if (lightboxImage instanceof HTMLImageElement) {
+			lightboxImage.classList.remove('is-dragging');
+
+			if (
+				lightboxImage.hasPointerCapture(event.pointerId)
+			) {
+				lightboxImage.releasePointerCapture(
+					event.pointerId,
+				);
+			}
+		}
+
+		activePointerId = null;
+	};
+
+	lightboxImage?.addEventListener(
+		'pointerup',
+		endDrag,
+	);
+
+	lightboxImage?.addEventListener(
+		'pointercancel',
+		endDrag,
+	);
+
+
+	/* =========================================================
+	   Update lightbox image
+	========================================================= */
+
+	const updateLightbox = () => {
+		if (
+			!(lightboxImage instanceof HTMLImageElement) ||
+			currentGroup.length === 0
+		) {
+			return;
+		}
+
+		/*
+		 * 画像を切り替えるたびに
+		 * 拡大率と移動位置をリセット。
+		 */
+		resetZoom();
+
+		const currentButton =
+			currentGroup[currentIndex];
+
+		if (!(currentButton instanceof HTMLElement)) return;
+
+		const src =
+			currentButton.dataset.lightboxImage;
+
+		const image =
+			currentButton.querySelector('img');
+
+		if (!src) return;
+
+		lightboxImage.src = src;
+
+		lightboxImage.alt =
+			image instanceof HTMLImageElement
+				? image.alt
+				: '';
+
+		if (counter) {
+			counter.textContent =
+				`${currentIndex + 1} / ${currentGroup.length}`;
+		}
+
+		if (prevButton instanceof HTMLButtonElement) {
+			prevButton.disabled =
+				currentGroup.length <= 1;
+		}
+
+		if (nextButton instanceof HTMLButtonElement) {
+			nextButton.disabled =
+				currentGroup.length <= 1;
+		}
+	};
+
+
+	/* =========================================================
+	   Open lightbox
+	========================================================= */
+
+	const openLightbox = (button) => {
+		if (
+			!lightbox ||
+			!(button instanceof HTMLElement)
+		) {
+			return;
+		}
+
+		const groupName =
+			button.dataset.lightboxGroup;
+
+		if (!groupName) return;
+
+		currentGroup = Array.from(
+			document.querySelectorAll(
+				'[data-lightbox-image]',
+			),
+		).filter((item) => {
+			return (
+				item instanceof HTMLElement &&
+				item.dataset.lightboxGroup === groupName
+			);
+		});
+
+		currentIndex =
+			currentGroup.indexOf(button);
+
+		if (currentIndex < 0) {
+			currentIndex = 0;
+		}
+
+		updateLightbox();
+
+		lightbox.classList.add('is-open');
+
+		lightbox.setAttribute(
+			'aria-hidden',
+			'false',
+		);
+
+		document.body.style.overflow = 'hidden';
+	};
+
+
+	/* =========================================================
+	   Close lightbox
+	========================================================= */
+
+	const closeLightbox = () => {
+		if (!lightbox) return;
+
+		resetZoom();
+
+		lightbox.classList.remove('is-open');
+
+		lightbox.setAttribute(
+			'aria-hidden',
+			'true',
+		);
+
+		if (
+			lightboxImage instanceof HTMLImageElement
+		) {
+			lightboxImage.src = '';
+			lightboxImage.alt = '';
+		}
+
+		currentGroup = [];
+		currentIndex = 0;
+
+		document.body.style.overflow = '';
+	};
+
+
+	/* =========================================================
+	   Previous / Next
+	========================================================= */
+
+	const showPrevious = () => {
+		if (currentGroup.length <= 1) return;
+
+		currentIndex =
+			(
+				currentIndex -
+				1 +
+				currentGroup.length
+			) %
+			currentGroup.length;
+
+		updateLightbox();
+	};
+
+	const showNext = () => {
+		if (currentGroup.length <= 1) return;
+
+		currentIndex =
+			(currentIndex + 1) %
+			currentGroup.length;
+
+		updateLightbox();
+	};
+
+
+	/* =========================================================
+	   Lightbox triggers
+	========================================================= */
+
+	document.addEventListener('click', (event) => {
+		if (!(event.target instanceof Element)) return;
+
+		const button =
+			event.target.closest(
+				'[data-lightbox-image]',
+			);
+
+		if (!(button instanceof HTMLElement)) return;
+
+		event.preventDefault();
+
+		openLightbox(button);
+	});
+
+
+	/* =========================================================
+	   Lightbox controls
+	========================================================= */
+
+	closeButton?.addEventListener(
+		'click',
+		(event) => {
+			event.preventDefault();
+			event.stopPropagation();
+
+			closeLightbox();
+		},
+	);
+
+	prevButton?.addEventListener(
+		'click',
+		(event) => {
+			event.preventDefault();
+			event.stopPropagation();
+
+			showPrevious();
+		},
+	);
+
+	nextButton?.addEventListener(
+		'click',
+		(event) => {
+			event.preventDefault();
+			event.stopPropagation();
+
+			showNext();
+		},
+	);
+
+
+	/*
+	 * 背景部分をクリックしたときだけ閉じる。
+	 * 画像や操作ボタンをクリックしても閉じない。
+	 */
+	lightbox?.addEventListener(
+		'click',
+		(event) => {
+			if (event.target === lightbox) {
+				closeLightbox();
+			}
+		},
+	);
+
+
+	/* =========================================================
+	   Keyboard
+	========================================================= */
+
+	document.addEventListener(
+		'keydown',
+		(event) => {
+			if (
+				!lightbox?.classList.contains(
+					'is-open',
+				)
+			) {
+				return;
+			}
+
+			switch (event.key) {
+				case 'Escape':
+					closeLightbox();
+					break;
+
+				case 'ArrowLeft':
+					showPrevious();
+					break;
+
+				case 'ArrowRight':
+					showNext();
+					break;
+			}
+		},
+	);
+</script>

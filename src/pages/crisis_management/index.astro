@@ -1,0 +1,1300 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const crisisItems = [
+	{
+		title: '大規模災害時における地域との支援協力体制',
+		heading: '大規模災害時における地域との支援協力体制',
+		image: '/images/crisis-management/disaster/main.jpg',
+		imageAlt: '大規模災害時における地域との支援協力体制',
+		content: `
+			<p>
+				滝川学区防災安心まちづくり委員会では、「いりなか商店街発展会」様（坂井謙介会長）と
+				「大規模災害時における支援協力に関する覚書」を締結させていただきました。
+				今回の覚書では、大規模な災害が発生した際に、同会が加盟する「東川名山町内会（自主防災会）」に
+				同会が所有するテントやテーブル、イスの備品等を提供いただくためのもので、
+				令和3年12月23日に開催された覚書の締結式には、同委員会の毛利委員長や東川名山自主防災会長、
+				同会の坂井会長、理事、事務局長の皆様に出席いただき、昭和消防署副署長立ち会いのもと、
+				覚書への署名及び表示証の授与式が行われました。なお、いりなか商店街発展会には、
+				現在、いりなか駅を中心に約80の店舗や事業所が加入しています。
+			</p>
+
+			<p>
+				滝川学区防災安心まちづくり委員会では、株式会社スギヤマ薬品（ドラッグスギヤマ杁中店）様及び
+				社会福祉法人聖霊会聖霊病院様と「大規模災害時における支援協力に関する覚書」を締結させていただきました。
+				これにより、今後、大規模災害が発生した際に、「ドラッグスギヤマ杁中店」様には学区の各町内会（自主防災会）
+				にたいして同店駐車場を一時避難場所として開放していただくこと、また「聖霊病院」様には
+				「東川名山町内会（自主防災会）」にたいして同院の立体駐車場を一時避難場所として開放いただくことになりました。
+			</p>
+
+			<p>
+				震災避難行動マップは名古屋市が公表した「南海トラフ巨大地震の被害想定」をもとに、大規模地震が発生した場合を想定して、
+				滝川学区のみなさんが、お住いの地域の危険場所や避難経路などについて話し合い、作成したものです。
+				この震災行動マップをもとに、「いざ」というときどんな行動を取ればよいのか日頃から考えておきましょう。
+			</p>
+		`,
+	},
+
+	{
+		title: '滝川学区防災関連団体',
+		heading: '滝川学区防災関連団体',
+		content: `
+			<p>
+				滝川学区には、防災関連団体として消防団と、「家庭の防火・防災・救急は女性の手で」をキャッチフレーズとして活動するホーム・ファイヤー・モニターズ・クラブがあります。
+			</p>
+		`,
+		children: [
+			{
+				title: '滝川消防団',
+				heading: '地域密着で滝川学区を守る消防ボランティア集団',
+				image: '/images/crisis-management/fire-brigade/main.jpg',
+				imageAlt: '滝川消防団',
+				content: `
+					<p>
+						滝川学区では、地域住民により消防団を結成し、
+						消防との連携、火災現場等の警戒、
+						防火に関する訓練や広報、
+						防災訓練の指導等を行っています。
+					</p>
+
+					<div class="crisis-detail-section">
+						<p>
+							<strong>【詰所】</strong><br>
+							〒466-0827<br>
+							名古屋市昭和区川名山町46-3　鉄骨2階建て
+						</p>
+
+						<p>
+							<strong>【保有機材】</strong><br>
+							広報車2両、可動式ポンプ、発電機、チェンソーなど
+						</p>
+
+						<p>
+							<strong>【定員数】</strong><br>
+							25名（現在13名／2025年6月1日現在）
+						</p>
+					</div>
+
+					<div class="crisis-detail-section">
+						<h4>滝川消防団員募集中</h4>
+
+						<p>
+							滝川消防団は、滝川学区に住む会社員や自営業、
+							看護師やお坊さん、学生や歯科医などで構成され、
+							地域密着で街の安全を守る消防ボランティア集団です。
+						</p>
+
+						<p>
+							普段は18歳以上65歳までなら誰でも入団できますので、ぜひご興味のある方はご連絡ください。
+						</p>
+
+						<p>
+							<strong>入会ご希望の方／お問い合わせ</strong><br>
+							TEL.090-1230-4994（団長／武田忍）
+						</p>
+					</div>
+				`,
+				gallery: [
+						{
+							src: '/images/crisis-management/fire-brigade/gallery/photo-01.png',
+							alt: '滝川消防団の活動資料 1',
+						},
+						{
+							src: '/images/crisis-management/fire-brigade/gallery/photo-02.png',
+							alt: '滝川消防団の活動資料 2',
+						},
+					],
+			},
+
+			{
+				title: 'ホーム・ファイヤー・モニターズ・クラブ',
+				heading: '家庭の防火・防災・救急は女性の手で',
+				image: '/images/crisis-management/home-fire/main.png',
+				imageAlt: 'ホーム・ファイヤー・モニターズ・クラブ',
+				content: `
+					<p>
+						ホーム・ファイヤー・モニターズ・クラブは、「家庭の防火・防災・救急は女性の手で」を
+						キャッチフレーズとして活動しています。
+					</p>
+
+					<p>
+						令和4年度には親子の災害体験教室を開催するなど、
+						地域活動を通じて防災コミュニティーの輪を
+						広げることを目的として活動しています。
+					</p>
+
+					<div class="crisis-detail-section">
+						<h4>ホーム・ファイヤー・モニターズ・クラブのあらまし</h4>
+
+						<ul>
+							<li>
+								1972年（昭和47年）
+								女性を対象に消防モニター制度発足
+							</li>
+							<li>
+								1987年（昭和62年）
+								各学区にホーム・ファイヤー・モニターズ・クラブ結成
+							</li>
+						</ul>
+					</div>
+
+					<div class="crisis-detail-section">
+						<h4>主な活動</h4>
+
+						<ul>
+							<li>防火・防災および救命講習会の開催</li>
+							<li>地域活動を通じた防災コミュニティーづくり</li>
+							<li>地域の防災訓練など各種行事への参加</li>
+						</ul>
+					</div>
+
+					<div class="crisis-detail-section">
+						<h4>モニター会員になるには</h4>
+
+						<p>
+							毎年、学区ごとに新たにモニター会員となられる方を推薦していただき、
+							消防署において計3回、防火・防災・救急の基礎講習（ファストセミナー）を
+							受講します。まずは滝川学区ホーム・ファイヤー・モニターズ・クラブ 会長の竹内までご連絡ください。
+						</p>
+
+						<h4>「ホーム・ファイヤー・モニターズ・クラブ」入会ご希望の方</h4>
+
+						<p>
+							TEL.090-9022-9037（会長／竹内美保）<br>
+							TEL.052-841-0119（事務局／昭和消防署総務課）
+						</p>
+					</div>
+
+					<div class="crisis-detail-section">
+						<h4>主な受賞歴</h4>
+
+						<ul>
+							<li>平成 5年1月30日　名古屋市長表彰（消防功労者・団体）</li>
+							<li>平成15年1月24日　消防庁長官表彰（第７回防災まちづくり大賞）</li>
+							<li>平成15年9月1日　内閣総理大臣表彰（防災功労者）</li>
+							<li>平成20年1月29日　名古屋市長表彰（消防功労者・団体）</li>
+							<li>平成29年12月22日　名古屋市長表彰（名古屋市防災表彰）</li>
+							<li>平成30年11月11日　愛知県知事表彰（愛知県防災貢献団体表彰）</li>
+						</ul>
+					</div>
+				`,
+				gallery: [
+					{
+						src: '/images/crisis-management/home-fire/gallery/photo-01.jpg',
+						alt: 'ホーム・ファイヤー・モニターズ・クラブの活動の様子 1',
+					},
+					{
+						src: '/images/crisis-management/home-fire/gallery/photo-02.jpg',
+						alt: 'ホーム・ファイヤー・モニターズ・クラブの活動の様子 2',
+					},
+					{
+						src: '/images/crisis-management/home-fire/gallery/photo-03.jpg',
+						alt: 'ホーム・ファイヤー・モニターズ・クラブの活動の様子 3',
+					},
+					{
+						src: '/images/crisis-management/home-fire/gallery/photo-04.jpg',
+						alt: 'ホーム・ファイヤー・モニターズ・クラブの活動の様子 4',
+					},
+				],
+			},
+		],
+	},
+
+	{
+		title: '滝川学区防災マップ',
+		heading: '震災避難行動マップ',
+		content: `
+			<p>
+				震災避難行動マップは、
+				名古屋市が公表した「南海トラフ巨大地震の被害想定」をもとに、
+				大規模地震が発生した場合を想定して、
+				滝川学区のみなさんが、お住まいの地域の危険場所や
+				避難経路などについて話し合い、作成したものです。
+			</p>
+
+			<p>
+				この震災避難行動マップをもとに、
+				「いざ」というときどんな行動を取ればよいのか、
+				日頃から考えておきましょう。
+			</p>
+		`,
+		gallery: [
+			{
+				src: '/images/crisis-management/disaster-map/map-01.png',
+				alt: '滝川学区震災避難行動マップ 1',
+			},
+			{
+				src: '/images/crisis-management/disaster-map/map-02.png',
+				alt: '滝川学区震災避難行動マップ 2',
+			},
+			{
+				src: '/images/crisis-management/disaster-map/map-03.png',
+				alt: '滝川学区震災避難行動マップ 3',
+			},
+		],
+	},
+];
+---
+
+<Layout title="防犯・防火・防災">
+	<main class="crisis-page">
+		<section
+			class="crisis-hero"
+			style={`background-image: linear-gradient(rgba(0,0,0,.28), rgba(0,0,0,.28)), url('/images/crisis-management/hero.jpeg');`}
+		>
+			<h1>防犯・防火・防災</h1>
+		</section>
+
+		<nav class="breadcrumbs" aria-label="パンくずリスト">
+			<a href="/">Home</a>
+			<span>/</span>
+			<span>防犯・防火・防災</span>
+		</nav>
+
+		<section class="crisis-intro">
+			<h2>防犯・防火・防災</h2>
+
+			<p>
+			滝川学区では地域の安全・安心を守るために、防災・防火・防犯のさまざまな取り組みが行われています。
+            毎年実施される防災訓練では、子どもから高齢者まで多くの住民が参加し、実践的な内容を通して「いざという時」に備えています。
+            また、地域の消防団や自主防災会と連携した見回りや情報共有も行われており、日常の中での防火意識の向上にもつながっています。
+            登下校時の見守り活動など、地域ぐるみで子どもたちの安全を守る仕組みも定着しています。
+            滝川学区は、安心して暮らせるまちづくりを、日々の取り組みの中で着実に進めています。
+			</p>
+
+			<p class="crisis-intro__news">
+				<a class="text-link" href="/category/防災/">
+					防犯・防火・防災関連のニュースはこちら
+				</a>
+			</p>
+		</section>
+
+		<section class="crisis-list">
+			{
+				crisisItems.map((item) => (
+					<details class="crisis-accordion">
+						<summary>
+							<span>{item.title}</span>
+
+							<span
+								class="crisis-accordion__icon"
+								aria-hidden="true"
+							>
+								＋
+							</span>
+						</summary>
+
+						<div class="crisis-accordion__body">
+							<div
+								class:list={[
+									'crisis-accordion__content',
+									!item.image && 'crisis-accordion__content--single',
+								]}
+							>
+								<div class="crisis-accordion__text">
+									<h3>{item.heading}</h3>
+									<div set:html={item.content} />
+								</div>
+
+								{
+									item.image && (
+										<div class="crisis-accordion__main-image">
+											<img
+												src={item.image}
+												alt={item.imageAlt ?? ''}
+												loading="lazy"
+											/>
+										</div>
+									)
+								}
+							</div>
+
+							{
+								item.children && (
+									<div class="crisis-sub-list">
+										{
+											item.children.map((child) => (
+												<details class="crisis-sub-accordion">
+													<summary>
+														<span>{child.title}</span>
+
+														<span
+															class="crisis-sub-accordion__icon"
+															aria-hidden="true"
+														>
+															＋
+														</span>
+													</summary>
+
+													<div class="crisis-sub-accordion__body">
+														<div class="crisis-sub-accordion__content">
+															<div class="crisis-accordion__text">
+																<h3>{child.heading}</h3>
+																<div set:html={child.content} />
+															</div>
+
+															{
+																child.image && (
+																	<div class="crisis-accordion__main-image">
+																		<img
+																			src={child.image}
+																			alt={child.imageAlt ?? ''}
+																			loading="lazy"
+																		/>
+																	</div>
+																)
+															}
+														</div>
+
+														{
+															child.gallery && (
+																<div class="crisis-photo-gallery">
+																	{
+																		child.gallery.map((image, imageIndex) => (
+																			<button
+																				class="crisis-photo"
+																				type="button"
+																				data-lightbox-image={image.src}
+																				data-lightbox-group={child.title}
+																				data-lightbox-index={imageIndex}
+																				aria-label={`${image.alt}を拡大表示`}
+																			>
+																				<img
+																					src={image.src}
+																					alt={image.alt}
+																					loading="lazy"
+																				/>
+																			</button>
+																		))
+																	}
+																</div>
+															)
+														}
+													</div>
+												</details>
+											))
+										}
+									</div>
+								)
+							}
+
+							{
+								item.gallery && (
+									<div class="crisis-map-gallery">
+										{
+											item.gallery.map((image, imageIndex) => (
+												<button
+													class="crisis-map-photo"
+													type="button"
+													data-lightbox-image={image.src}
+													data-lightbox-group={item.title}
+													data-lightbox-index={imageIndex}
+													aria-label={`${image.alt}を拡大表示`}
+												>
+													<img
+														src={image.src}
+														alt={image.alt}
+														loading="lazy"
+													/>
+												</button>
+											))
+										}
+									</div>
+								)
+							}
+						</div>
+					</details>
+				))
+			}
+		</section>
+		<div
+			class="crisis-lightbox"
+			id="crisis-lightbox"
+			aria-hidden="true"
+		>
+			<button
+				class="crisis-lightbox__close"
+				type="button"
+				aria-label="画像を閉じる"
+			>
+				×
+			</button>
+
+			<button
+				class="crisis-lightbox__nav crisis-lightbox__nav--prev"
+				type="button"
+				aria-label="前の画像"
+			>
+				‹
+			</button>
+
+			<div class="crisis-lightbox__content">
+				<img
+					class="crisis-lightbox__image"
+					src=""
+					alt=""
+				/>
+
+				<p class="crisis-lightbox__counter"></p>
+			</div>
+
+			<button
+				class="crisis-lightbox__nav crisis-lightbox__nav--next"
+				type="button"
+				aria-label="次の画像"
+			>
+				›
+			</button>
+		</div>
+	</main>
+</Layout>
+
+<style>
+	.crisis-page {
+		background: #f4f9fc;
+		color: #111827;
+	}
+
+	.crisis-hero {
+		display: grid;
+		min-height: 480px;
+		place-items: center;
+		background-position: center;
+		background-size: cover;
+	}
+
+	.crisis-hero h1 {
+		margin: 0;
+		color: #fff;
+		font-size: clamp(42px, 5vw, 72px);
+		font-weight: 400;
+		text-shadow: 0 2px 12px rgb(0 0 0 / 30%);
+	}
+
+	.breadcrumbs {
+		display: flex;
+		width: min(100% - 48px, 1280px);
+		margin: 0 auto;
+		padding: 32px 0;
+		gap: 12px;
+		background: transparent;
+		font-size: 14px;
+	}
+
+	.breadcrumbs a {
+		color: #009fe8;
+		text-decoration: none;
+	}
+
+	.crisis-intro,
+	.crisis-list {
+		width: min(100% - 64px, 1440px);
+		margin: 0 auto;
+	}
+
+	.crisis-intro {
+		padding: 72px 0 64px;
+	}
+
+	.crisis-intro h2 {
+		margin: 0 0 36px;
+		text-align: center;
+		font-size: clamp(32px, 4vw, 52px);
+		font-weight: 400;
+	}
+
+	.crisis-intro > p {
+		max-width: 1100px;
+		margin: 0 auto;
+		font-size: 17px;
+		line-height: 2;
+	}
+
+	.crisis-intro .crisis-intro__news {
+		margin-top: 28px;
+	}
+
+	.text-link {
+		color: #009fe8;
+		text-decoration: underline;
+		text-underline-offset: 0.2em;
+	}
+
+	.crisis-list {
+		padding-bottom: 96px;
+	}
+
+	.crisis-accordion {
+		margin-bottom: 24px;
+	}
+
+	.crisis-accordion summary {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 22px 32px;
+		border-radius: 8px;
+		background: #0da5df;
+		color: #fff;
+		cursor: pointer;
+		font-size: 20px;
+		font-weight: 600;
+		list-style: none;
+	}
+
+	.crisis-accordion summary::-webkit-details-marker {
+		display: none;
+	}
+
+	.crisis-accordion__icon {
+		flex: 0 0 auto;
+		margin-left: 24px;
+		font-size: 26px;
+		font-weight: 300;
+		line-height: 1;
+		transition: transform 0.2s ease;
+	}
+
+	.crisis-accordion[open] .crisis-accordion__icon {
+		transform: rotate(45deg);
+	}
+
+	.crisis-accordion__body {
+		padding: 64px 64px 72px;
+	}
+
+	.crisis-accordion__content {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) minmax(420px, 0.9fr);
+		align-items: start;
+		gap: 72px;
+	}
+
+	.crisis-accordion__content--single {
+		grid-template-columns: 1fr;
+	}
+
+	.crisis-accordion__text h3 {
+		margin: 0 0 28px;
+		font-size: 30px;
+		font-weight: 500;
+		line-height: 1.5;
+	}
+
+	.crisis-accordion__text :global(p) {
+		margin: 0 0 22px;
+		font-size: 17px;
+		line-height: 1.9;
+	}
+
+	.crisis-accordion__text :global(h4) {
+		margin: 32px 0 14px;
+		font-size: 20px;
+		font-weight: 600;
+		line-height: 1.6;
+	}
+
+	.crisis-accordion__text :global(ul),
+	.crisis-accordion__text :global(ol) {
+		margin: 0 0 24px;
+		padding-left: 1.5em;
+	}
+
+	.crisis-accordion__text :global(ul) {
+		list-style: disc outside;
+	}
+
+	.crisis-accordion__text :global(ol) {
+		list-style: decimal outside;
+	}
+
+	.crisis-accordion__text :global(li) {
+		display: list-item;
+		margin-bottom: 8px;
+		font-size: 17px;
+		line-height: 1.8;
+	}
+
+	.crisis-detail-section {
+		margin-top: 32px;
+	}
+
+	.crisis-accordion__main-image img {
+		display: block;
+		width: 100%;
+		height: auto;
+	}
+
+	/* =========================
+	Nested accordion
+	========================= */
+
+	.crisis-sub-list {
+		display: grid;
+		gap: 20px;
+		margin-top: 40px;
+	}
+
+	.crisis-sub-accordion {
+		overflow: hidden;
+		border-radius: 8px;
+		background: #fff;
+	}
+
+	.crisis-sub-accordion > summary {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 20px 28px;
+		background: #fff;
+		color: #111827;
+		cursor: pointer;
+		font-size: 18px;
+		font-weight: 500;
+		list-style: none;
+	}
+
+	.crisis-sub-accordion > summary::-webkit-details-marker {
+		display: none;
+	}
+
+	.crisis-sub-accordion__icon {
+		flex: 0 0 auto;
+		margin-left: 20px;
+		font-size: 26px;
+		font-weight: 300;
+		line-height: 1;
+		transition: transform 0.2s ease;
+	}
+
+	.crisis-sub-accordion[open] > summary .crisis-sub-accordion__icon {
+		transform: rotate(45deg);
+	}
+
+	.crisis-sub-accordion__body {
+		padding: 40px 28px 48px;
+		border-top: 1px solid #e5e7eb;
+	}
+
+	.crisis-sub-accordion__content {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) minmax(360px, 0.8fr);
+		align-items: start;
+		gap: 56px;
+	}
+
+	.crisis-map-gallery {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 24px;
+		margin: 48px auto 0;
+	}
+	
+	.crisis-map-photo {
+		display: block;
+		min-width: 0;
+		padding: 0;
+		border: 0;
+		background: transparent;
+		cursor: zoom-in;
+	}
+
+	.crisis-map-photo img {
+		display: block;
+		width: 100%;
+		height: auto;
+		border: 1px solid #d1d5db;
+		background: #fff;
+	}
+
+	.crisis-map-gallery a {
+		display: block;
+		cursor: zoom-in;
+	}
+
+	.crisis-map-gallery img {
+		display: block;
+		width: 100%;
+		height: auto;
+		border: 1px solid #d1d5db;
+		background: #fff;
+	}
+
+	.crisis-photo-gallery {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 24px;
+		margin-top: 48px;
+	}
+
+	.crisis-photo {
+		display: block;
+		padding: 0;
+		border: 0;
+		background: transparent;
+		cursor: zoom-in;
+	}
+
+	.crisis-photo img {
+		display: block;
+		width: 100%;
+		height: auto;
+	}
+
+	/* Lightbox */
+
+	.crisis-lightbox {
+		position: fixed;
+		z-index: 9999;
+		inset: 0;
+		display: none;
+		align-items: center;
+		justify-content: center;
+		padding: 48px;
+		background: rgb(0 0 0 / 88%);
+	}
+
+	.crisis-lightbox.is-open {
+		display: flex;
+	}
+
+	.crisis-lightbox__image {
+		display: block;
+		max-width: min(1400px, 94vw);
+		max-height: 86vh;
+		width: auto;
+		height: auto;
+		object-fit: contain;
+		user-select: none;
+		-webkit-user-drag: none;
+	}
+
+	.crisis-lightbox__close {
+		position: absolute;
+		top: 20px;
+		right: 24px;
+		width: 48px;
+		height: 48px;
+		padding: 0;
+		border: 0;
+		background: transparent;
+		color: #fff;
+		cursor: pointer;
+		font-size: 42px;
+		font-weight: 300;
+		line-height: 1;
+	}
+
+	.crisis-lightbox__content {
+		display: flex;
+		max-width: 100%;
+		max-height: 100%;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.crisis-lightbox__nav {
+		position: absolute;
+		top: 50%;
+		z-index: 2;
+		display: grid;
+		width: 56px;
+		height: 72px;
+		place-items: center;
+		padding: 0;
+		border: 0;
+		background: rgb(0 0 0 / 25%);
+		color: #fff;
+		font-size: 56px;
+		font-weight: 300;
+		cursor: pointer;
+		transform: translateY(-50%);
+	}
+
+	.crisis-lightbox__nav--prev {
+		left: 20px;
+	}
+
+	.crisis-lightbox__nav--next {
+		right: 20px;
+	}
+
+	.crisis-lightbox__counter {
+		margin: 12px 0 0;
+		color: #fff;
+		font-size: 13px;
+	}
+
+	.crisis-lightbox__nav:disabled {
+		opacity: 0.25;
+		cursor: default;
+	}
+
+	@media (max-width: 900px) {
+		.crisis-hero {
+			min-height: 360px;
+		}
+
+		.crisis-intro,
+		.crisis-list {
+			width: min(100% - 40px, 1440px);
+		}
+
+		.crisis-accordion__body {
+			padding: 40px 20px 52px;
+		}
+
+		.crisis-accordion__content {
+			grid-template-columns: 1fr;
+			gap: 32px;
+		}
+
+		.crisis-accordion__main-image {
+			order: -1;
+		}
+
+		.crisis-map-gallery {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+			gap: 20px;
+			margin-top: 36px;
+		}
+
+		.crisis-sub-accordion__content {
+			grid-template-columns: 1fr;
+			gap: 32px;
+		}
+
+		.crisis-sub-list {
+			margin-top: 32px;
+		}
+	}
+
+	@media (max-width: 600px) {
+		.crisis-hero {
+			min-height: 300px;
+		}
+
+		.breadcrumbs {
+			width: calc(100% - 32px);
+			padding: 24px 0;
+		}
+
+		.crisis-intro,
+		.crisis-list {
+			width: calc(100% - 32px);
+		}
+
+		.crisis-intro {
+			padding: 48px 0;
+		}
+
+		.crisis-intro > p,
+		.crisis-accordion__text :global(p),
+		.crisis-accordion__text :global(li) {
+			font-size: 15px;
+		}
+
+		.crisis-accordion summary {
+			padding: 18px 20px;
+			font-size: 16px;
+			line-height: 1.5;
+		}
+
+		.crisis-accordion__icon {
+			margin-left: 16px;
+		}
+
+		.crisis-accordion__text h3 {
+			font-size: 24px;
+		}
+
+		.crisis-accordion__text :global(h4) {
+			font-size: 18px;
+		}
+
+		.crisis-map-gallery {
+			grid-template-columns: 1fr;
+			gap: 20px;
+		}
+
+		.crisis-sub-accordion > summary {
+			padding: 18px 20px;
+			font-size: 16px;
+			line-height: 1.5;
+		}
+
+		.crisis-sub-accordion__body {
+			padding: 32px 20px 40px;
+		}
+		.crisis-photo-gallery {
+			grid-template-columns: 1fr;
+			gap: 16px;
+			margin-top: 32px;
+		}
+
+		.crisis-lightbox {
+			position: fixed;
+			z-index: 9999;
+			inset: 0;
+			display: none;
+			align-items: center;
+			justify-content: center;
+			padding: 48px;
+			overflow: auto;
+			background: rgb(0 0 0 / 88%);
+		}
+
+		.crisis-lightbox__nav {
+			width: 44px;
+			height: 60px;
+			font-size: 44px;
+		}
+
+		.crisis-lightbox__nav--prev {
+			left: 4px;
+		}
+
+		.crisis-lightbox__nav--next {
+			right: 4px;
+		}
+	}
+</style>
+<script>
+	const lightbox = document.querySelector('#crisis-lightbox');
+	const lightboxImage = lightbox?.querySelector('.crisis-lightbox__image');
+	const closeButton = lightbox?.querySelector('.crisis-lightbox__close');
+	const prevButton = lightbox?.querySelector('.crisis-lightbox__nav--prev');
+	const nextButton = lightbox?.querySelector('.crisis-lightbox__nav--next');
+	const counter = lightbox?.querySelector('.crisis-lightbox__counter');
+
+	let currentGroup = [];
+	let currentIndex = 0;
+
+	const updateLightbox = () => {
+		if (
+			!(lightboxImage instanceof HTMLImageElement) ||
+			currentGroup.length === 0
+		) {
+			return;
+		}
+
+		const currentButton = currentGroup[currentIndex];
+
+		if (!(currentButton instanceof HTMLElement)) return;
+
+		const src = currentButton.dataset.lightboxImage;
+		const image = currentButton.querySelector('img');
+
+		if (!src) return;
+
+		lightboxImage.src = src;
+		lightboxImage.alt =
+			image instanceof HTMLImageElement ? image.alt : '';
+
+		if (counter) {
+			counter.textContent =
+				`${currentIndex + 1} / ${currentGroup.length}`;
+		}
+
+		if (prevButton instanceof HTMLButtonElement) {
+			prevButton.disabled = currentGroup.length <= 1;
+		}
+
+		if (nextButton instanceof HTMLButtonElement) {
+			nextButton.disabled = currentGroup.length <= 1;
+		}
+	};
+
+	const openLightbox = (button) => {
+		if (
+			!lightbox ||
+			!(button instanceof HTMLElement)
+		) {
+			return;
+		}
+
+		const groupName = button.dataset.lightboxGroup;
+
+		if (!groupName) return;
+
+		currentGroup = Array.from(
+			document.querySelectorAll('[data-lightbox-image]')
+		).filter((item) => {
+			return (
+				item instanceof HTMLElement &&
+				item.dataset.lightboxGroup === groupName
+			);
+		});
+
+		currentIndex = currentGroup.indexOf(button);
+
+		if (currentIndex < 0) {
+			currentIndex = 0;
+		}
+
+		updateLightbox();
+
+		lightbox.classList.add('is-open');
+		lightbox.setAttribute('aria-hidden', 'false');
+		document.body.style.overflow = 'hidden';
+	};
+
+	const closeLightbox = () => {
+		if (!lightbox) return;
+
+		lightbox.classList.remove('is-open');
+		lightbox.setAttribute('aria-hidden', 'true');
+
+		if (lightboxImage instanceof HTMLImageElement) {
+			lightboxImage.src = '';
+		}
+
+		currentGroup = [];
+		currentIndex = 0;
+		document.body.style.overflow = '';
+	};
+
+	const showPrevious = () => {
+		if (currentGroup.length <= 1) return;
+
+		currentIndex =
+			(currentIndex - 1 + currentGroup.length) %
+			currentGroup.length;
+
+		updateLightbox();
+	};
+
+	const showNext = () => {
+		if (currentGroup.length <= 1) return;
+
+		currentIndex =
+			(currentIndex + 1) %
+			currentGroup.length;
+
+		updateLightbox();
+	};
+
+	/*
+	 * 重要：
+	 * 個々の画像ボタンではなく document でクリックを監視する。
+	 */
+	document.addEventListener('click', (event) => {
+		if (!(event.target instanceof Element)) return;
+
+		const button = event.target.closest('[data-lightbox-image]');
+
+		if (!(button instanceof HTMLElement)) return;
+
+		event.preventDefault();
+		event.stopPropagation();
+
+		openLightbox(button);
+	});
+
+	closeButton?.addEventListener('click', (event) => {
+		event.stopPropagation();
+		closeLightbox();
+	});
+
+	let isZoomed = false;
+	let isDragging = false;
+
+	let imageX = 0;
+	let imageY = 0;
+
+	let dragStartX = 0;
+	let dragStartY = 0;
+
+	const zoomScale = 2;
+
+	const applyImageTransform = () => {
+		if (!(lightboxImage instanceof HTMLImageElement)) return;
+
+		if (!isZoomed) {
+			lightboxImage.style.transform = '';
+			return;
+		}
+
+		lightboxImage.style.transform =
+			`translate(${imageX}px, ${imageY}px) scale(${zoomScale})`;
+	};
+
+	const resetZoom = () => {
+		if (!(lightboxImage instanceof HTMLImageElement)) return;
+
+		isZoomed = false;
+		isDragging = false;
+
+		imageX = 0;
+		imageY = 0;
+
+		lightboxImage.classList.remove(
+			'is-zoomed',
+			'is-dragging'
+		);
+
+		lightboxImage.style.transform = '';
+	};
+
+	const toggleZoom = () => {
+		if (!(lightboxImage instanceof HTMLImageElement)) return;
+
+		if (isZoomed) {
+			resetZoom();
+			return;
+		}
+
+		isZoomed = true;
+		imageX = 0;
+		imageY = 0;
+
+		lightboxImage.classList.add('is-zoomed');
+
+		applyImageTransform();
+	};
+
+	/*
+	* ダブルクリックで拡大・縮小
+	*/
+	lightboxImage?.addEventListener('dblclick', (event) => {
+		event.preventDefault();
+		event.stopPropagation();
+
+		toggleZoom();
+	});
+
+	/*
+	* ドラッグ開始
+	*/
+	lightboxImage?.addEventListener('mousedown', (event) => {
+		if (
+			!isZoomed ||
+			!(lightboxImage instanceof HTMLImageElement)
+		) {
+			return;
+		}
+
+		event.preventDefault();
+		event.stopPropagation();
+
+		isDragging = true;
+
+		dragStartX = event.clientX - imageX;
+		dragStartY = event.clientY - imageY;
+
+		lightboxImage.classList.add('is-dragging');
+	});
+
+	/*
+	* 重要：
+	* mousemove は画像ではなく document で監視する
+	*/
+	document.addEventListener('mousemove', (event) => {
+		if (!isDragging || !isZoomed) return;
+
+		event.preventDefault();
+
+		imageX = event.clientX - dragStartX;
+		imageY = event.clientY - dragStartY;
+
+		applyImageTransform();
+	});
+
+	/*
+	* ドラッグ終了
+	*/
+	document.addEventListener('mouseup', () => {
+		if (!isDragging) return;
+
+		isDragging = false;
+
+		if (lightboxImage instanceof HTMLImageElement) {
+			lightboxImage.classList.remove('is-dragging');
+		}
+	});
+
+	lightboxImage?.addEventListener('pointerdown', (event) => {
+		if (
+			!isZoomed ||
+			!(lightboxImage instanceof HTMLImageElement)
+		) {
+			return;
+		}
+
+		event.preventDefault();
+
+		isDragging = true;
+
+		dragStartX = event.clientX - imageX;
+		dragStartY = event.clientY - imageY;
+
+		lightboxImage.classList.add('is-dragging');
+		lightboxImage.setPointerCapture(event.pointerId);
+	});
+
+	lightboxImage?.addEventListener('pointermove', (event) => {
+		if (
+			!isDragging ||
+			!isZoomed ||
+			!(lightboxImage instanceof HTMLImageElement)
+		) {
+			return;
+		}
+
+		imageX = event.clientX - dragStartX;
+		imageY = event.clientY - dragStartY;
+
+		lightboxImage.style.transform =
+			`translate(${imageX}px, ${imageY}px)`;
+	});
+
+	lightboxImage?.addEventListener('pointerup', (event) => {
+		if (!(lightboxImage instanceof HTMLImageElement)) return;
+
+		isDragging = false;
+
+		lightboxImage.classList.remove('is-dragging');
+
+		if (lightboxImage.hasPointerCapture(event.pointerId)) {
+			lightboxImage.releasePointerCapture(event.pointerId);
+		}
+	});
+
+	lightboxImage?.addEventListener('pointercancel', () => {
+		isDragging = false;
+		lightboxImage?.classList.remove('is-dragging');
+	});
+
+	prevButton?.addEventListener('click', (event) => {
+		event.stopPropagation();
+		showPrevious();
+	});
+
+	nextButton?.addEventListener('click', (event) => {
+		event.stopPropagation();
+		showNext();
+	});
+
+	lightbox?.addEventListener('click', (event) => {
+		if (event.target === lightbox) {
+			closeLightbox();
+		}
+	});
+
+	document.addEventListener('keydown', (event) => {
+		if (!lightbox?.classList.contains('is-open')) return;
+
+		if (event.key === 'Escape') {
+			closeLightbox();
+		}
+
+		if (event.key === 'ArrowLeft') {
+			showPrevious();
+		}
+
+		if (event.key === 'ArrowRight') {
+			showNext();
+		}
+	});
+</script>
