@@ -9,15 +9,13 @@ on:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 concurrency:
   group: deploy-takikawagakku-preview
   cancel-in-progress: true
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -39,26 +37,33 @@ jobs:
       - name: Build
         run: pnpm run build
 
-      - name: Prepare GitHub Pages paths
-        run: node scripts/prepare-github-pages-preview.mjs
+      - name: Install SSH password helper
+        run: sudo apt-get update && sudo apt-get install --yes sshpass
 
-      - name: Configure Pages
-        uses: actions/configure-pages@v5
+      - name: Test SSH connection
+        env:
+          SSHPASS: ${{ secrets.SAKURA_PASSWORD }}
+          SAKURA_HOST: ${{ secrets.SAKURA_HOST }}
+          SAKURA_SSH_PORT: ${{ secrets.SAKURA_SSH_PORT }}
+          SAKURA_USERNAME: ${{ secrets.SAKURA_USERNAME }}
+        run: |
+          sshpass -e ssh \
+            -p "$SAKURA_SSH_PORT" \
+            -o StrictHostKeyChecking=accept-new \
+            -o PreferredAuthentications=password \
+            -o PubkeyAuthentication=no \
+            "$SAKURA_USERNAME@$SAKURA_HOST" \
+            'echo "SSH connection successful"'
 
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ./dist
-
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-
-    runs-on: ubuntu-latest
-    needs: build
-
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Synchronize preview files to Sakura
+        env:
+          SSHPASS: ${{ secrets.SAKURA_PASSWORD }}
+          SAKURA_HOST: ${{ secrets.SAKURA_HOST }}
+          SAKURA_SSH_PORT: ${{ secrets.SAKURA_SSH_PORT }}
+          SAKURA_USERNAME: ${{ secrets.SAKURA_USERNAME }}
+          SAKURA_PREVIEW_DEPLOY_PATH: ${{ secrets.SAKURA_PREVIEW_DEPLOY_PATH }}
+        run: >
+          sshpass -e rsync -az --checksum --no-times --itemize-changes
+          -e "ssh -p $SAKURA_SSH_PORT -o StrictHostKeyChecking=accept-new -o PreferredAuthentications=password -o PubkeyAuthentication=no"
+          dist/
+          "$SAKURA_USERNAME@$SAKURA_HOST:$SAKURA_PREVIEW_DEPLOY_PATH/"
