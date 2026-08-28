@@ -1758,7 +1758,7 @@ const rooms = [
 
 
 	/* =========================================================
-	   Mobile
+	Mobile
 	========================================================= */
 
 	@media (max-width: 600px) {
@@ -1802,6 +1802,10 @@ const rooms = [
 			grid-template-columns: 1fr;
 		}
 
+		/* =====================================================
+		Rooms
+		===================================================== */
+
 		.rooms-section {
 			padding: 48px 0 56px;
 		}
@@ -1829,16 +1833,20 @@ const rooms = [
 			font-size: 14px;
 		}
 
-        .room-card > img {
-            width: calc(100% - 32px);
-            height: auto;
-            margin-top: 16px;
-            object-fit: contain;
-        }
+		.room-card > img {
+			width: calc(100% - 32px);
+			height: auto;
+			margin-top: 16px;
+			object-fit: contain;
+		}
 
 		.room-card__body {
 			padding: 22px;
 		}
+
+		/* =====================================================
+		Usage table
+		===================================================== */
 
 		.usage-table {
 			min-width: 680px;
@@ -1854,79 +1862,85 @@ const rooms = [
 			margin-top: 56px;
 		}
 
-        .equipment-section .section-inner {
-            width: calc(100% - 32px);
-        }
+		/* =====================================================
+		Equipment
+		===================================================== */
 
-        .equipment-accordion > summary {
-            padding: 16px 20px;
-            font-size: 16px;
-        }
-
-        .equipment-accordion__body {
-            padding: 20px 0 0;
-        }
-
-        .equipment-table {
-            min-width: 760px;
-        }
-
-        .equipment-table th,
-        .equipment-table td {
-            padding: 9px 10px;
-            font-size: 13px;
-        }
-
-        .equipment-notes {
-            font-size: 13px;
-        }
-
-		.image-lightbox {
-			padding: 24px;
+		.equipment-section .section-inner {
+			width: calc(100% - 32px);
 		}
 
-		.image-lightbox__nav {
-			width: 44px;
-			height: 60px;
-			font-size: 42px;
+		.equipment-accordion > summary {
+			padding: 16px 20px;
+			font-size: 16px;
 		}
 
-		.image-lightbox__nav--prev {
-			left: 4px;
+		.equipment-accordion__body {
+			padding: 20px 0 0;
 		}
 
-		.image-lightbox__nav--next {
-			right: 4px;
-		}
-
+		/*
+		* 4列固定
+		* 設備・物品名: 120px
+		* 第1〜第3列: 残り640pxを3等分
+		*/
 		.equipment-table {
-			width: 720px;
+			width: 760px;
+			min-width: 760px;
 			table-layout: fixed;
-		}
-
-		.equipment-table th:first-child {
-			width: 150px;
-			min-width: 150px;
-			max-width: 150px;
-		}
-
-		.equipment-table th:not(:first-child),
-		.equipment-table td {
-			width: 190px;
-			min-width: 190px;
 		}
 
 		.equipment-table th,
 		.equipment-table td {
+			box-sizing: border-box;
 			padding: 10px 8px;
 			font-size: 13px;
+		}
+
+		/* 先頭列 */
+		.equipment-table th:first-child {
+			position: sticky;
+			left: 0;
+			z-index: 2;
+			width: 120px;
+			min-width: 120px;
+			max-width: 120px;
+			background: #ffdf72;
+		}
+
+		/* 残り3列 */
+		.equipment-table thead th:not(:first-child) {
+			width: calc((760px - 120px) / 3);
 		}
 
 		.equipment-table tbody th:first-child {
 			text-align: left;
 		}
 
-		/* 利用時間テーブル */
+		/* 固定列とスクロール列の境界線 */
+		.equipment-table th:first-child::after {
+			content: '';
+			position: absolute;
+			top: 0;
+			right: -2px;
+			bottom: 0;
+			width: 2px;
+			background: #4b5b42;
+			pointer-events: none;
+		}
+
+		.equipment-table thead th:first-child {
+			z-index: 3;
+		}
+
+		.equipment-notes {
+			font-size: 13px;
+		}
+
+		/* =====================================================
+		利用時間テーブル
+		===================================================== */
+
 		.usage-time-table {
 			width: 720px;
 			min-width: 720px;
@@ -1956,7 +1970,10 @@ const rooms = [
 			z-index: 3;
 		}
 
-		/* 利用料金テーブル */
+		/* =====================================================
+		利用料金テーブル
+		===================================================== */
+
 		.fee-table {
 			width: 900px;
 			min-width: 900px;
@@ -1984,6 +2001,28 @@ const rooms = [
 
 		.fee-table thead th:first-child {
 			z-index: 3;
+		}
+
+		/* =====================================================
+		Image lightbox
+		===================================================== */
+
+		.image-lightbox {
+			padding: 24px;
+		}
+
+		.image-lightbox__nav {
+			width: 44px;
+			height: 60px;
+			font-size: 42px;
+		}
+
+		.image-lightbox__nav--prev {
+			left: 4px;
+		}
+
+		.image-lightbox__nav--next {
+			right: 4px;
 		}
 	}
 </style>
@@ -2555,46 +2594,3 @@ const rooms = [
 		},
 	);
 </script>
-
-<div id="viewport-debug"></div>
-
-<script>
-	const debug = document.querySelector('#viewport-debug');
-
-	const updateViewportDebug = () => {
-		if (!debug) return;
-
-		const cell = document.querySelector('.equipment-table th:first-child');
-		const table = document.querySelector('.equipment-table');
-
-		const cellStyle =
-			cell instanceof HTMLElement
-				? getComputedStyle(cell)
-				: null;
-
-		debug.innerHTML = `
-			inner: ${window.innerWidth}<br>
-			visual: ${window.visualViewport?.width}<br>
-			DPR: ${window.devicePixelRatio}<br>
-			font: ${cellStyle?.fontSize}<br>
-			cell: ${cell?.getBoundingClientRect().width.toFixed(1)}<br>
-			table: ${table?.getBoundingClientRect().width.toFixed(1)}
-		`;
-	};
-
-	updateViewportDebug();
-	window.addEventListener('resize', updateViewportDebug);
-</script>
-
-<style>
-	#viewport-debug {
-		position: fixed;
-		z-index: 99999;
-		right: 8px;
-		bottom: 8px;
-		padding: 6px 8px;
-		background: #000;
-		color: #fff;
-		font-size: 11px;
-	}
-</style>
