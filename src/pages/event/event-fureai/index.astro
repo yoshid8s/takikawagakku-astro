@@ -183,17 +183,24 @@ import { fureaiRecords } from '../../../data/fureaiRecords';
                                             <div class="record-flyers">
                                             <h3>チラシ</h3>
 
-                                            <div class="flyer-grid">
-                                                {record.flyers.map((flyer) => (
-                                                <a href={flyer.src} class="flyer-link">
-                                                    <img
-                                                    src={flyer.src}
-                                                    alt={flyer.alt}
-                                                    loading="lazy"
-                                                    />
-                                                </a>
-                                                ))}
-                                            </div>
+												<div class="flyer-grid">
+													{record.flyers.map((flyer, index) => (
+														<button
+															class="flyer-link"
+															type="button"
+															data-lightbox-image={flyer.src}
+															data-lightbox-group={`fureai-${record.year}-flyers`}
+															data-lightbox-index={index}
+															aria-label={`${flyer.alt}を拡大表示`}
+														>
+															<img
+																src={flyer.src}
+																alt={flyer.alt}
+																loading="lazy"
+															/>
+														</button>
+													))}
+												</div>
                                             </div>
                                         )
                                         }

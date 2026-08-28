@@ -461,7 +461,7 @@ import Layout from '../../layouts/Layout.astro';
                     </button>
 
                     <div class="voices-track">
-                        <article class="parent-voice">
+                        <article class="parent-voice is-active">
                             <p>
                                 「子どものためにまずは入会してみよう」という気持ちで入会しました。
                                 習い事とはまた違った魅力があり、入会してよかったと思っています。
@@ -1433,12 +1433,12 @@ import Layout from '../../layouts/Layout.astro';
             gap: 20px;
         }
 
-        /*
-        * スマホではひとまず先頭カードだけ表示。
-        * JSスライダー化する際に切り替える。
-        */
-        .parent-voice:not(:first-child) {
+        .parent-voice {
             display: none;
+        }
+
+        .parent-voice.is-active {
+            display: block;
         }
 
         .parent-voice {
@@ -1612,4 +1612,36 @@ import Layout from '../../layouts/Layout.astro';
 			toggle.setAttribute('aria-expanded', String(isOpen));
 		});
 	});
+
+    const voiceCards = Array.from(
+        document.querySelectorAll('.parent-voice')
+    );
+
+    const voicePrev = document.querySelector('.voices-nav--prev');
+    const voiceNext = document.querySelector('.voices-nav--next');
+
+    let currentVoice = 0;
+
+    const showVoice = (index) => {
+        if (voiceCards.length === 0) return;
+
+        currentVoice =
+            (index + voiceCards.length) % voiceCards.length;
+
+        voiceCards.forEach((card, cardIndex) => {
+            card.classList.toggle(
+                'is-active',
+                cardIndex === currentVoice
+            );
+        });
+    };
+
+    voicePrev?.addEventListener('click', () => {
+        showVoice(currentVoice - 1);
+    });
+
+    voiceNext?.addEventListener('click', () => {
+        showVoice(currentVoice + 1);
+    });
+
 </script>

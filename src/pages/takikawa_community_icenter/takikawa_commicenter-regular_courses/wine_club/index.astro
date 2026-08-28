@@ -110,11 +110,13 @@ const pageTitle = 'ワイン倶楽部';
 					<!-- 左：画像 -->
 
 					<div class="wine-club-course__image">
-						<img
-							src="/images/community-center/wine-club/wine-club.png"
-							alt="滝川ワイン倶楽部"
-							loading="lazy"
-						/>
+
+							<img
+								src="/images/community-center/wine-club/wine-club.png"
+								alt="滝川ワイン倶楽部"
+								loading="lazy"
+							/>
+
 					</div>
 
 
@@ -210,11 +212,19 @@ const pageTitle = 'ワイン倶楽部';
 				<!-- 講座内容 下部画像 -->
 
 				<div class="wine-club-course__bottom-image">
-					<img
-						src="/images/community-center/wine-club/wine-photo.png"
-						alt="ワイン倶楽部の様子"
-						loading="lazy"
-					/>
+					<button
+						class="wine-club-flyer-button"
+						type="button"
+						data-lightbox-image="/images/community-center/wine-club/wine-photo.png"
+						data-lightbox-group="wine-club-flyer"
+						aria-label="ワイン倶楽部のチラシを拡大表示"
+					>
+						<img
+							src="/images/community-center/wine-club/wine-photo.png"
+							alt="ワイン倶楽部の様子"
+							loading="lazy"
+						/>
+					</button>
 				</div>
 
 			</div>
@@ -242,7 +252,27 @@ const pageTitle = 'ワイン倶楽部';
 
 			</div>
 		</section>
+		<div
+			class="image-lightbox"
+			id="wine-club-lightbox"
+			aria-hidden="true"
+		>
+			<button
+				class="image-lightbox__close"
+				type="button"
+				aria-label="画像を閉じる"
+			>
+				×
+			</button>
 
+			<div class="image-lightbox__content">
+				<img
+					class="image-lightbox__image"
+					src=""
+					alt=""
+				/>
+			</div>
+		</div>
 	</main>
 </Layout>
 
@@ -470,6 +500,25 @@ const pageTitle = 'ワイン倶楽部';
 		line-height: 1.8;
 	}
 
+	/* =========================================================
+	   Flyer button
+	========================================================= */
+
+	.wine-club-flyer-button {
+		display: block;
+		width: 100%;
+		padding: 0;
+		border: 0;
+		background: transparent;
+		cursor: zoom-in;
+	}
+
+	.wine-club-flyer-button img {
+		display: block;
+		width: 100%;
+		height: auto;
+	}
+
 
 	/* =========================================================
 	   Bottom image
@@ -515,6 +564,74 @@ const pageTitle = 'ワイン倶楽部';
 	.wine-club-recruit__note {
 		color: #4b5563;
 		font-size: 15px !important;
+	}
+
+	/* =========================================================
+	   Lightbox
+	========================================================= */
+
+	.image-lightbox {
+		position: fixed;
+		z-index: 9999;
+		inset: 0;
+		display: none;
+		align-items: center;
+		justify-content: center;
+		padding: 48px;
+		background: rgb(0 0 0 / 88%);
+	}
+
+	.image-lightbox.is-open {
+		display: flex;
+	}
+
+	.image-lightbox__content {
+		display: flex;
+		max-width: 100%;
+		max-height: 100%;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.image-lightbox__image {
+		display: block;
+		width: auto;
+		height: auto;
+		max-width: min(1500px, 94vw);
+		max-height: 88vh;
+		object-fit: contain;
+
+		cursor: zoom-in;
+		user-select: none;
+		-webkit-user-drag: none;
+		touch-action: none;
+
+		transition: transform 0.15s ease;
+		transform-origin: center center;
+	}
+
+	.image-lightbox__image.is-zoomed {
+		cursor: grab;
+		transition: none;
+	}
+
+	.image-lightbox__image.is-dragging {
+		cursor: grabbing;
+	}
+
+	.image-lightbox__close {
+		position: absolute;
+		top: 18px;
+		right: 24px;
+		width: 48px;
+		height: 48px;
+		padding: 0;
+		border: 0;
+		background: transparent;
+		color: #fff;
+		cursor: pointer;
+		font-size: 42px;
+		line-height: 1;
 	}
 
 
@@ -616,3 +733,265 @@ const pageTitle = 'ワイン倶楽部';
 		}
 	}
 </style>
+<script>
+	const lightbox = document.querySelector('#wine-club-lightbox');
+	const lightboxImage =
+		lightbox?.querySelector('.image-lightbox__image');
+	const closeButton =
+		lightbox?.querySelector('.image-lightbox__close');
+
+	let currentButton = null;
+
+	let isZoomed = false;
+	let isDragging = false;
+
+	let imageX = 0;
+	let imageY = 0;
+
+	let dragStartX = 0;
+	let dragStartY = 0;
+
+	const zoomScale = 2;
+
+	const applyImageTransform = () => {
+		if (!(lightboxImage instanceof HTMLImageElement)) return;
+
+		if (!isZoomed) {
+			lightboxImage.style.transform = '';
+			return;
+		}
+
+		lightboxImage.style.transform =
+			`translate(${imageX}px, ${imageY}px) scale(${zoomScale})`;
+	};
+
+	const resetZoom = () => {
+		if (!(lightboxImage instanceof HTMLImageElement)) return;
+
+		isZoomed = false;
+		isDragging = false;
+
+		imageX = 0;
+		imageY = 0;
+
+		lightboxImage.classList.remove(
+			'is-zoomed',
+			'is-dragging'
+		);
+
+		lightboxImage.style.transform = '';
+	};
+
+	const openLightbox = (button) => {
+		if (
+			!lightbox ||
+			!(button instanceof HTMLElement) ||
+			!(lightboxImage instanceof HTMLImageElement)
+		) {
+			return;
+		}
+
+		const src = button.dataset.lightboxImage;
+		const image = button.querySelector('img');
+
+		if (!src) return;
+
+		currentButton = button;
+
+		resetZoom();
+
+		lightboxImage.src = src;
+		lightboxImage.alt =
+			image instanceof HTMLImageElement ? image.alt : '';
+
+		lightbox.classList.add('is-open');
+		lightbox.setAttribute('aria-hidden', 'false');
+
+		document.body.style.overflow = 'hidden';
+	};
+
+	const closeLightbox = () => {
+		if (!lightbox) return;
+
+		resetZoom();
+
+		lightbox.classList.remove('is-open');
+		lightbox.setAttribute('aria-hidden', 'true');
+
+		if (lightboxImage instanceof HTMLImageElement) {
+			lightboxImage.src = '';
+		}
+
+		document.body.style.overflow = '';
+
+		if (currentButton instanceof HTMLElement) {
+			currentButton.focus();
+		}
+
+		currentButton = null;
+	};
+
+	const toggleZoom = () => {
+		if (!(lightboxImage instanceof HTMLImageElement)) return;
+
+		if (isZoomed) {
+			resetZoom();
+			return;
+		}
+
+		isZoomed = true;
+		imageX = 0;
+		imageY = 0;
+
+		lightboxImage.classList.add('is-zoomed');
+
+		applyImageTransform();
+	};
+
+	/*
+	 * 防災ページと同じく document でクリックを監視
+	 */
+	document.addEventListener('click', (event) => {
+		if (!(event.target instanceof Element)) return;
+
+		const button =
+			event.target.closest('[data-lightbox-image]');
+
+		if (!(button instanceof HTMLElement)) return;
+
+		event.preventDefault();
+		event.stopPropagation();
+
+		openLightbox(button);
+	});
+
+	/*
+	 * クリック / タップで拡大・縮小
+	 */
+	lightboxImage?.addEventListener('click', (event) => {
+		event.preventDefault();
+		event.stopPropagation();
+
+		if (isDragging) return;
+
+		toggleZoom();
+	});
+
+	/*
+	 * マウスドラッグ
+	 */
+	lightboxImage?.addEventListener('mousedown', (event) => {
+		if (
+			!isZoomed ||
+			!(lightboxImage instanceof HTMLImageElement)
+		) {
+			return;
+		}
+
+		event.preventDefault();
+		event.stopPropagation();
+
+		isDragging = true;
+
+		dragStartX = event.clientX - imageX;
+		dragStartY = event.clientY - imageY;
+
+		lightboxImage.classList.add('is-dragging');
+	});
+
+	document.addEventListener('mousemove', (event) => {
+		if (!isDragging || !isZoomed) return;
+
+		event.preventDefault();
+
+		imageX = event.clientX - dragStartX;
+		imageY = event.clientY - dragStartY;
+
+		applyImageTransform();
+	});
+
+	document.addEventListener('mouseup', () => {
+		if (!isDragging) return;
+
+		isDragging = false;
+
+		if (lightboxImage instanceof HTMLImageElement) {
+			lightboxImage.classList.remove('is-dragging');
+		}
+	});
+
+	/*
+	 * タッチ / Pointer Event
+	 */
+	lightboxImage?.addEventListener('pointerdown', (event) => {
+		if (
+			!isZoomed ||
+			!(lightboxImage instanceof HTMLImageElement)
+		) {
+			return;
+		}
+
+		event.preventDefault();
+
+		isDragging = true;
+
+		dragStartX = event.clientX - imageX;
+		dragStartY = event.clientY - imageY;
+
+		lightboxImage.classList.add('is-dragging');
+		lightboxImage.setPointerCapture(event.pointerId);
+	});
+
+	lightboxImage?.addEventListener('pointermove', (event) => {
+		if (
+			!isDragging ||
+			!isZoomed ||
+			!(lightboxImage instanceof HTMLImageElement)
+		) {
+			return;
+		}
+
+		event.preventDefault();
+
+		imageX = event.clientX - dragStartX;
+		imageY = event.clientY - dragStartY;
+
+		applyImageTransform();
+	});
+
+	lightboxImage?.addEventListener('pointerup', (event) => {
+		if (!(lightboxImage instanceof HTMLImageElement)) return;
+
+		isDragging = false;
+
+		lightboxImage.classList.remove('is-dragging');
+
+		if (lightboxImage.hasPointerCapture(event.pointerId)) {
+			lightboxImage.releasePointerCapture(event.pointerId);
+		}
+	});
+
+	lightboxImage?.addEventListener('pointercancel', () => {
+		isDragging = false;
+		lightboxImage?.classList.remove('is-dragging');
+	});
+
+	closeButton?.addEventListener('click', (event) => {
+		event.stopPropagation();
+		closeLightbox();
+	});
+
+	lightbox?.addEventListener('click', (event) => {
+		if (event.target === lightbox) {
+			closeLightbox();
+		}
+	});
+
+	document.addEventListener('keydown', (event) => {
+		if (!lightbox?.classList.contains('is-open')) return;
+
+		if (event.key === 'Escape') {
+			closeLightbox();
+		}
+	});
+</script>

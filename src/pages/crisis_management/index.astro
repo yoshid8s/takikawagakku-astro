@@ -767,6 +767,17 @@ const crisisItems = [
 		object-fit: contain;
 		user-select: none;
 		-webkit-user-drag: none;
+		cursor: zoom-in;
+		transition: transform 0.2s ease;
+		touch-action: none;
+	}
+
+	.crisis-lightbox__image.is-zoomed {
+		cursor: grab;
+	}
+
+	.crisis-lightbox__image.is-dragging {
+		cursor: grabbing;
 	}
 
 	.crisis-lightbox__close {
@@ -1155,11 +1166,13 @@ const crisisItems = [
 	};
 
 	/*
-	* ダブルクリックで拡大・縮小
+	* クリック / タップで拡大・縮小
 	*/
-	lightboxImage?.addEventListener('dblclick', (event) => {
+	lightboxImage?.addEventListener('click', (event) => {
 		event.preventDefault();
 		event.stopPropagation();
+
+		if (isDragging) return;
 
 		toggleZoom();
 	});
@@ -1242,11 +1255,12 @@ const crisisItems = [
 			return;
 		}
 
+		event.preventDefault();
+
 		imageX = event.clientX - dragStartX;
 		imageY = event.clientY - dragStartY;
 
-		lightboxImage.style.transform =
-			`translate(${imageX}px, ${imageY}px)`;
+		applyImageTransform();
 	});
 
 	lightboxImage?.addEventListener('pointerup', (event) => {

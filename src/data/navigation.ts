@@ -125,7 +125,7 @@ export const navigationItems = [
 
       {
         label: "自主活動クラブ",
-        href: "/takikawa_community_icenter/club/",
+        href: "/takikawa_community_icenter/takikawa_commicenter-independent_activities_club/",
         children: [],
       },
 
