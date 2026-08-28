@@ -1955,7 +1955,7 @@ const rooms = [
 		.usage-time-table thead th:first-child {
 			z-index: 3;
 		}
-		
+
 		/* 利用料金テーブル */
 		.fee-table {
 			width: 900px;
@@ -2555,3 +2555,34 @@ const rooms = [
 		},
 	);
 </script>
+
+<div id="viewport-debug"></div>
+
+<script>
+	const debug = document.querySelector('#viewport-debug');
+
+	const updateViewportDebug = () => {
+		if (!debug) return;
+
+		debug.textContent =
+			`innerWidth: ${window.innerWidth}px / ` +
+			`visualViewport: ${window.visualViewport?.width}px / ` +
+			`DPR: ${window.devicePixelRatio}`;
+	};
+
+	updateViewportDebug();
+	window.addEventListener('resize', updateViewportDebug);
+</script>
+
+<style>
+	#viewport-debug {
+		position: fixed;
+		z-index: 99999;
+		right: 8px;
+		bottom: 8px;
+		padding: 6px 8px;
+		background: #000;
+		color: #fff;
+		font-size: 11px;
+	}
+</style>
