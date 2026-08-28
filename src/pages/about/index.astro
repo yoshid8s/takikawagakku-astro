@@ -101,24 +101,29 @@ import Layout from '../../layouts/Layout.astro';
 
 		<section class="about-section">
 			<div class="page-inner">
-                <h2>滝川学区自治協議会の構成</h2>
+                <h2>
+				滝川学区自治協議会<br />
+				の構成
+				</h2>
 
                 <p class="section-lead">
                     滝川学区自治協議会は滝川学区のさまざまな団体で構成されています。
                 </p>
 				<h2>自治協議会の構成</h2>
-
-				<a
-					class="diagram-link"
-					href="/images/about/takikawa-chart.png"
-					target="_blank"
-					rel="noopener noreferrer"
-				>
-					<img
-						src="/images/about/takikawa-chart.png"
-						alt="滝川学区自治協議会の構成図"
-					/>
-				</a>
+				<div class="takikawa-structure">
+					<button
+						class="takikawa-flyer-button"
+						type="button"
+						data-lightbox-image="/images/about/takikawa-chart.png"
+						data-lightbox-group="takikawa-flyer"
+						aria-label="滝川学区自治協議会の構成図を拡大表示"
+					>
+						<img
+							src="/images/about/takikawa-chart.png"
+							alt="滝川学区自治協議会の構成図"
+						/>
+					</button>
+				</div>
 			</div>
 		</section>
 
@@ -224,6 +229,27 @@ import Layout from '../../layouts/Layout.astro';
 				</div>
 			</div>
 		</section>
+		<div
+			class="image-lightbox"
+			id="takikawa-lightbox"
+			aria-hidden="true"
+		>
+			<button
+				class="image-lightbox__close"
+				type="button"
+				aria-label="画像を閉じる"
+			>
+				×
+			</button>
+
+			<div class="image-lightbox__content">
+				<img
+					class="image-lightbox__image"
+					src=""
+					alt=""
+				/>
+			</div>
+		</div>
 	</main>
 </Layout>
 
@@ -373,6 +399,94 @@ import Layout from '../../layouts/Layout.astro';
         margin-top: 24px;
     }
 
+	/* =========================================================
+	   Flyer button
+	========================================================= */
+
+	.takikawa-flyer-button {
+		display: block;
+		width: 100%;
+		padding: 0;
+		border: 0;
+		background: transparent;
+		cursor: zoom-in;
+	}
+
+	.takikawa-flyer-button img {
+		display: block;
+		width: 100%;
+		height: auto;
+	}
+
+	/* =========================================================
+	   Lightbox
+	========================================================= */
+
+	.image-lightbox {
+		position: fixed;
+		z-index: 9999;
+		inset: 0;
+		display: none;
+		align-items: center;
+		justify-content: center;
+		padding: 48px;
+		background: rgb(0 0 0 / 88%);
+	}
+
+	.image-lightbox.is-open {
+		display: flex;
+	}
+
+	.image-lightbox__content {
+		display: flex;
+		max-width: 100%;
+		max-height: 100%;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.image-lightbox__image {
+		display: block;
+		width: auto;
+		height: auto;
+		max-width: min(1500px, 94vw);
+		max-height: 88vh;
+		object-fit: contain;
+
+		cursor: zoom-in;
+		user-select: none;
+		-webkit-user-drag: none;
+		touch-action: none;
+
+		transition: transform 0.15s ease;
+		transform-origin: center center;
+	}
+
+	.image-lightbox__image.is-zoomed {
+		cursor: grab;
+		transition: none;
+	}
+
+	.image-lightbox__image.is-dragging {
+		cursor: grabbing;
+	}
+
+	.image-lightbox__close {
+		position: absolute;
+		top: 18px;
+		right: 24px;
+		width: 48px;
+		height: 48px;
+		padding: 0;
+		border: 0;
+		background: transparent;
+		color: #fff;
+		cursor: pointer;
+		font-size: 42px;
+		line-height: 1;
+	}
+
+
 	@media (max-width: 768px) {
 		.page-hero {
 			height: 300px;
@@ -427,3 +541,345 @@ import Layout from '../../layouts/Layout.astro';
         }
 	}
 </style>
+<script>
+	const lightbox = document.querySelector('#takikawa-lightbox');
+	const lightboxImage = lightbox?.querySelector('.image-lightbox__image');
+	const closeButton = lightbox?.querySelector('.image-lightbox__close');
+
+	const prevButton = null;
+	const nextButton = null;
+	const counter = null;
+
+	let currentGroup = [];
+	let currentIndex = 0;
+
+	const updateLightbox = () => {
+		if (
+			!(lightboxImage instanceof HTMLImageElement) ||
+			currentGroup.length === 0
+		) {
+			return;
+		}
+
+		const currentButton = currentGroup[currentIndex];
+
+		if (!(currentButton instanceof HTMLElement)) return;
+
+		const src = currentButton.dataset.lightboxImage;
+		const image = currentButton.querySelector('img');
+
+		if (!src) return;
+
+		lightboxImage.src = src;
+		lightboxImage.alt =
+			image instanceof HTMLImageElement ? image.alt : '';
+
+		if (counter) {
+			counter.textContent =
+				`${currentIndex + 1} / ${currentGroup.length}`;
+		}
+
+		if (prevButton instanceof HTMLButtonElement) {
+			prevButton.disabled = currentGroup.length <= 1;
+		}
+
+		if (nextButton instanceof HTMLButtonElement) {
+			nextButton.disabled = currentGroup.length <= 1;
+		}
+	};
+
+	const openLightbox = (button) => {
+		if (
+			!lightbox ||
+			!(button instanceof HTMLElement)
+		) {
+			return;
+		}
+
+		const groupName = button.dataset.lightboxGroup;
+
+		if (!groupName) return;
+
+		currentGroup = Array.from(
+			document.querySelectorAll('[data-lightbox-image]')
+		).filter((item) => {
+			return (
+				item instanceof HTMLElement &&
+				item.dataset.lightboxGroup === groupName
+			);
+		});
+
+		currentIndex = currentGroup.indexOf(button);
+
+		if (currentIndex < 0) {
+			currentIndex = 0;
+		}
+
+		updateLightbox();
+
+		lightbox.classList.add('is-open');
+		lightbox.setAttribute('aria-hidden', 'false');
+		document.body.style.overflow = 'hidden';
+	};
+
+	const closeLightbox = () => {
+		if (!lightbox) return;
+
+		lightbox.classList.remove('is-open');
+		lightbox.setAttribute('aria-hidden', 'true');
+
+		if (lightboxImage instanceof HTMLImageElement) {
+			lightboxImage.src = '';
+		}
+
+		currentGroup = [];
+		currentIndex = 0;
+		document.body.style.overflow = '';
+	};
+
+	const showPrevious = () => {
+		if (currentGroup.length <= 1) return;
+
+		currentIndex =
+			(currentIndex - 1 + currentGroup.length) %
+			currentGroup.length;
+
+		updateLightbox();
+	};
+
+	const showNext = () => {
+		if (currentGroup.length <= 1) return;
+
+		currentIndex =
+			(currentIndex + 1) %
+			currentGroup.length;
+
+		updateLightbox();
+	};
+
+	/*
+	 * 重要：
+	 * 個々の画像ボタンではなく document でクリックを監視する。
+	 */
+	document.addEventListener('click', (event) => {
+		if (!(event.target instanceof Element)) return;
+
+		const button = event.target.closest('[data-lightbox-image]');
+
+		if (!(button instanceof HTMLElement)) return;
+
+		event.preventDefault();
+		event.stopPropagation();
+
+		openLightbox(button);
+	});
+
+	closeButton?.addEventListener('click', (event) => {
+		event.stopPropagation();
+		closeLightbox();
+	});
+
+	let isZoomed = false;
+	let isDragging = false;
+
+	let imageX = 0;
+	let imageY = 0;
+
+	let dragStartX = 0;
+	let dragStartY = 0;
+
+	const zoomScale = 2;
+
+	const applyImageTransform = () => {
+		if (!(lightboxImage instanceof HTMLImageElement)) return;
+
+		if (!isZoomed) {
+			lightboxImage.style.transform = '';
+			return;
+		}
+
+		lightboxImage.style.transform =
+			`translate(${imageX}px, ${imageY}px) scale(${zoomScale})`;
+	};
+
+	const resetZoom = () => {
+		if (!(lightboxImage instanceof HTMLImageElement)) return;
+
+		isZoomed = false;
+		isDragging = false;
+
+		imageX = 0;
+		imageY = 0;
+
+		lightboxImage.classList.remove(
+			'is-zoomed',
+			'is-dragging'
+		);
+
+		lightboxImage.style.transform = '';
+	};
+
+	const toggleZoom = () => {
+		if (!(lightboxImage instanceof HTMLImageElement)) return;
+
+		if (isZoomed) {
+			resetZoom();
+			return;
+		}
+
+		isZoomed = true;
+		imageX = 0;
+		imageY = 0;
+
+		lightboxImage.classList.add('is-zoomed');
+
+		applyImageTransform();
+	};
+
+	/*
+	* クリック / タップで拡大・縮小
+	*/
+	lightboxImage?.addEventListener('click', (event) => {
+		event.preventDefault();
+		event.stopPropagation();
+
+		if (isDragging) return;
+
+		toggleZoom();
+	});
+
+	/*
+	* ドラッグ開始
+	*/
+	lightboxImage?.addEventListener('mousedown', (event) => {
+		if (
+			!isZoomed ||
+			!(lightboxImage instanceof HTMLImageElement)
+		) {
+			return;
+		}
+
+		event.preventDefault();
+		event.stopPropagation();
+
+		isDragging = true;
+
+		dragStartX = event.clientX - imageX;
+		dragStartY = event.clientY - imageY;
+
+		lightboxImage.classList.add('is-dragging');
+	});
+
+	/*
+	* 重要：
+	* mousemove は画像ではなく document で監視する
+	*/
+	document.addEventListener('mousemove', (event) => {
+		if (!isDragging || !isZoomed) return;
+
+		event.preventDefault();
+
+		imageX = event.clientX - dragStartX;
+		imageY = event.clientY - dragStartY;
+
+		applyImageTransform();
+	});
+
+	/*
+	* ドラッグ終了
+	*/
+	document.addEventListener('mouseup', () => {
+		if (!isDragging) return;
+
+		isDragging = false;
+
+		if (lightboxImage instanceof HTMLImageElement) {
+			lightboxImage.classList.remove('is-dragging');
+		}
+	});
+
+	lightboxImage?.addEventListener('pointerdown', (event) => {
+		if (
+			!isZoomed ||
+			!(lightboxImage instanceof HTMLImageElement)
+		) {
+			return;
+		}
+
+		event.preventDefault();
+
+		isDragging = true;
+
+		dragStartX = event.clientX - imageX;
+		dragStartY = event.clientY - imageY;
+
+		lightboxImage.classList.add('is-dragging');
+		lightboxImage.setPointerCapture(event.pointerId);
+	});
+
+	lightboxImage?.addEventListener('pointermove', (event) => {
+		if (
+			!isDragging ||
+			!isZoomed ||
+			!(lightboxImage instanceof HTMLImageElement)
+		) {
+			return;
+		}
+
+		event.preventDefault();
+
+		imageX = event.clientX - dragStartX;
+		imageY = event.clientY - dragStartY;
+
+		applyImageTransform();
+	});
+
+	lightboxImage?.addEventListener('pointerup', (event) => {
+		if (!(lightboxImage instanceof HTMLImageElement)) return;
+
+		isDragging = false;
+
+		lightboxImage.classList.remove('is-dragging');
+
+		if (lightboxImage.hasPointerCapture(event.pointerId)) {
+			lightboxImage.releasePointerCapture(event.pointerId);
+		}
+	});
+
+	lightboxImage?.addEventListener('pointercancel', () => {
+		isDragging = false;
+		lightboxImage?.classList.remove('is-dragging');
+	});
+
+	prevButton?.addEventListener('click', (event) => {
+		event.stopPropagation();
+		showPrevious();
+	});
+
+	nextButton?.addEventListener('click', (event) => {
+		event.stopPropagation();
+		showNext();
+	});
+
+	lightbox?.addEventListener('click', (event) => {
+		if (event.target === lightbox) {
+			closeLightbox();
+		}
+	});
+
+	document.addEventListener('keydown', (event) => {
+		if (!lightbox?.classList.contains('is-open')) return;
+
+		if (event.key === 'Escape') {
+			closeLightbox();
+		}
+
+		if (event.key === 'ArrowLeft') {
+			showPrevious();
+		}
+
+		if (event.key === 'ArrowRight') {
+			showNext();
+		}
+	});
+</script>

@@ -84,19 +84,26 @@ const rooms = [
 			class="community-center-hero"
 			style={`background-image: linear-gradient(rgba(0,0,0,.25), rgba(0,0,0,.25)), url('/images/community-center/hero.jpg');`}
 		>
-			<h1>滝川コミュニティセンター</h1>
+			<h1>
+			滝川コミュニティ<br />
+			センター
+			</h1>
 		</section>
 
 		<nav class="breadcrumbs" aria-label="パンくずリスト">
 			<a href="/">Home</a>
 			<span>/</span>
-			<span>滝川コミュニティセンター</span>
+			<span>
+			滝川コミュニティセンター</span>
 		</nav>
 
 		<section class="intro-section content-section">
 			<div class="section-inner two-column">
 				<div class="section-text">
-					<h2>滝川コミュニティセンター</h2>
+					<h2>
+					滝川コミュニティ<br />
+					センター
+					</h2>
 
 					<p>
 						滝川コミュニティセンターは、市の指定管理者制度により、指定管理者となった滝川学区自治協議会が
@@ -124,7 +131,10 @@ const rooms = [
 
 		<section class="availability-section content-section">
 			<div class="section-inner">
-				<h2>滝川コミセンの空室状況・予約</h2>
+				<h2>
+				滝川コミセン<br />
+				の空室状況・予約
+				</h2>
 
 				<p class="section-lead">
 					滝川コミセンで開催されている自主活動クラブを含めたイベントカレンダーです。
@@ -189,7 +199,10 @@ const rooms = [
 				</div>
 
 				<div class="reservation-notice">
-					<h3>新規に滝川コミセンのご利用希望の方へ</h3>
+					<h3>
+					新規に滝川コミセン<br />
+					のご利用希望の方へ
+					</h3>
                     <ul>
                         <li>滝川コミセンへの直接ご訪問いただき、申込書を提出いただくか、 オンラインからもお申し込みができます。</li>
                         <li>オンライン申し込みには、滝川コミセンを訪問されてのお申し込みが優先されますので、お申し込み時点で空室でも予約保証をするものではありませんので、あらかじめご了承ください。</li>
@@ -1528,9 +1541,35 @@ const rooms = [
         font-weight: 700;
     }
 
-    .equipment-table thead th:first-child {
-        width: 39%;
-    }
+	.equipment-table thead th:first-child {
+		width: 220px;
+	}
+
+	.equipment-table th:first-child {
+		position: sticky;
+		left: 0;
+		z-index: 2;
+		background: #ffdf72;
+	}
+
+	.equipment-table th:first-child::after {
+		content: '';
+		position: absolute;
+		top: 0;
+		right: -2px;
+		bottom: 0;
+		width: 2px;
+		background: #4b5b42;
+		pointer-events: none;
+	}
+
+	.equipment-table thead th:first-child {
+		z-index: 3;
+	}
+
+	.equipment-table thead th:first-child {
+		z-index: 3;
+	}
 
     .equipment-table tbody th {
         font-weight: 400;
@@ -1858,6 +1897,93 @@ const rooms = [
 
 		.image-lightbox__nav--next {
 			right: 4px;
+		}
+
+		.equipment-table {
+			width: 720px;
+			table-layout: fixed;
+		}
+
+		.equipment-table th:first-child {
+			width: 150px;
+			min-width: 150px;
+			max-width: 150px;
+		}
+
+		.equipment-table th:not(:first-child),
+		.equipment-table td {
+			width: 190px;
+			min-width: 190px;
+		}
+
+		.equipment-table th,
+		.equipment-table td {
+			padding: 10px 8px;
+			font-size: 13px;
+		}
+
+		.equipment-table tbody th:first-child {
+			text-align: left;
+		}
+
+		/* 利用時間テーブル */
+		.usage-time-table {
+			width: 720px;
+			min-width: 720px;
+		}
+
+		.usage-time-table th:first-child {
+			position: sticky;
+			left: 0;
+			z-index: 2;
+			width: 160px;
+			min-width: 160px;
+			background: #f4f6f8;
+		}
+
+		.usage-time-table th:first-child::after {
+			content: '';
+			position: absolute;
+			top: 0;
+			right: -2px;
+			bottom: 0;
+			width: 2px;
+			background: #4b5b42;
+			pointer-events: none;
+		}
+
+		.usage-time-table thead th:first-child {
+			z-index: 3;
+		}
+		
+		/* 利用料金テーブル */
+		.fee-table {
+			width: 900px;
+			min-width: 900px;
+		}
+
+		.fee-table th:first-child {
+			position: sticky;
+			left: 0;
+			z-index: 2;
+			width: 170px;
+			min-width: 170px;
+			background: #ffdf72;
+		}
+
+		.fee-table th:first-child::after {
+			content: '';
+			position: absolute;
+			top: 0;
+			right: -2px;
+			bottom: 0;
+			width: 2px;
+			background: #4b5b42;
+			pointer-events: none;
+		}
+
+		.fee-table thead th:first-child {
+			z-index: 3;
 		}
 	}
 </style>

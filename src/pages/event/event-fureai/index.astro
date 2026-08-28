@@ -14,7 +14,10 @@ import { fureaiRecords } from '../../../data/fureaiRecords';
 			<div class="page-hero__overlay"></div>
 
 			<div class="page-hero__content">
-				<h1>滝川ふれあいフェスタ</h1>
+				<h1>
+				滝川ふれあい<br />
+				フェスタ
+				</h1>
 			</div>
 		</section>
 
@@ -541,7 +544,7 @@ import { fureaiRecords } from '../../../data/fureaiRecords';
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
-		overflow: hidden;
+		overflow: visible;
 	}
 
 	.lightbox__image {
@@ -554,6 +557,7 @@ import { fureaiRecords } from '../../../data/fureaiRecords';
 		cursor: zoom-in;
 		user-select: none;
 		-webkit-user-drag: none;
+		touch-action: none;
 		transform: translate(0, 0) scale(1);
 		transform-origin: center center;
 		transition: transform 0.2s ease;
@@ -887,23 +891,25 @@ import { fureaiRecords } from '../../../data/fureaiRecords';
         event.preventDefault();
 	});
 
-	lightboxImage?.addEventListener('pointermove', (event) => {
-        if (!isZoomed || !isDragging) return;
+	document.addEventListener('pointermove', (event) => {
+		if (!isZoomed || !isDragging) return;
 
-        const deltaX = event.clientX - dragStartX;
-        const deltaY = event.clientY - dragStartY;
+		event.preventDefault();
 
-        if (
-            Math.abs(deltaX) > DRAG_THRESHOLD ||
-            Math.abs(deltaY) > DRAG_THRESHOLD
-        ) {
-            didDrag = true;
-        }
+		const deltaX = event.clientX - dragStartX;
+		const deltaY = event.clientY - dragStartY;
 
-        translateX = dragOriginX + deltaX;
-        translateY = dragOriginY + deltaY;
+		if (
+			Math.abs(deltaX) > DRAG_THRESHOLD ||
+			Math.abs(deltaY) > DRAG_THRESHOLD
+		) {
+			didDrag = true;
+		}
 
-        updateTransform();
+		translateX = dragOriginX + deltaX;
+		translateY = dragOriginY + deltaY;
+
+		updateTransform();
 	});
 
 	const stopDragging = (event) => {
@@ -920,8 +926,8 @@ import { fureaiRecords } from '../../../data/fureaiRecords';
 		}
 	};
 
-	lightboxImage?.addEventListener('pointerup', stopDragging);
-	lightboxImage?.addEventListener('pointercancel', stopDragging);
+	document.addEventListener('pointerup', stopDragging);
+	document.addEventListener('pointercancel', stopDragging);
 
 	prevButton?.addEventListener('click', showPrevious);
 	nextButton?.addEventListener('click', showNext);
