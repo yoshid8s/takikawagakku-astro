@@ -2564,10 +2564,22 @@ const rooms = [
 	const updateViewportDebug = () => {
 		if (!debug) return;
 
-		debug.textContent =
-			`innerWidth: ${window.innerWidth}px / ` +
-			`visualViewport: ${window.visualViewport?.width}px / ` +
-			`DPR: ${window.devicePixelRatio}`;
+		const cell = document.querySelector('.equipment-table th:first-child');
+		const table = document.querySelector('.equipment-table');
+
+		const cellStyle =
+			cell instanceof HTMLElement
+				? getComputedStyle(cell)
+				: null;
+
+		debug.innerHTML = `
+			inner: ${window.innerWidth}<br>
+			visual: ${window.visualViewport?.width}<br>
+			DPR: ${window.devicePixelRatio}<br>
+			font: ${cellStyle?.fontSize}<br>
+			cell: ${cell?.getBoundingClientRect().width.toFixed(1)}<br>
+			table: ${table?.getBoundingClientRect().width.toFixed(1)}
+		`;
 	};
 
 	updateViewportDebug();
