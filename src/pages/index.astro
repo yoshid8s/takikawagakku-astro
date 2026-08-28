@@ -28,18 +28,21 @@ const postHref = (slug: string) =>
 		<section class="hero">
 			<div class="hero__inner">
 				<div class="hero__content">
-					<h1>
-						「近助（きんじょ）」を合言葉に！<br />
-						<span class="hero__title-second">子どもにも大人にも優しい街</span>
+					<h1 class="hero__message">
+						<img
+							src="/images/main-message.svg"
+							alt="「近助（きんじょ）」を合言葉に！ 子どもにも大人にも優しい街"
+						/>
 					</h1>
 
 					<div class="hero__body">
 						<p>
-							名古屋市昭和区の南に位置する滝川学区は、<br />
-							都市の便利さと自然が共存する、住みやすい街です。<br />
-							滝川学区自治協議会は、滝川学区をより良い街にするために、<br />
-							町内会のみなさんや子ども会、防災関連団体、名古屋市など<br />
-							行政機関と連携して活動しています。
+							<span>名古屋市昭和区の南に位置する滝川学区は、</span>
+							<span>都市の便利さと自然が共存する、住みやすい</span>
+							<span>街です。滝川学区自治協議会は、滝川学区を</span>
+							<span>より良い街にするために、町内会のみなさん</span>
+							<span>や子ども会、防災関連団体、名古屋市など</span>
+							<span>行政機関と連携して活動しています。</span>
 						</p>
 					</div>
 				</div>
@@ -202,11 +205,6 @@ const postHref = (slug: string) =>
 		color: #fff;
 	}
 
-	.hero__title-second {
-		display: inline-block;
-		margin-left: 1em;
-	}
-
 	.hero__inner {
 		width: min(1120px, calc(100% - 48px));
 		margin: 0 auto;
@@ -221,13 +219,14 @@ const postHref = (slug: string) =>
 		width: fit-content;
 	}
 
-	.hero h1 {
+	.hero__message {
 		margin: 0 0 36px;
-		font-size: clamp(32px, 3vw, 44px);
-		font-weight: 400;
-		line-height: 1.28;
-		letter-spacing: 0;
-		text-align: left;
+	}
+
+	.hero__message img {
+		display: block;
+		width: min(564px, 100%);
+		height: auto;
 	}
 
 	.hero__body {
@@ -237,9 +236,15 @@ const postHref = (slug: string) =>
 
 	.hero p {
 		margin: 0;
-		font-size: 18px;
-		line-height: 1.9;
+		font-size: 15px;
+		font-weight: 400;
+		line-height: 2.2;
 		text-align: left;
+	}
+
+	.hero__body span {
+		display: block;
+		white-space: nowrap;
 	}
 
 	.section-inner {
@@ -426,63 +431,80 @@ const postHref = (slug: string) =>
 		margin: 0 auto;
 	}
 
-		@media (max-width: 768px) {
-			.hero {
-				min-height: 520px;
-			}
-
-			.hero__inner {
-				width: min(100% - 32px, 1120px);
-			}
-
-			.hero p br {
-				display: none;
-			}
-		}
-
-	@media (max-width: 768px) {
-		.news {
-			padding: 64px 0;
-		}
-
-		.news-card {
-			grid-template-columns: 1fr;
-			gap: 12px;
-		}
+@media (max-width: 768px) {
+	.hero {
+		min-height: 780px;
+		align-items: flex-start;
+		padding-top: 130px;
 	}
 
-	@media (max-width: 768px) {
-		.features {
-			padding: 72px 0;
-		}
-
-		.features__grid {
-			grid-template-columns: 1fr;
-		}
-
-		.feature-card {
-			padding: 32px 24px;
-		}
+	.hero__inner {
+		width: calc(100% - 32px);
+		margin: 0 auto;
 	}
 
-	@media (max-width: 768px) {
-		.safety {
-			padding: 72px 0;
-		}
-
-		.safety__content {
-			grid-template-columns: 1fr;
-			gap: 32px;
-		}
+	.hero__content {
+		width: 100%;
 	}
 
-	@media (max-width: 768px) {
-		.environment {
-			padding: 72px 0;
-		}
-
-		.environment__figure {
-			margin-top: 32px;
-		}
+	.hero__message {
+		width: 100%;
+		margin: 0 auto 58px;
 	}
+
+	.hero__message img {
+		display: block;
+		width: 100%;
+		max-width: 564px;
+		height: auto;
+		margin: 0 auto;
+	}
+
+	.hero__body {
+		width: fit-content;
+		max-width: 100%;
+		margin: 0 auto;
+	}
+
+	.hero p {
+		margin: 0;
+		font-size: 15px;
+		font-weight: 400;
+		line-height: 2.2;
+		text-align: left;
+	}
+
+	.hero__body span {
+		display: block;
+		white-space: nowrap;
+	}
+	.news {
+		padding: 64px 0;
+	}
+
+	.news-card {
+		display: block;
+		padding: 28px 0;
+	}
+
+	.news-card__meta {
+		margin-bottom: 14px;
+	}
+
+	.news-card__body h3 {
+		margin: 0 0 14px;
+		font-size: 20px;
+		line-height: 1.55;
+	}
+
+	.news-card__body p {
+		margin: 0 0 18px;
+		font-size: 15px;
+		line-height: 1.8;
+	}
+
+	.news-card__more {
+		font-size: 14px;
+	}
+}
 </style>
