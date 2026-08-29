@@ -1541,10 +1541,6 @@ const rooms = [
         font-weight: 700;
     }
 
-	.equipment-table thead th:first-child {
-		width: 220px;
-	}
-
 	.equipment-table th:first-child {
 		position: sticky;
 		left: 0;
@@ -1703,6 +1699,16 @@ const rooms = [
         transform: scale(2);
         cursor: zoom-out;
     }
+
+	/* =========================================================
+	   実機表示が異なる問題対応
+	========================================================= */
+
+	@media (min-width: 601px) {
+		.equipment-table thead th:first-child {
+			width: 220px;
+		}
+	}
 
 	/* =========================================================
 	   Tablet
@@ -1898,15 +1904,16 @@ const rooms = [
 		}
 
 		/* 先頭列 */
-		.equipment-table th:first-child {
-			position: sticky;
-			left: 0;
-			z-index: 2;
-			width: 120px;
-			min-width: 120px;
-			max-width: 120px;
-			background: #ffdf72;
-		}
+	.equipment-table thead th:first-child,
+	.equipment-table tbody th:first-child {
+		position: sticky;
+		left: 0;
+		z-index: 2;
+		width: 120px !important; /* 保険として!importantを付与するか、明示的に120px固定 */
+		min-width: 120px !important;
+		max-width: 120px !important;
+		background: #ffdf72;
+	}
 
 		/* 残り3列 */
 		.equipment-table thead th:not(:first-child) {
@@ -2594,3 +2601,28 @@ const rooms = [
 		},
 	);
 </script>
+
+<!-- =========================================================
+     Temporary table debug
+     確認後に削除する
+========================================================= -->
+<div id="equipment-table-debug" aria-hidden="true"></div>
+
+<style>
+	#equipment-table-debug {
+		position: fixed;
+		z-index: 99999;
+		right: 4px;
+		bottom: 4px;
+		left: 4px;
+		padding: 10px 12px;
+		background: rgb(0 0 0 / 90%);
+		color: #fff;
+		font-family: monospace;
+		font-size: 11px;
+		line-height: 1.5;
+		white-space: pre-wrap;
+		pointer-events: none;
+	}
+</style>
+
