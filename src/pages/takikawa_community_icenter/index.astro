@@ -1,5 +1,8 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import communityCalendar from '../../data/community-calendar.json';
+
+const mainScheduleMonths = communityCalendar.months;
 
 const availabilityItems = [
 	{
@@ -125,6 +128,75 @@ const rooms = [
 						alt="滝川コミュニティセンター外観"
 						loading="lazy"
 					/>
+				</div>
+			</div>
+		</section>
+
+		<section class="main-schedule-section content-section content-section--white">
+			<div class="section-inner">
+				<h2>滝川コミセンの主な予定</h2>
+
+				<div
+					class="main-schedule-tabs"
+					role="tablist"
+					aria-label="主な予定 月選択"
+				>
+					{
+						mainScheduleMonths.map((month, index) => (
+							<button
+								class:list={[
+									'main-schedule-tab',
+									index === 0 && 'is-active',
+								]}
+								type="button"
+								role="tab"
+								aria-selected={index === 0 ? 'true' : 'false'}
+								data-main-schedule-tab={month.key}
+							>
+								{month.label}
+							</button>
+						))
+					}
+				</div>
+
+				<div class="main-schedule-panels">
+					{
+						mainScheduleMonths.map((month, index) => (
+							<div
+								class:list={[
+									'main-schedule-panel',
+									index === 0 && 'is-active',
+								]}
+								data-main-schedule-panel={month.key}
+								role="tabpanel"
+							>
+								{month.events.length > 0 ? (
+									<div class="main-schedule-list">
+										{month.events.map((event) => (
+											<div class="main-schedule-item">
+												<div class="main-schedule-title">
+													{event.title}
+												</div>
+
+												<div class="main-schedule-dates">
+													{event.dates
+														.map(
+															(date) =>
+																`${date.day}日（${date.weekday}）`
+														)
+														.join('・')}
+												</div>
+											</div>
+										))}
+									</div>
+								) : (
+									<p class="main-schedule-empty">
+										掲載予定はありません。
+									</p>
+								)}
+							</div>
+						))
+					}
 				</div>
 			</div>
 		</section>
@@ -1000,6 +1072,72 @@ const rooms = [
 		height: auto;
 	}
 
+	/* =========================================================
+	   Main schedule
+	========================================================= */
+
+	.main-schedule-section {
+		background: #fff;
+	}
+
+	.main-schedule-tabs {
+		display: flex;
+		justify-content: center;
+		gap: 8px;
+		margin-bottom: 32px;
+	}
+
+	.main-schedule-tab {
+		min-width: 88px;
+		padding: 12px 20px;
+		border: 1px solid #d1d5db;
+		border-radius: 999px;
+		background: #fff;
+		color: #374151;
+		cursor: pointer;
+		font-size: 15px;
+	}
+
+	.main-schedule-tab.is-active {
+		border-color: #0da5df;
+		background: #0da5df;
+		color: #fff;
+	}
+
+	.main-schedule-panel {
+		display: none;
+	}
+
+	.main-schedule-panel.is-active {
+		display: block;
+	}
+
+	.main-schedule-list {
+		width: min(100%, 900px);
+		margin: 0 auto;
+		border-top: 1px solid #d1d5db;
+	}
+
+	.main-schedule-item {
+		display: grid;
+		grid-template-columns: 220px 1fr;
+		align-items: center;
+		padding: 18px 20px;
+		border-bottom: 1px solid #d1d5db;
+		gap: 24px;
+	}
+
+	.main-schedule-title {
+		font-weight: 600;
+	}
+
+	.main-schedule-dates {
+		line-height: 1.8;
+	}
+
+	.main-schedule-empty {
+		text-align: center;
+	}
 
 	/* =========================================================
 	   Availability
@@ -1788,6 +1926,32 @@ const rooms = [
 		.section-text p,
 		.section-lead {
 			font-size: 15px;
+		}
+
+		.main-schedule-tabs {
+			display: grid;
+			grid-template-columns: repeat(4, 1fr);
+			gap: 6px;
+		}
+
+		.main-schedule-tab {
+			min-width: 0;
+			padding: 10px 8px;
+			font-size: 14px;
+		}
+
+		.main-schedule-item {
+			grid-template-columns: 1fr;
+			padding: 16px 4px;
+			gap: 4px;
+		}
+
+		.main-schedule-title {
+			font-size: 15px;
+		}
+
+		.main-schedule-dates {
+			font-size: 14px;
 		}
 
 		.availability-tabs {
@@ -2600,6 +2764,47 @@ const rooms = [
 			}
 		},
 	);
+</script>
+
+<script is:inline>
+	const mainScheduleTabs = document.querySelectorAll(
+		'[data-main-schedule-tab]'
+	);
+
+	const mainSchedulePanels = document.querySelectorAll(
+		'[data-main-schedule-panel]'
+	);
+
+	mainScheduleTabs.forEach(function (tab) {
+		tab.addEventListener('click', function () {
+			const key = tab.getAttribute(
+				'data-main-schedule-tab'
+			);
+
+			mainScheduleTabs.forEach(function (item) {
+				const active = item === tab;
+
+				item.classList.toggle(
+					'is-active',
+					active
+				);
+
+				item.setAttribute(
+					'aria-selected',
+					String(active)
+				);
+			});
+
+			mainSchedulePanels.forEach(function (panel) {
+				panel.classList.toggle(
+					'is-active',
+					panel.getAttribute(
+						'data-main-schedule-panel'
+					) === key
+				);
+			});
+		});
+	});
 </script>
 
 <!-- =========================================================
