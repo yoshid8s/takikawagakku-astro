@@ -2,11 +2,21 @@ import ExcelJS from "exceljs";
 import fs from "node:fs/promises";
 import path from "node:path";
 
+import { generateCommunitySvg } from "./lib/community-calendar-svg.mjs";
+
 const ROOT = process.cwd();
 
 const INPUT_DIR = path.join(ROOT, "data", "community-center", "raw");
 
 const OUTPUT_FILE = path.join(ROOT, "src", "data", "community-calendar.json");
+
+const SVG_OUTPUT_DIR = path.join(
+  ROOT,
+  "public",
+  "images",
+  "community-center",
+  "availability",
+);
 
 /*
  * Excel上の名称 → Webサイト上の名称
@@ -264,6 +274,15 @@ async function main() {
       ...month,
       source: filename,
     });
+
+    const svgOutputPath = path.join(SVG_OUTPUT_DIR, `${month.key}.svg`);
+
+    const svgResult = await generateCommunitySvg({
+      inputPath: filePath,
+      outputPath: svgOutputPath,
+    });
+
+    console.log(`Generated SVG: ${svgResult.outputPath}`);
   }
 
   months.sort((a, b) => {
